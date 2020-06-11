@@ -33,7 +33,7 @@
   </div>
 {:else}
 
-  <div class="flex justify-between items-center p-2 {classes}">
+  <div class="flex justify-between items-center my-4 {classes}">
     <Logo />
     <div on:click={toggleMenu} class="flex md:hidden cursor-pointer w-8 h-8">
       <MenuIcon />

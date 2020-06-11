@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import * as animateScroll from "svelte-scrollto";
 
   import Content from "../components/common/Content.svelte";
@@ -7,6 +8,14 @@
 
   let positionY;
   let contentHeight;
+
+  onMount(() => {
+    const animItem = bodymovin.loadAnimation({
+      wrapper: document.getElementById("logo-container"),
+      animType: "svg",
+      path: "/images/masbossun-lottie.json"
+    });
+  });
 </script>
 
 <style>
