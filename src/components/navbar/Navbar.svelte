@@ -3,6 +3,7 @@
   export let segment;
 
   import { ArrowLeftIcon, MenuIcon, XIcon } from "svelte-feather-icons";
+  import * as animateScroll from "svelte-scrollto";
   import Logo from "../common/Logo.svelte";
   import Navlink from "./Navlink.svelte";
   import { goto, stores } from "@sapper/app";
@@ -11,6 +12,17 @@
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
+  }
+
+  function onDesktopClick(element) {
+    return animateScroll.scrollTo({ element });
+  }
+
+  function onMobilePress(element) {
+    if (element) {
+      animateScroll.scrollTo({ element });
+    }
+    return toggleMenu();
   }
 
   const { page } = stores();
@@ -35,7 +47,9 @@
 
   <div class="flex justify-between items-center my-4 {classes}">
     <Logo />
-    <div on:click={toggleMenu} class="flex md:hidden cursor-pointer w-8 h-8">
+    <div
+      on:click={onMobilePress}
+      class="flex md:hidden cursor-pointer w-8 h-8 mr-4">
       <MenuIcon />
     </div>
     {#if isMenuOpen}
@@ -43,40 +57,49 @@
         <div class="flex flex-col justify-around items-center h-full py-64">
           <Navlink
             {segment}
-            on:click={toggleMenu}
+            on:click={() => onMobilePress('#bio')}
             text={'bio'}
-            link="."
-            scrollTo={'#bio'} />
+            link="." />
           <Navlink
             {segment}
-            on:click={toggleMenu}
+            on:click={() => onMobilePress('#projects')}
             text={'projects'}
-            link="."
-            scrollTo={'#projects'} />
-          <Navlink {segment} on:click={toggleMenu} text={'blog'} link="blog/" />
+            link="." />
+          <Navlink
+            {segment}
+            on:click={() => onMobilePress()}
+            text={'blog'}
+            link="blog/" />
           <Navlink
             {segment}
             link="."
-            on:click={toggleMenu}
+            on:click={() => onMobilePress('#footer')}
             text={'contact me'}
-            scrollTo={'#footer'}
             hasShadow={true} />
         </div>
         <button
-          on:click={toggleMenu}
-          class="fixed bottom-0 right-0 z-50 mr-16 mb-16 w-12">
+          on:click={onMobilePress}
+          class="fixed top-0 right-0 z-50 w-8 h-8 mr-4 my-6">
           <XIcon />
         </button>
       </div>
     {/if}
     <div class="hidden md:flex">
-      <Navlink {segment} text={'bio'} scrollTo={'#bio'} link="." />
-      <Navlink {segment} text={'projects'} scrollTo={'#projects'} link="." />
+      <Navlink
+        {segment}
+        text={'bio'}
+        on:click={() => onDesktopClick('#bio')}
+        link="." />
+      <Navlink
+        {segment}
+        text={'projects'}
+        on:click={() => onDesktopClick('#projects')}
+        link="." />
       <Navlink {segment} text={'blog'} link="blog/" />
       <Navlink
         {segment}
         text={'contact me'}
-        scrollTo={'#footer'}
+        on:click={() => onDesktopClick('#footer')}
         hasShadow={true} />
     </div>
   </div>

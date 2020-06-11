@@ -1,7 +1,5 @@
 <script context="module">
   export async function preload({ params, query }) {
-    // the `slug` parameter is available because
-    // this file is called [slug].svelte
     const res = await this.fetch(`blog/${params.slug}.json`);
     const data = await res.json();
 
@@ -25,21 +23,21 @@
     padding: 1em 1em;
     border-radius: 2px;
     overflow-x: auto;
-    margin-bottom: 2.25rem;
+    margin-bottom: 25px;
   }
 
   .content :global(pre) :global(code) {
     background-color: transparent;
     padding: 0;
-    font-size: 1rem;
+    color: #555;
   }
 
   .content :global(code) {
     font-family: "DM Mono", monospace;
     font-size: 1rem;
-    color: #555;
+    color: steelblue;
     background-color: #f0f0f0;
-    padding: 0.2em 0.4em;
+    padding: 0.1em 0.2em;
     border-radius: 2px;
   }
 
@@ -56,19 +54,19 @@
   }
 
   .content :global(p) {
-    margin-bottom: 2.25rem;
+    margin-bottom: 25px;
   }
 
   .content :global(ul) {
-    margin-bottom: 2.25rem;
+    margin-bottom: 25px;
   }
 
   .content :global(hr) {
-    margin-bottom: 2.25rem;
+    margin-bottom: 25px;
   }
 
   .content :global(a) {
-    text-decoration-line: underline;
+    color: steelblue;
   }
 </style>
 
@@ -89,7 +87,7 @@
 
 <section class="content px-6 py-0 lg:px-64 lg:py-24">
   <h1 class="font-display font-bold text-3xl text-black mb-8">{post.title}</h1>
-  <article class="font-sans text-lg lg:text-xl leading-relaxed">
+  <article class="font-sans text-base lg:text-xl text-relaxed">
     {@html post.html}
   </article>
 </section>

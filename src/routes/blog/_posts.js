@@ -32,13 +32,13 @@ const getAllPosts = () => {
   return posts;
 };
 
-showdown.extension("image-location", function() {
+showdown.extension("image-location", function () {
   var matches = [];
   return [
     {
       type: "lang",
       regex: /(?<=src=")(.*)(?=")/gi,
-      replace: function(s, match) {
+      replace: function (s, match) {
         matches.push(match);
         var n = matches.length - 1;
         return "%PLACEHOLDER" + n + "%";
@@ -46,7 +46,7 @@ showdown.extension("image-location", function() {
     },
     {
       type: "output",
-      filter: function(text) {
+      filter: function (text) {
         for (var i = 0; i < matches.length; ++i) {
           var pat = "%PLACEHOLDER" + i + "%";
           text = text.replace(new RegExp(pat, "gi"), "blog/" + matches[i]);
@@ -57,6 +57,31 @@ showdown.extension("image-location", function() {
     }
   ];
 });
+
+// showdown.extension("syntax-highlight", function () {
+//   var matches = [];
+//   return [
+//     {
+//       type: "lang",
+//       regex: /(```[a-z]*\n)[\s\S]*?\n(```)/g,
+//       replace: function (s, match) {
+//         return s;
+//         // return "<code>%SYNTAX" + n + "%</code>";
+//       }
+//     },
+//     {
+//       type: "output",
+//       filter: function (text) {
+//         // for (var i = 0; i < matches.length; ++i) {
+//         //   var pat = "%SYNTAX" + i + "%";
+//         //   text = text.replace(new RegExp(pat, "g"), "<p>" + matches[i] + "</p>");
+//         // }
+//         matches = [];
+//         return text;
+//       }
+//     }
+//   ]
+// })
 
 const converter = new showdown.Converter({ extensions: ["image-location"] });
 const posts = getAllPosts()

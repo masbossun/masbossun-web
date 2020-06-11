@@ -3,20 +3,13 @@
   export let link = "#";
   export let text;
   export let hasShadow = false;
-  export let scrollTo = "";
 
   import { createEventDispatcher } from "svelte";
-  import * as animateScroll from "svelte-scrollto";
 
   const dispatch = createEventDispatcher();
 
   function onClick() {
     dispatch("click");
-  }
-
-  function scrollToElement() {
-    animateScroll.scrollTo({ element: scrollTo });
-    onClick();
   }
 </script>
 
@@ -30,7 +23,7 @@
 <a
   rel={segment === 'blog' ? 'prefetch' : undefined}
   aria-current="page"
-  on:click={scrollToElement}
+  on:click={onClick}
   href={link}
   class="cursor-pointer px-4">
   <div class="bg-white py-2 px-4 {hasShadow && 'shadow-button'}">
