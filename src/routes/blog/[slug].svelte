@@ -82,7 +82,7 @@
     content={`https://masbossun.web.id/blog/${post.slug}`} />
   <meta
     property="og:image"
-    content={post.html.match(/(?<=src=")(.*?)(?=")/)[0] || ''} />
+    content={'https://masbossun.web.id/' + post.html.match(/(?<=src=")(.*?)(?=")/)[0] || ''} />
   <meta
     property="og:description"
     content={post.html
