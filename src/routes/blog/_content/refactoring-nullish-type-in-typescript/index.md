@@ -171,7 +171,7 @@ const getUserPhoneNumber = (data: Maybe<ResponseDataType>) => {
 };
 ```
 
-whenever the `response.data` is null or undefined the `getUserPhoneNumber()` function will safely return `undefined` without getting _cannot ready property 'data' of undefined_ error.
+whenever the `response.data` is null or undefined the `getUserPhoneNumber()` function will safely return `undefined` without getting _cannot read property 'data' of undefined_ error.
 
 One more tip, if you often use `Maybe<T>` helper, you can simply put this helper inside `index.d.ts` file in the root of your project. So you can call it anywhere without importing the type.
 
