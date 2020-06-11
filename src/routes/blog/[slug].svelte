@@ -81,12 +81,10 @@
     content={`https://masbossun.web.id/blog/${post.slug}`} />
   <meta
     property="og:image"
-    content={'https://masbossun.web.id/' + post.html.match(/(?<=src=")(.*?)(?=")/)[0] || ''} />
+    content={'https://masbossun.web.id/' + (post.html.match(/(?<=src=")(.*?)(?=")/) || [''])[0]} />
   <meta
     property="og:description"
-    content={post.html
-      .match(/<p>[^<]*<\/p>/)[0]
-      .replace(/(<.?p>)/g, '') || ''} />
+    content={(post.html.match(/<p>[^<]*<\/p>/) || [''])[0].replace(/(<.?p>)/g, '') || ''} />
 </svelte:head>
 
 <section class="content px-6 py-0 lg:px-64 lg:py-24">

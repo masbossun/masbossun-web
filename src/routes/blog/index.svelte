@@ -51,7 +51,7 @@
         <div class="flex">
           <a
             rel="prefetch"
-            href="blog/{post.slug}"
+            href="blog/{post.slug}/"
             class="font-display font-bold text-3xl text-black">
             {post.title}
           </a>

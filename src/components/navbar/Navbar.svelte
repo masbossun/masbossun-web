@@ -18,7 +18,10 @@
 
   async function navigateBack() {
     const paths = path.split("/");
-    return goto(paths.slice(0, paths.length - 1).join("/"));
+    if (paths[paths.length - 1] === "") {
+      paths.pop();
+    }
+    return goto(paths.slice(0, paths.length - 1).join("/") + "/");
   }
 </script>
 
@@ -50,7 +53,7 @@
             text={'projects'}
             link="."
             scrollTo={'#projects'} />
-          <Navlink {segment} on:click={toggleMenu} text={'blog'} link="blog" />
+          <Navlink {segment} on:click={toggleMenu} text={'blog'} link="blog/" />
           <Navlink
             {segment}
             link="."
@@ -69,7 +72,7 @@
     <div class="hidden md:flex">
       <Navlink {segment} text={'bio'} scrollTo={'#bio'} link="." />
       <Navlink {segment} text={'projects'} scrollTo={'#projects'} link="." />
-      <Navlink {segment} text={'blog'} link="blog" />
+      <Navlink {segment} text={'blog'} link="blog/" />
       <Navlink
         {segment}
         text={'contact me'}

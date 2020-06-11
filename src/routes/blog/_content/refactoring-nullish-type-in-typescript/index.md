@@ -8,7 +8,7 @@ gitrepo: "https://github.com/masbossun/masbossun-web/blob/master/src/routes/blog
 > Keep Safe!
 
 <p style="width: 100%; font-size:80%; text-align:center;">
-<img src="ambitious-creative-co-rick-barrett-uYD-WRJaFS8-unsplash.jpg" alt="Unsplash Photo" width="100%" style="padding-bottom:0.5em;" />Photo by Ambitious Creative Co. - Rick Barrett on Unsplash</p>
+<img src="ambitious-creative-co-rick-barrett-uYD-WRJaFS8-unsplash.jpg" alt="Unsplash Photo" width="100%" style="padding-bottom:0.5em;" /><a href="https://unsplash.com/@weareambitious?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Photo by Ambitious Creative Co. - Rick Barrett on Unsplash</a></p>
 
 On javascript we have two different nullish type which is `null` and `undefined`. These types basically have same meaning that value with these types doesn't contain anything or empty, but these two types have different behavior, maybe you can find the differences between these nullish type in somewhere else in the internet. My point is, when dealing with nullish type (especially on typescript), we need to handle all the variables to have something kind of fallback. For example,
 
