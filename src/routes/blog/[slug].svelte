@@ -15,7 +15,6 @@
 
 <script>
   export let post;
-  export let url;
 </script>
 
 <style>

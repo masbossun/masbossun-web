@@ -18,7 +18,7 @@
 
   async function navigateBack() {
     const paths = path.split("/");
-    return goto(paths[paths.length - 2]);
+    return goto(paths.slice(0, paths.length - 1).join("/"));
   }
 </script>
 
