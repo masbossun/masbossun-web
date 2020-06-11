@@ -19,17 +19,28 @@
 
 <style>
   .content :global(pre) {
+    font-family: "DM Mono", monospace;
     background-color: #f9f9f9;
     box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
-    padding: 0.5em;
+    padding: 1em 1em;
     border-radius: 2px;
     overflow-x: auto;
+    margin-bottom: 2.25rem;
   }
 
   .content :global(pre) :global(code) {
     background-color: transparent;
     padding: 0;
-    font-size: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .content :global(code) {
+    font-family: "DM Mono", monospace;
+    font-size: 1rem;
+    color: #555;
+    background-color: #f0f0f0;
+    padding: 0.2em 0.4em;
+    border-radius: 2px;
   }
 
   .content :global(h2) {
@@ -54,6 +65,10 @@
 
   .content :global(hr) {
     margin-bottom: 2.25rem;
+  }
+
+  .content :global(a) {
+    text-decoration-line: underline;
   }
 </style>
 
