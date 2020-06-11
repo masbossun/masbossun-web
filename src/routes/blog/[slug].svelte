@@ -79,7 +79,7 @@
   <meta property="og:type" content="article" />
   <meta
     property="og:url"
-    content={url.substr(0, url.lastIndexOf('.')) || url} />
+    content={`https://masbossun.web.id/blog/${post.slug}`} />
   <meta
     property="og:image"
     content={post.html.match(/(?<=src=")(.*?)(?=")/)[0] || ''} />
