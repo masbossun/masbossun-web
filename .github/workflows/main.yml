@@ -13,7 +13,7 @@ jobs:
         with:
           ref: '${{ github.ref }}'
       - name: Sapper export
-        run: 'npm run export'
+        run: 'npm install && npm run export'
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
