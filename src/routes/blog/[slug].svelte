@@ -6,7 +6,7 @@
     const data = await res.json();
 
     if (res.status === 200) {
-      return { post: data };
+      return { post: data, url: res.url };
     } else {
       this.error(res.status, data.message);
     }
@@ -15,6 +15,7 @@
 
 <script>
   export let post;
+  export let url;
 </script>
 
 <style>
@@ -74,6 +75,19 @@
 
 <svelte:head>
   <title>{post.title}</title>
+  <meta property="og:title" content={post.title} />
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:url"
+    content={url.substr(0, url.lastIndexOf('.')) || url} />
+  <meta
+    property="og:image"
+    content={post.html.match(/(?<=src=")(.*?)(?=")/)[0] || ''} />
+  <meta
+    property="og:description"
+    content={post.html
+      .match(/<p>[^<]*<\/p>/)[0]
+      .replace(/(<.?p>)/g, '') || ''} />
 </svelte:head>
 
 <section class="content px-6 py-0 lg:px-64 lg:py-24">
