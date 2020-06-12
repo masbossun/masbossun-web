@@ -11,7 +11,7 @@
 </script>
 
 <footer id="footer" class="container mx-auto">
-  <hr class="my-12" />
+  <hr class="my-12 opacity-10" />
 
   <div>
     <div class="flex flex-col lg:flex-row items-center justify-between mb-24">
@@ -49,9 +49,7 @@
           proudly made in jakarta, ID
         </span>
         <a href=".">
-          <span class="font-serif text-black">
-            @{currentYear} / masbossun LLC.
-          </span>
+          <span class="font-serif text-black">@{currentYear} / masbossun</span>
         </a>
       </div>
     </div>

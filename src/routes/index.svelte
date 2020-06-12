@@ -48,22 +48,25 @@
         i am a frontend web and mobile developer who crafts codes with
         <span class="font-serif italic font-normal">passion.</span>
       </span>
-      <div class="mt-16">
-        <span class="underline">featured project: waruung</span>
+      <div class="hidden lg:block mt-16">
+        <span class="text-base underline">featured project: waruung</span>
       </div>
     </div>
-    <div class="flex flex-initial mb-auto mt-32 xl:mt-24 px-12 lg:px-0">
+    <div class="flex flex-initial mb-auto mt-16 xl:mt-24 px-12 lg:px-0">
       <img
         src="images/project-waruung.png"
         alt="featured-project-prototypes"
         class="featured-image" />
+    </div>
+    <div class="block lg:hidden mt-8">
+      <span class="text-base underline">featured project: waruung</span>
     </div>
   </Content>
 
   <Content
     id="bio"
     classes="flex flex-col lg:flex-row justify-center items-center relative">
-    <div class="hidden lg:block absolute bottom-0 left-0 mb-48 ml-32">
+    <div class="hidden lg:block absolute bottom-0 left-0 mb-48 ml-0">
       <span
         class="font-sans font-bold text-5xl lg:text-6xl leading-tight
         tracking-tighter text-center lg:text-left opacity-10">
@@ -77,7 +80,7 @@
     <div class="hidden lg:block absolute bottom-0 right-0 mb-56 mr-32">
       <span class="font-display italic text-5xl lg:text-6xl">//</span>
     </div>
-    <div class="p-8 ml-0 lg:ml-56 mr-0 lg:mr-16 z-10 text-center lg:text-left">
+    <div class="p-8 mx-0 lg:mx-32 z-10 text-center lg:text-left">
       <span class="font-sans font-normal text-xl md:text-4xl leading-loose ">
         Hello, My name is Ryan Setiagi, self-motivated Frontend Developers who
         love to learn new things. My background is telecommunication. I used to
@@ -132,30 +135,5 @@
   </Content>
 
   <div class="h-16" />
-
-  <div
-    class="flex flex-col lg:flex-row justify-center items-center relative
-    content">
-    <div
-      class="lg:absolute top-0 right-0 mt-4 lg:mr-24 text-center lg:text-right">
-      <span
-        class="font-sans font-bold text-3xl lg:text-4xl leading-tight
-        tracking-tighter lg:opacity-10">
-        Robert C. Martin, Clean Code:
-        <br />
-        A Handbook of Agile
-        <br />
-        Software Craftsmanship
-      </span>
-    </div>
-    <div class="p-8 mr-0 lg:mx-32 z-10 text-center lg:text-left">
-      <span class="font-sans font-normal text-xl md:text-4xl leading-relaxed">
-        Clean code is not written by following a set of rules. You don’t become
-        a software craftsman by learning a list of heuristics. Professionalism
-        and craftsmanship come from values that drive
-        <span class="font-serif italic">disciplines.</span>
-      </span>
-    </div>
-  </div>
 
 </section>

@@ -1,5 +1,9 @@
 module.exports = {
   theme: {
+    colors: {
+      black: "#1A1A1A",
+      white: "#FFFFFF"
+    },
     letterSpacing: {
       tighter: "-.04em"
     },
@@ -7,10 +11,6 @@ module.exports = {
       sans: ["DM Sans", "sans-serif"],
       serif: ["DM Serif Text", "serif"],
       display: ["DM Serif Display", "serif"]
-    },
-    textColor: {
-      black: "#1A1A1A",
-      white: "#FFFFFF"
     },
     opacity: {
       10: ".1"

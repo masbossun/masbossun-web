@@ -9,28 +9,8 @@
 </script>
 
 <script>
+  import { printDate } from "../../helper.js";
   export let posts;
-
-  function printDate(text) {
-    const date = new Date(text);
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-    return `${
-      months[date.getMonth()]
-    } ${date.getDate()}, ${date.getFullYear()}`;
-  }
 </script>
 
 <style>
@@ -45,6 +25,17 @@
 </svelte:head>
 
 <section class="px-6 lg:px-64">
+  <div>
+    <h1 class="font-display font-bold text-6xl text-black">masbossun's blog</h1>
+    <div class="h-2" />
+    <h2 class="font-sans text-xl">
+      Things i might forget, by
+      <a href="https://twitter.com/masbossun" class="underline">Ryan Setiagi</a>
+    </h2>
+  </div>
+
+  <div class="h-16" />
+
   <ul>
     {#each posts as post}
       <li class="py-8">

@@ -13,6 +13,7 @@
 
 <script>
   export let post;
+  import { printDate } from "../../helper.js";
 </script>
 
 <style>
@@ -35,10 +36,11 @@
   .content :global(code) {
     font-family: "DM Mono", monospace;
     font-size: 1rem;
-    color: steelblue;
+    color: #555;
     background-color: #f0f0f0;
     padding: 0.1em 0.2em;
     border-radius: 2px;
+    word-break: break-all;
   }
 
   .content :global(h2) {
@@ -66,7 +68,7 @@
   }
 
   .content :global(a) {
-    color: steelblue;
+    color: #555;
   }
 </style>
 
@@ -85,9 +87,13 @@
     content={(post.html.match(/<p>[^<]*<\/p>/) || [''])[0].replace(/(<.?p>)/g, '') || ''} />
 </svelte:head>
 
-<section class="content px-6 py-0 lg:px-64 lg:py-24">
-  <h1 class="font-display font-bold text-3xl text-black mb-8">{post.title}</h1>
+<section class="content px-6 py-0 lg:px-64 lg:py-8">
+  <h1 class="font-display font-bold text-3xl text-black">{post.title}</h1>
+  <div class="h-2" />
+  <h4>{printDate(post.date)}</h4>
+  <div class="h-16" />
   <article class="font-sans text-base lg:text-xl text-relaxed">
     {@html post.html}
   </article>
+
 </section>
