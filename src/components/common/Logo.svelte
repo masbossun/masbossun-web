@@ -3,7 +3,13 @@
   export let animated = false;
 </script>
 
-<a href="https://masbossun.web.id" class="cursor-pointer{classes}">
+<style>
+  #logo-container {
+    max-height: 52px;
+  }
+</style>
+
+<a href="https://masbossun.web.id" class="cursor-pointer {classes}">
   {#if animated}
     <div id="logo-container" />
   {:else}
