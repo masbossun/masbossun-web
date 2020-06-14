@@ -45,8 +45,8 @@
   </div>
 {:else}
 
-  <div class="flex justify-between items-center my-4 {classes}">
-    <Logo />
+  <div class="flex justify-between items-center {classes}">
+    <Logo animated={true} />
     <div
       on:click={onMobilePress}
       class="flex md:hidden cursor-pointer w-8 h-8 mr-4">
@@ -74,12 +74,11 @@
             {segment}
             link="."
             on:click={() => onMobilePress('#footer')}
-            text={'contact me'}
-            hasShadow={true} />
+            text={'contact me'} />
         </div>
         <button
           on:click={onMobilePress}
-          class="fixed top-0 right-0 z-50 w-8 h-8 mr-4 my-6">
+          class="fixed top-0 right-0 z-50 w-8 h-8 mr-4 my-4">
           <XIcon />
         </button>
       </div>
@@ -99,8 +98,7 @@
       <Navlink
         {segment}
         text={'contact me'}
-        on:click={() => onDesktopClick('#footer')}
-        hasShadow={true} />
+        on:click={() => onDesktopClick('#footer')} />
     </div>
   </div>
 {/if}

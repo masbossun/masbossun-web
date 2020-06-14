@@ -10,6 +10,8 @@
 
 <script>
   import { printDate } from "../../helper.js";
+  import Logo from "../../components/common/Logo.svelte";
+
   export let posts;
 </script>
 
@@ -25,16 +27,6 @@
 </svelte:head>
 
 <section class="px-6 lg:px-64">
-  <div>
-    <h1 class="font-display font-bold text-6xl text-black">masbossun's blog</h1>
-    <div class="h-2" />
-    <h2 class="font-sans text-xl">
-      Things i might forget, by
-      <a href="https://twitter.com/masbossun" class="underline">Ryan Setiagi</a>
-    </h2>
-  </div>
-
-  <div class="h-16" />
 
   <ul>
     {#each posts as post}

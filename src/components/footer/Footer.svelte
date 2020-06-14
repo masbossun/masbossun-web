@@ -11,7 +11,9 @@
 </script>
 
 <footer id="footer" class="container mx-auto">
-  <hr class="my-12 opacity-10" />
+  <hr class="opacity-10" />
+
+  <div class="h-12" />
 
   <div>
     <div class="flex flex-col lg:flex-row items-center justify-between mb-24">
@@ -43,7 +45,7 @@
     </div>
 
     <div class="flex flex-col lg:flex-row justify-between items-center mb-8">
-      <Logo classes="mb-8 lg:mb-0" />
+      <Logo classes="mb-8 lg:mb-0" animated={false} />
       <div class="flex items-center flex-col lg:flex-row">
         <span class="font-sans text-black mx-4 mb-4 lg:mb-0">
           proudly made in jakarta, ID

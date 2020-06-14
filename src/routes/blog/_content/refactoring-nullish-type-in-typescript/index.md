@@ -5,7 +5,7 @@ date: "2020-06-12T12:45:43.413Z"
 gitrepo: "https://github.com/masbossun/masbossun-web/blob/master/src/routes/blog/\_content/hello-world/index.md"
 ---
 
-> Keep Safe!
+Keep Safe!
 
 <p style="width: 100%; font-size:80%; text-align:center;">
 <img src="ambitious-creative-co-rick-barrett-uYD-WRJaFS8-unsplash.jpg" alt="Unsplash Photo" width="100%" style="padding-bottom:0.5em;" /><a href="https://unsplash.com/@weareambitious?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Photo by Ambitious Creative Co. - Rick Barrett on Unsplash</a></p>

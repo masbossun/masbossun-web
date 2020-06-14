@@ -2,7 +2,8 @@ module.exports = {
   theme: {
     colors: {
       black: "#1A1A1A",
-      white: "#FFFFFF"
+      white: "#FFFFFF",
+      gray: "#555"
     },
     letterSpacing: {
       tighter: "-.04em"
@@ -15,7 +16,11 @@ module.exports = {
     opacity: {
       10: ".1"
     },
-    extend: {}
+    extend: {
+      zIndex: {
+        '-1': '-1',
+      },
+    }
   },
   variants: {},
   plugins: []
