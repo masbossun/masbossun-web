@@ -22,22 +22,22 @@
       </span>
       <div class="flex">
         <a href="https://linkedin.com/in/ryan-setiagi">
-          <div class="w-8 text-black mx-4">
+          <div class="w-8 text-accent mx-4">
             <LinkedinIcon />
           </div>
         </a>
         <a href="https://github.com/masbossun">
-          <div class="w-8 text-black mx-4">
+          <div class="w-8 text-accent mx-4">
             <GithubIcon />
           </div>
         </a>
         <a href="https://twitter.com/masbossun">
-          <div class="w-8 text-black mx-4">
+          <div class="w-8 text-accent mx-4">
             <TwitterIcon />
           </div>
         </a>
         <a href="https://instagram.com/masbossun">
-          <div class="w-8 text-black mx-4">
+          <div class="w-8 text-accent mx-4">
             <InstagramIcon />
           </div>
         </a>
@@ -48,11 +48,11 @@
       <Logo classes="mb-8 lg:mb-0" animated={false} />
       <div class="flex items-center flex-col items-center lg:items-end">
         <span
-          class="font-sans text-black mb-4 lg:mb-0 text-center lg:text-right">
+          class="font-sans text-accent mb-4 lg:mb-0 text-center lg:text-right">
           proudly made in jakarta, ID
         </span>
         <a href=".">
-          <span class="font-serif text-black">@{currentYear} / masbossun</span>
+          <span class="font-serif text-accent">@{currentYear} / masbossun</span>
         </a>
       </div>
     </div>

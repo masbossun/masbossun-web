@@ -1,9 +1,9 @@
 module.exports = {
   theme: {
     colors: {
-      black: "#1A1A1A",
-      white: "#FFFFFF",
-      gray: "#555"
+      primary: "var(--color-primary)",
+      accent: "var(--color-accent)",
+      gray: "var(--color-gray)"
     },
     letterSpacing: {
       tighter: "-.04em"

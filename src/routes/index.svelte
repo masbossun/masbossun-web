@@ -30,7 +30,8 @@
 {#if positionY >= contentHeight * 0.8}
   <button
     on:click={() => animateScroll.scrollToTop()}
-    class="hidden lg:block fixed bottom-0 right-0 mr-12 mb-12 p-8 z-10 bg-white">
+    class="hidden lg:block fixed bottom-0 right-0 mr-12 mb-12 p-8 z-10
+    bg-primary">
     UP
   </button>
 {/if}

@@ -88,7 +88,7 @@
 </svelte:head>
 
 <section class="content px-6 py-0 lg:px-64 lg:py-8">
-  <h1 class="font-display font-bold text-3xl text-black">{post.title}</h1>
+  <h1 class="font-display font-bold text-3xl text-accent">{post.title}</h1>
   <div class="h-2" />
   <h4>{printDate(post.date)}</h4>
   <div class="h-16" />

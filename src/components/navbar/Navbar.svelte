@@ -9,6 +9,7 @@
   import { goto, stores } from "@sapper/app";
 
   let isMenuOpen = false;
+  let isDark = false;
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -23,6 +24,23 @@
       animateScroll.scrollTo({ element });
     }
     return toggleMenu();
+  }
+
+  function toggleDarkMode({ mobile = false }) {
+    if (mobile) {
+      toggleMenu();
+    }
+
+    if (isDark) {
+      isDark = false;
+      return window.document.body.classList.replace(
+        "theme-dark",
+        "theme-light"
+      );
+    }
+
+    isDark = true;
+    return window.document.body.classList.replace("theme-light", "theme-dark");
   }
 
   const { page } = stores();
@@ -53,7 +71,7 @@
       <MenuIcon />
     </div>
     {#if isMenuOpen}
-      <div class="fixed inset-0 bg-white z-40">
+      <div class="fixed inset-0 bg-primary z-40">
         <div class="flex flex-col justify-around items-center h-full py-64">
           <Navlink
             {segment}
@@ -75,6 +93,10 @@
             link="."
             on:click={() => onMobilePress('#footer')}
             text={'contact me'} />
+          <Navlink
+            {segment}
+            text="switch {isDark ? 'light' : 'dark'}"
+            on:click={() => toggleDarkMode({ mobile: true })} />
         </div>
         <button
           on:click={onMobilePress}
@@ -99,6 +121,10 @@
         {segment}
         text={'contact me'}
         on:click={() => onDesktopClick('#footer')} />
+      <Navlink
+        {segment}
+        text="switch {isDark ? 'light' : 'dark'}"
+        on:click={toggleDarkMode} />
     </div>
   </div>
 {/if}

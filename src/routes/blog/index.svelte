@@ -35,17 +35,18 @@
           <a
             rel="prefetch"
             href="blog/{post.slug}/"
-            class="font-display font-bold text-3xl text-black">
+            class="font-display font-bold text-3xl text-accent">
             {post.title}
           </a>
         </div>
         <div class="my-2">
-          <small class="bg-black font-sans font-bold text-base text-white p-1">
+          <small
+            class="bg-accent font-sans font-bold text-base text-primary p-1">
             {printDate(post.date)}
           </small>
         </div>
         <p
-          class="font-sans font-normal text-lg lg:text-xl text-black
+          class="font-sans font-normal text-lg lg:text-xl text-accent
           leading-relaxed">
           {post.html.replace(/<[^>]*>/g, '').substr(0, 328) + '...'}
         </p>

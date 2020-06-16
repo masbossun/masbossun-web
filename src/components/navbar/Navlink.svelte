@@ -18,8 +18,8 @@
   on:click={onClick}
   href={link}
   class="cursor-pointer px-4">
-  <div class="bg-white py-2 px-4">
-    <span class="font-sans font-normal text-black text-xl hover:text-gray">
+  <div class="bg-primary py-2 px-4">
+    <span class="font-sans font-normal text-accent text-xl hover:text-gray">
       {text}
     </span>
   </div>
