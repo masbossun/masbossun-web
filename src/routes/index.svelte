@@ -37,11 +37,11 @@
   px-4 lg:px-0">
   <img
     class="hidden lg:block"
-    srcset="images/project-hijrah-featured@2x.png 2x,
-    images/project-hijrah-featured.png 1x"
-    src="images/project-hijrah-featured.png"
+    srcset="images/project-winsen-featured@2x.png 2x,
+    images/project-winsen-featured.png 1x"
+    src="images/project-winsen-featured.png"
     alt="featured-project-prototypes" />
-  <div class="w-24" />
+  <div class="w-32" />
   <div class="flex flex-initial flex-col items-center lg:items-start">
     <span
       class="font-sans font-bold text-5xl lg:text-6xl leading-tight
@@ -49,9 +49,14 @@
       i am a frontend web and mobile developer who crafts codes with
       <span class="font-serif italic font-normal">passion.</span>
     </span>
-    <div class="hidden lg:block mt-16">
-      <span class="text-base underline">featured project: waruung</span>
-    </div>
+    <div class="h-8" />
+    <a
+      class="hidden lg:block"
+      target="_blank"
+      rel="noopener noreferrer"
+      href="https://winsen.xyz">
+      <span class="text-xl underline">featured project: winsen's site</span>
+    </a>
   </div>
   <div class="h-24" />
   <div class="block lg:hidden mt-8">

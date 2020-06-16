@@ -19,7 +19,7 @@
   href={link}
   class="cursor-pointer px-4">
   <div class="bg-white py-2 px-4">
-    <span class="font-sans font-bold text-gray text-xl hover:text-black">
+    <span class="font-sans font-normal text-black text-xl hover:text-gray">
       {text}
     </span>
   </div>

@@ -46,8 +46,9 @@
 
     <div class="flex flex-col lg:flex-row justify-between items-center mb-8">
       <Logo classes="mb-8 lg:mb-0" animated={false} />
-      <div class="flex items-center flex-col lg:flex-row">
-        <span class="font-sans text-black mx-4 mb-4 lg:mb-0">
+      <div class="flex items-center flex-col items-center lg:items-end">
+        <span
+          class="font-sans text-black mb-4 lg:mb-0 text-center lg:text-right">
           proudly made in jakarta, ID
         </span>
         <a href=".">
