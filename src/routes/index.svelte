@@ -97,7 +97,6 @@
     <Content classes="flex flex-col lg:flex-row items-center relative">
       <ProjectOverview
         {index}
-        url={project.url}
         title={project.name}
         src={project.thumbnail}
         description={project.short_description} />
