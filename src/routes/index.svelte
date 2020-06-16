@@ -23,6 +23,10 @@
 
 <svelte:window bind:scrollY={positionY} />
 
+<svelte:head>
+  <title>masbossun</title>
+</svelte:head>
+
 {#if positionY >= contentHeight * 0.8}
   <button
     on:click={() => animateScroll.scrollToTop()}
