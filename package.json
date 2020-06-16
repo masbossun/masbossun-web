@@ -1,7 +1,7 @@
 {
   "name": "masbossun-blog",
   "description": "masbossun-blog",
-  "version": "1.0.6",
+  "version": "2.0.0",
   "scripts": {
     "dev": "sapper dev",
     "build": "npm run build:tailwind && sapper build --legacy",
