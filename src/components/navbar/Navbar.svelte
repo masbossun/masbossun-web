@@ -1,15 +1,28 @@
 <script>
-  export let classes = "";
   export let segment;
+  export let dark = false;
 
-  import { ArrowLeftIcon, MenuIcon, XIcon } from "svelte-feather-icons";
+  import Icon from "@iconify/svelte";
+  import barsIcon from "@iconify/icons-uil/bars";
+  import timesIcon from "@iconify/icons-uil/times";
+  import sunIcon from "@iconify/icons-uil/sun";
+  import moonIcon from "@iconify/icons-uil/moon";
+  import githubIcon from "@iconify/icons-uil/github";
+  import twitterIcon from "@iconify/icons-uil/twitter";
+  import linkedinIcon from "@iconify/icons-uil/linkedin";
+  import instagramIcon from "@iconify/icons-uil/instagram-alt";
   import * as animateScroll from "svelte-scrollto";
+  import ContactButton from "../footer/ContactButton.svelte";
   import Logo from "../common/Logo.svelte";
   import Navlink from "./Navlink.svelte";
   import { goto, stores } from "@sapper/app";
+  import { writable } from "svelte/store";
+  import { onMount } from "svelte";
+  const { preloading, page, session } = stores();
 
   let isMenuOpen = false;
   let isDark = false;
+  let isMounted = false;
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -33,17 +46,21 @@
 
     if (isDark) {
       isDark = false;
-      return window.document.body.classList.replace(
-        "theme-dark",
-        "theme-light"
-      );
+      window.document.body.classList.replace("theme-dark", "theme-light");
+      return session.update((prev) => ({
+        ...prev,
+        settings: { theme: "theme-dark" },
+      }));
     }
 
     isDark = true;
-    return window.document.body.classList.replace("theme-light", "theme-dark");
+    window.document.body.classList.replace("theme-light", "theme-dark");
+    return session.update((prev) => ({
+      ...prev,
+      settings: { theme: "theme-light" },
+    }));
   }
 
-  const { page } = stores();
   $: path = $page.path;
 
   async function navigateBack() {
@@ -53,78 +70,108 @@
     }
     return goto(paths.slice(0, paths.length - 1).join("/") + "/");
   }
+
+  let screenWidth;
+  $: isMobile = screenWidth <= 640;
 </script>
 
-{#if segment === 'blog'}
-  <div class="flex justify-between items-center py-8 px-6 lg:px-0 {classes}">
-    <button on:click={navigateBack} class="w-8">
-      <ArrowLeftIcon />
-    </button>
-  </div>
-{:else}
+<svelte:window bind:innerWidth={screenWidth} />
 
-  <div class="flex justify-between items-center {classes}">
-    <Logo animated={true} />
-    <div
-      on:click={onMobilePress}
-      class="flex md:hidden cursor-pointer w-8 h-8 mr-4">
-      <MenuIcon />
-    </div>
-    {#if isMenuOpen}
-      <div class="fixed inset-0 bg-primary z-40">
-        <div class="flex flex-col justify-around items-center h-full py-64">
-          <Navlink
-            {segment}
-            on:click={() => onMobilePress('#bio')}
-            text={'bio'}
-            link="." />
-          <Navlink
-            {segment}
-            on:click={() => onMobilePress('#projects')}
-            text={'projects'}
-            link="." />
-          <Navlink
-            {segment}
-            on:click={() => onMobilePress()}
-            text={'blog'}
-            link="blog/" />
-          <Navlink
-            {segment}
-            link="."
-            on:click={() => onMobilePress('#footer')}
-            text={'contact me'} />
-          <Navlink
-            {segment}
-            text="switch {isDark ? 'light' : 'dark'}"
-            on:click={() => toggleDarkMode({ mobile: true })} />
+<div
+  id="navbar"
+  class="{isMenuOpen ? 'fixed inset-x-0' : ''}
+  {$$props.class} bg-primary {dark && 'bg-accent negative-dark'}">
+  <div
+    class="container mx-auto max-w-screen-lg flex justify-between items-center
+    h-20 px-6">
+    <Logo {dark} animated={false} />
+
+    {#if !isMobile}
+      <div class="flex items-center">
+        <Navlink {dark} {segment} text={'blog'} link="blog/" />
+        <div class="w-4" />
+        <Navlink
+          {dark}
+          {segment}
+          text={'works'}
+          on:click={() => onDesktopClick('#works')}
+          link="." />
+        <div class="w-4" />
+        <Navlink
+          {dark}
+          {segment}
+          text={'about'}
+          on:click={() => onDesktopClick('#about')}
+          link="." />
+        <div class="w-4" />
+        <Navlink
+          {dark}
+          {segment}
+          text={'contacts'}
+          on:click={() => onDesktopClick('#footer')} />
+        <div class="w-4" />
+        <div on:click={toggleDarkMode} class="cursor-pointer mx-2 my-1 w-6 h-6">
+          {#if isDark}
+            <Icon
+              icon={sunIcon}
+              width={24}
+              height={24}
+              class={dark ? 'text-primary' : 'text-accent'} />
+          {:else}
+            <Icon
+              icon={moonIcon}
+              width={24}
+              height={24}
+              class={dark ? 'text-primary' : 'text-accent'} />
+          {/if}
         </div>
-        <button
-          on:click={onMobilePress}
-          class="fixed top-0 right-0 z-50 w-8 h-8 mr-4 my-4">
-          <XIcon />
-        </button>
+      </div>
+    {:else}
+      <div on:click={toggleMenu}>
+        <Icon
+          icon={isMenuOpen ? timesIcon : barsIcon}
+          width={24}
+          height={24}
+          class={dark ? 'text-primary' : 'text-accent'} />
       </div>
     {/if}
-    <div class="hidden md:flex">
-      <Navlink
-        {segment}
-        text={'bio'}
-        on:click={() => onDesktopClick('#bio')}
-        link="." />
-      <Navlink
-        {segment}
-        text={'projects'}
-        on:click={() => onDesktopClick('#projects')}
-        link="." />
-      <Navlink {segment} text={'blog'} link="blog/" />
-      <Navlink
-        {segment}
-        text={'contact me'}
-        on:click={() => onDesktopClick('#footer')} />
-      <Navlink
-        {segment}
-        text="switch {isDark ? 'light' : 'dark'}"
-        on:click={toggleDarkMode} />
-    </div>
   </div>
-{/if}
+
+  {#if isMenuOpen}
+    <div class="fixed inset-0 bg-primary" style="top: 80px">
+      <div class="p-6">
+        <Navlink {segment} mobile text="index" class="opacity-100" />
+        <div class="h-6" />
+        <Navlink {segment} mobile text="blog" class="opacity-60" />
+        <div class="h-6" />
+        <Navlink {segment} mobile text="works" class="opacity-60" />
+        <div class="h-6" />
+        <Navlink {segment} mobile text="about" class="opacity-60" />
+        <div class="h-6" />
+        <Navlink {segment} mobile text="contacts" class="opacity-60" />
+      </div>
+
+      <div class="absolute bottom-0 left-0 px-6">
+        <div class="bg-accent h-1 w-10 opacity-60" />
+        <div class="h-4" />
+        <div class="flex flex-row">
+          <ContactButton
+            textClass="text-accent opacity-60"
+            icon={linkedinIcon} />
+          <div class="w-3" />
+          <ContactButton textClass="text-accent opacity-60" icon={githubIcon} />
+          <div class="w-3" />
+          <ContactButton
+            textClass="text-accent opacity-60"
+            icon={twitterIcon} />
+          <div class="w-3" />
+          <ContactButton
+            textClass="text-accent opacity-60"
+            icon={instagramIcon} />
+        </div>
+        <div class="h-20" />
+      </div>
+
+    </div>
+  {/if}
+</div>

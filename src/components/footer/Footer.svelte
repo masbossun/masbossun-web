@@ -1,60 +1,82 @@
 <script>
-  import Content from "../common/Content.svelte";
+  export let data;
+
+  import FooterSection from "./FooterSection.svelte";
+  import ContactButton from "./ContactButton.svelte";
   import Logo from "../common/Logo.svelte";
-  import {
-    LinkedinIcon,
-    TwitterIcon,
-    InstagramIcon,
-    GithubIcon
-  } from "svelte-feather-icons";
+  import githubIcon from "@iconify/icons-uil/github";
+  import twitterIcon from "@iconify/icons-uil/twitter";
+  import linkedinIcon from "@iconify/icons-uil/linkedin";
+  import instagramIcon from "@iconify/icons-uil/instagram-alt";
+  import { Display, Title, Subtitle, Caption, Body } from "../typography";
+
   let currentYear = new Date().getFullYear();
+  let screenWidth;
+  let contactsCopy;
+
+  contactsCopy = {
+    email: data.contacts.find((S) => S.label === "email"),
+    linkedin: data.contacts.find((S) => S.label === "linkedin"),
+    github: data.contacts.find((S) => S.label === "github"),
+    twitter: data.contacts.find((S) => S.label === "twitter"),
+    instagram: data.contacts.find((S) => S.label === "instagram"),
+  };
+
+  $: isMobile = screenWidth <= 640;
 </script>
 
-<footer id="footer" class="container mx-auto">
-  <hr class="opacity-10" />
+<svelte:window bind:innerWidth={screenWidth} />
 
-  <div class="h-12" />
-
-  <div>
-    <div class="flex flex-col lg:flex-row items-center justify-between mb-24">
-      <span class="font-sans font-bold text-2xl mb-8 lg:mb-0">
-        get in touch
-      </span>
-      <div class="flex">
-        <a href="https://linkedin.com/in/ryan-setiagi">
-          <div class="w-8 text-accent mx-4">
-            <LinkedinIcon />
-          </div>
+<footer id="footer" class="bg-accent py-16 text-primary negative-dark">
+  <section class="container mx-auto max-w-screen-lg grid grid-cols-8 gap-10">
+    {#if !isMobile}
+      <div class="col-span-8 md:col-span-4 flex flex-col items-start my-4">
+        <Logo dark={true} />
+      </div>
+    {/if}
+    <div class="col-span-8 md:col-span-4">
+      {#if isMobile}
+        <Title size={16} class="opacity-60 text-center">let's talk</Title>
+        <a href={`mailto:${contactsCopy['email'].url}?subject=let's talk`}>
+          <Body size={24} class="text-primary text-center">
+            {contactsCopy['email'].url}
+          </Body>
         </a>
-        <a href="https://github.com/masbossun">
-          <div class="w-8 text-accent mx-4">
-            <GithubIcon />
-          </div>
+      {:else}
+        <Display class="text-right opacity-60">Let's talk</Display>
+        <a href={`mailto:${contactsCopy['email'].url}?subject=let's talk`}>
+          <Title class="text-primary text-right">
+            {contactsCopy['email'].url}
+          </Title>
         </a>
-        <a href="https://twitter.com/masbossun">
-          <div class="w-8 text-accent mx-4">
-            <TwitterIcon />
-          </div>
-        </a>
-        <a href="https://instagram.com/masbossun">
-          <div class="w-8 text-accent mx-4">
-            <InstagramIcon />
-          </div>
-        </a>
+      {/if}
+    </div>
+  </section>
+  <div class="h-20 lg:h-48" />
+  <section class="containers mx-auto max-w-screen-lg grid grid-cols-8 gap-10">
+    <div class="col-span-8 md:col-span-4 flex flex-col items-center">
+      <div class="flex flex-row">
+        <ContactButton
+          href={contactsCopy['linkedin'].url}
+          icon={linkedinIcon} />
+        <div class="w-6" />
+        <ContactButton href={contactsCopy['github'].url} icon={githubIcon} />
+        <div class="w-6" />
+        <ContactButton href={contactsCopy['twitter'].url} icon={twitterIcon} />
+        <div class="w-6" />
+        <ContactButton
+          href={contactsCopy['instagram'].url}
+          icon={instagramIcon} />
       </div>
     </div>
-
-    <div class="flex flex-col lg:flex-row justify-between items-center mb-8">
-      <Logo classes="mb-8 lg:mb-0" animated={false} />
-      <div class="flex items-center flex-col items-center lg:items-end">
-        <span
-          class="font-sans text-accent mb-4 lg:mb-0 text-center lg:text-right">
-          proudly made in jakarta, ID
-        </span>
-        <a href=".">
-          <span class="font-serif text-accent">@{currentYear} / masbossun</span>
-        </a>
-      </div>
+    <div class="col-span-8 md:col-span-4">
+      <Subtitle weight="bold" class="text-center">
+        &copy; {currentYear} masbossun
+      </Subtitle>
+      <div class="h-1" />
+      <Subtitle weight="regular" class="text-center">
+        proudly made by myself in jakarta, ID
+      </Subtitle>
     </div>
-  </div>
+  </section>
 </footer>

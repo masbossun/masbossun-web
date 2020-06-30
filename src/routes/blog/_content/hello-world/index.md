@@ -1,9 +1,17 @@
----
-title: Hello World
+# Hello World
+
+Category: 
+Created: Jan 15, 2019 2:06 PM
+Created By: Ryan Setiagi
+gitrepo: 
+Last Edited By: Ryan Setiagi
+Last Edited Time: Jan 15, 2019 7:39 AM
 slug: hello-world
-date: "2019-01-15T23:03:03.284Z"
-gitrepo: "https://github.com/masbossun/bossun-blog/blob/master/content/blog/hello-world/index.md"
----
+Status: Done 🤘
+Title: Hello Wolrd
+Type: Article
+Zebra Cross: +++END+++
+
 
 So, h1 my name is Ryan Setiagi, but you can call me masbossun.
 

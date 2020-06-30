@@ -1,14 +1,25 @@
----
-title: Refactoring nullish type in Typescript
-slug: refactoring-nullish-type-in-typescript
-date: "2020-06-12T12:45:43.413Z"
+# Refactoring nullish type in Typescript
+
+Category: code, refactoring, typescript
+Created: Jun 10, 2020 2:06 PM
+Created By: Ryan Setiagi
 gitrepo: "https://github.com/masbossun/masbossun-web/blob/master/src/routes/blog/\_content/hello-world/index.md"
----
+Last Edited By: Ryan Setiagi
+Last Edited Time: Jun 27, 2020 7:39 AM
+slug: refactoring-nullish-type-in-typescript
+Status: Done 🤘
+Title: Refactoring nullish type in Typescript
+Type: Article
+Zebra Cross: +++END+++
+
+
+![Photo by Ambitious Creative Co. - Rick Barrett on Unsplash](/blog/ambitious-creative-co-rick-barrett-uYD-WRJaFS8-unsplash.jpg)
+
+<small><a href="https://unsplash.com/@weareambitious?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+Photo by Ambitious Creative Co. - Rick Barrett on Unsplash</a></small>
+
 
 Keep Safe!
-
-<p style="width: 100%; font-size:80%; text-align:center;">
-<img src="ambitious-creative-co-rick-barrett-uYD-WRJaFS8-unsplash.jpg" alt="Unsplash Photo" width="100%" style="padding-bottom:0.5em;" /><a href="https://unsplash.com/@weareambitious?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Photo by Ambitious Creative Co. - Rick Barrett on Unsplash</a></p>
 
 On javascript we have two different nullish type which is `null` and `undefined`. These types basically have same meaning that value with these types doesn't contain anything or empty, but these two types have different behavior, maybe you can find the differences between these nullish type in somewhere else in the internet. My point is, when dealing with nullish type (especially on typescript), we need to handle all the variables to have something kind of fallback. For example,
 
@@ -36,28 +47,28 @@ Ok, now just assume we know the `response.data` is not always exists by checking
 
 ```typescript
 interface ReponseDataType {
-	name: string
-	phone: number
-};
+  name: string;
+  phone: number;
+}
 
 interface ResponseType {
-	id: number
-	status: string
-	data: ResponseDataType | null | undefined
-};
+  id: number;
+  status: string;
+  data: ResponseDataType | null | undefined;
+}
 
 const response: ResponseType = {
-	id: 2,
-	status: 'OK',
-	message: 'All is well',
-	data: {
-		name: 'Abigail',
-		phone: 85123123123,
-	}
+  id: 2,
+  status: "OK",
+  message: "All is well",
+  data: {
+    name: "Abigail",
+    phone: 85123123123,
+  },
 };
 
 const getUserPhoneNumber = (data: ResponseDataType) => {
-	return data.phone;
+  return data.phone;
 };
 
 getUserPhoneNumber(response.data); // 85123123123
@@ -66,52 +77,46 @@ getUserPhoneNumber(response.data); // 85123123123
 After we add type definitions, when we call `getUserPhoneNumber(response.data)`, typescript will tell us that `response.data` can be `undefined`, to fix this, we need to add nullish type inside function parameter.
 
 ```typescript
-const getUserPhoneNumber = (data: ResponseDataType | null | undefined) => {
-	return data.phone;
+const getUserPhoneNumber = (
+  data: ResponseDataType | null | undefined
+) => {
+  return data.phone;
 };
 ```
 
 Done, but wait, there is another typescript error after we add nullish definitions inside the function parameter. This is because we called `phone` from `data` object that can be undefined. Oke let's fix this.
 
 ```typescript
-const getUserPhoneNumber = (data: ResponseDataType | null | undefined) => {
-	if (data){
-		return data.phone;
-	}
-	
-	return undefined; // or maybe null, or any fallback you wanted
-}
-```
-and, all expected error have been resolved, this is the final codes.
-```typescript
 interface ReponseDataType {
-	name: string
-	phone: number
-};
+  name: string;
+  phone: number;
+}
 
 interface ResponseType {
-	id: number
-	status: string
-	data: ResponseDataType | null | undefined
-};
+  id: number;
+  status: string;
+  data: ResponseDataType | null | undefined;
+}
 
 const response: ResponseType = {
-	id: 2,
-	status: 'OK',
-	message: 'All is well',
-	data: {
-		name: 'Abigail',
-		phone: 85123123123,
-	}
+  id: 2,
+  status: "OK",
+  message: "All is well",
+  data: {
+    name: "Abigail",
+    phone: 85123123123,
+  },
 };
 
-const getUserPhoneNumber = (data: ResponseDataType | null | undefined) => {
-	if (data){
-		return data.phone;
-	}
-	
-	return undefined; // or maybe null, or any fallback you wanted
-}
+const getUserPhoneNumber = (
+  data: ResponseDataType | null | undefined
+) => {
+  if (data) {
+    return data.phone;
+  }
+
+  return undefined; // or maybe null, or any fallback you wanted
+};
 
 getUserPhoneNumber(response.data); // 85123123123
 ```
@@ -132,32 +137,32 @@ From here we can use it to refactor our code into something like this.
 type Maybe<T> = T | null | undefined;
 
 interface ReponseDataType {
-	name: string
-	phone: number
-};
+  name: string;
+  phone: number;
+}
 
 interface ResponseType {
-	id: number
-	status: string
-	data: Maybe<ResponseDataType>
-};
+  id: number;
+  status: string;
+  data: Maybe<ResponseDataType>;
+}
 
 const response: ResponseType = {
-	id: 2,
-	status: 'OK',
-	message: 'All is well',
-	data: {
-		name: 'Abigail',
-		phone: 85123123123,
-	}
+  id: 2,
+  status: "OK",
+  message: "All is well",
+  data: {
+    name: "Abigail",
+    phone: 85123123123,
+  },
 };
 
 const getUserPhoneNumber = (data: Maybe<ResponseDataType>) => {
-	if (data){
-		return data.phone;
-	}
-	
-	return undefined; // or maybe null, or any fallback you wanted
+  if (data) {
+    return data.phone;
+  }
+
+  return undefined; // or maybe null, or any fallback you wanted
 };
 
 getUserPhoneNumber(response.data); // 85123123123
@@ -167,7 +172,7 @@ Done, type definitions are more readable now. There is one more thing that we ca
 
 ```typescript
 const getUserPhoneNumber = (data: Maybe<ResponseDataType>) => {
-	return data?.phone;
+  return data?.phone;
 };
 ```
 

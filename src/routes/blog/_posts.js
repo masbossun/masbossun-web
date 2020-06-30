@@ -2,17 +2,30 @@ import fs from "fs";
 import path from "path";
 import showdown from "showdown";
 
-const explorer = md => {
-  const rawData = md
-    .match(/---([^]+?)---/gi)[0]
+const explorer = (md) => {
+  const metaRegex = /.+?(?<=(\+\+\+END\+\+\+))/s;
+  const matchMeta = md.match(metaRegex);
+  const content = md.replace(metaRegex, "");
+
+  if (!matchMeta) {
+    return { ...{}, content };
+  }
+
+  const rawData = matchMeta[0]
     .split(/\r?\n/)
-    .filter(S => S !== "---")
-    .map(S => {
+    .filter((S) => S && !S.startsWith("#"))
+    .map((S) => {
       const split = S.split(": ");
-      return { [split[0].trim()]: split[1].trim().replace(/['"]+/g, "") };
+      const key = split[0].trim().toLowerCase().replace(/\s/g, "_");
+      let value = split[1].trim().replace(/['"]+/g, "");
+
+      if (key === "category") {
+        value = value.split(/,\s|,/).filter((S) => S);
+      }
+
+      return { [key]: value };
     });
 
-  const content = md.replace(/---([^]+?)---/gi, "");
   const data = Object.assign({}, ...rawData);
 
   return { data, content };
@@ -23,7 +36,7 @@ const getAllPosts = () => {
   const posts = fs.readdirSync(pathToContents).map((dirName, i) => {
     const post = fs.readFileSync(
       path.resolve(pathToContents, dirName + "/index.md"),
-      "utf-8"
+      "utf-8",
     );
 
     return explorer(post);
@@ -32,64 +45,27 @@ const getAllPosts = () => {
   return posts;
 };
 
-showdown.extension("image-location", function () {
-  var matches = [];
+showdown.extension("image-paragraph", function () {
   return [
     {
-      type: "lang",
-      regex: /(?<=src=")(.*)(?=")/gi,
-      replace: function (s, match) {
-        matches.push(match);
-        var n = matches.length - 1;
-        return "%PLACEHOLDER" + n + "%";
-      }
-    },
-    {
       type: "output",
-      filter: function (text) {
-        for (var i = 0; i < matches.length; ++i) {
-          var pat = "%PLACEHOLDER" + i + "%";
-          text = text.replace(new RegExp(pat, "gi"), "blog/" + matches[i]);
-        }
-        matches = [];
-        return text;
-      }
-    }
+      regex: /<p><img(.*?)>(.*?)<\/p>/gi,
+      replace: function (s, match) {
+        return `<img${match}>`;
+      },
+    },
   ];
 });
 
-// showdown.extension("syntax-highlight", function () {
-//   var matches = [];
-//   return [
-//     {
-//       type: "lang",
-//       regex: /(```[a-z]*\n)[\s\S]*?\n(```)/g,
-//       replace: function (s, match) {
-//         return s;
-//         // return "<code>%SYNTAX" + n + "%</code>";
-//       }
-//     },
-//     {
-//       type: "output",
-//       filter: function (text) {
-//         // for (var i = 0; i < matches.length; ++i) {
-//         //   var pat = "%SYNTAX" + i + "%";
-//         //   text = text.replace(new RegExp(pat, "g"), "<p>" + matches[i] + "</p>");
-//         // }
-//         matches = [];
-//         return text;
-//       }
-//     }
-//   ]
-// })
-
-const converter = new showdown.Converter({ extensions: ["image-location"] });
+const converter = new showdown.Converter(
+  { extensions: ["image-paragraph"] },
+);
 const posts = getAllPosts()
   .map(({ data, content }) => {
     const html = converter.makeHtml(content.replace(/^\t{3}/gm, ""));
     return {
       ...data,
-      html
+      html,
     };
   })
   .reverse();

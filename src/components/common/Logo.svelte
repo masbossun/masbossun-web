@@ -1,6 +1,8 @@
 <script>
-  export let classes = "";
+  import { Subtitle } from "../typography";
+
   export let animated = false;
+  export let dark = false;
 </script>
 
 <style>
@@ -9,10 +11,14 @@
   }
 </style>
 
-<a href="https://masbossun.web.id" class="cursor-pointer {classes}">
+<a href="/" class="cursor-pointer {$$props.class}">
   {#if animated}
     <div id="logo-container" />
   {:else}
-    <img src="images/masbossun-logo.svg" alt="masbossun's logo" />
+    <div class="{dark ? 'bg-primary' : 'bg-accent'} py-3 px-4">
+      <Subtitle weight="bold" class={dark ? 'text-accent' : 'text-primary'}>
+        masbossun
+      </Subtitle>
+    </div>
   {/if}
 </a>

@@ -2,8 +2,11 @@
   export let segment;
   export let link = "#";
   export let text;
+  export let dark = false;
+  export let mobile = false;
 
   import { createEventDispatcher } from "svelte";
+  import { Subtitle, Title } from "../typography";
 
   const dispatch = createEventDispatcher();
 
@@ -17,10 +20,12 @@
   aria-current="page"
   on:click={onClick}
   href={link}
-  class="cursor-pointer px-4">
-  <div class="bg-primary py-2 px-4">
-    <span class="font-sans font-normal text-accent text-xl hover:text-gray">
+  class="{$$restProps.class} cursor-pointer {mobile ? '' : 'px-4 py-3'}">
+  {#if mobile}
+    <Title>{text}</Title>
+  {:else}
+    <Subtitle weight="medium" class={dark ? 'text-primary' : 'text-accent'}>
       {text}
-    </span>
-  </div>
+    </Subtitle>
+  {/if}
 </a>

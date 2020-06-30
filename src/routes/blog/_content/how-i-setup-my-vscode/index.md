@@ -1,9 +1,17 @@
----
-title: How I Setup My vscode
+# Hello World
+
+Category: coding-tools, code
+Created: Jan 31, 2019 2:06 PM
+Created By: Ryan Setiagi
+gitrepo: https://github.com/masbossun/bossun-blog/blob/master/content/blog/how-i-setup-my-vscode/index.md
+Last Edited By: Ryan Setiagi
+Last Edited Time: Jan 31, 2019 7:39 AM
 slug: how-i-setup-my-vscode
-date: "2019-01-31T14:33:10.059Z"
-gitrepo: "https://github.com/masbossun/bossun-blog/blob/master/content/blog/how-i-setup-my-vscode/index.md"
----
+Status: Done 🤘
+Title: How I Setup My vscode
+Type: Article
+Zebra Cross: +++END+++
+
 
 Visual Studio Code is my favorite code editor right now. I always use it for writing code. I have been using vscode for almost 3 years. At my usage, i setup this code editor for developing JavaScript. For someone who do not know what vscode is, here is a paragraph from it's [website](https://code.visualstudio.com/docs).
 
