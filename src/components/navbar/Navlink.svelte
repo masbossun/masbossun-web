@@ -20,7 +20,7 @@
   aria-current="page"
   on:click={onClick}
   href={link}
-  class="{$$restProps.class} cursor-pointer {mobile ? '' : 'px-4 py-3'}">
+  class="{$$restProps.class || ''} cursor-pointer {mobile ? '' : 'px-4 py-3'}">
   {#if mobile}
     <Title>{text}</Title>
   {:else}

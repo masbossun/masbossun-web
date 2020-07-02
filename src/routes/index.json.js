@@ -13,7 +13,7 @@ const data = {
       name: "winsen's site",
       url: "#",
       short_description:
-        "loremLorem ipsum dolor sit amet, consectetur adipiscing elit. Eu adipiscing libero tellus pulvinar id felis. Porttitor id feugiat ut justo nibh ante duis. Sed commodo at sit porttitor arcu commodo ipsum. Lacus, nibh in aliquet ipsum tellus sit",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu adipiscing lib. Eu adipiscing lib.",
       thumbnail: "images/project-winsen-thumbnail.png",
       color: "#EA6161",
     },
@@ -21,15 +21,15 @@ const data = {
       name: "waruung",
       url: "#",
       short_description:
-        "Waruung is food ordering platform. With waruung user can order kind of food, drink, baverages, etc from warung—indonesian minimart. Waruung has two different apps, for user and the merchant. Waruung mechant will sent. orders with their own express and fee.\n\nWith waruung, people can just order food easly.",
-      thumbnail: "images/hijrah-thumbnail.png",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu adipiscing lib. Eu adipiscing lib.",
+      thumbnail: "images/project-waruung-thumbnail.png",
       color: "#FFC847",
     },
     {
       name: "hijrah",
       url: "#",
       short_description:
-        "Quran is the Muslim holy book, but because of the sanctity of the Quran, people sometimes choose to keep it in a cupboard rather than carryin it. What if everything can be accessed easily via a smartphone. Quran apps with a simple interface and easy to use, can be the choice of the people, to focus on worship.",
+        "Quran apps with a simple interface and easy to use, can be the choice of the people, to focus on worship.",
       thumbnail: "images/project-hijrah-thumbnail.png",
       color: "#79D3A8",
     },
@@ -37,8 +37,8 @@ const data = {
       name: "bukom",
       url: "#",
       short_description:
-        "With my colleague we made system that connect playgroup teacher with parents. Communcation is necessary, parents will happy if they know what their children achive everyday. Even teacher with ease can deliver information to parents before they skip.\n\nFor playrgroup firm, they also can give parents events or news in realtime.",
-      thumbnail: "images/hijrah-thumbnail.png",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu adipiscing lib. Eu adipiscing lib.",
+      thumbnail: "images/project-bukom-digital-thumbnail.png",
       color: "#55AEF6",
     },
   ],

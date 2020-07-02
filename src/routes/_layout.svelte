@@ -26,11 +26,7 @@
 <tailwindcss />
 
 <header>
-  {#if segment === 'blog'}
-    <Navbar dark {segment} class="absolute inset-x-0" />
-  {:else}
-    <Navbar {segment} />
-  {/if}
+  <Navbar {segment} />
 </header>
 
 <main>

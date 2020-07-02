@@ -5,7 +5,7 @@
   export let subtitle = "hero-subtitle";
 </script>
 
-<header id="hero" class="{$$props.class} bg-accent negative-dark">
+<header id="hero" class="{$$props.class || ''} bg-accent negative-dark">
   <div class="h-56" />
   <div class="container mx-auto max-w-screen-lg">
     <div class="flex flex-row items-center">

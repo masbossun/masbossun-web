@@ -10,11 +10,11 @@
   target="_blank"
   rel="noopener noreferrer"
   {...$$restProps}
-  class="{$$restProps.class}
+  class="{$$restProps.class || ''}
   ">
   <Icon
     {icon}
     width={24}
     height={24}
-    class="{$$restProps.textClass} text-primary" />
+    class="{$$restProps.textClass || ''} text-primary" />
 </a>

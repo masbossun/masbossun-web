@@ -25,7 +25,9 @@
   let isMounted = false;
 
   function toggleMenu() {
-    isMenuOpen = !isMenuOpen;
+    if (isMounted) {
+      isMenuOpen = !isMenuOpen;
+    }
   }
 
   function onDesktopClick(element) {
@@ -73,6 +75,9 @@
 
   let screenWidth;
   $: isMobile = screenWidth <= 640;
+  $: segment, toggleMenu();
+
+  onMount(() => (isMounted = true));
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -80,7 +85,7 @@
 <div
   id="navbar"
   class="{isMenuOpen ? 'fixed inset-x-0' : ''}
-  {$$props.class} bg-primary {dark && 'bg-accent negative-dark'}">
+  {$$props.class || ''} bg-primary {dark && 'bg-accent negative-dark'}">
   <div
     class="container mx-auto max-w-screen-lg flex justify-between items-center
     h-20 px-6">
@@ -140,9 +145,7 @@
   {#if isMenuOpen}
     <div class="fixed inset-0 bg-primary" style="top: 80px">
       <div class="p-6">
-        <Navlink {segment} mobile text="index" class="opacity-100" />
-        <div class="h-6" />
-        <Navlink {segment} mobile text="blog" class="opacity-60" />
+        <Navlink {segment} mobile text="blog" class="opacity-60" link="blog/" />
         <div class="h-6" />
         <Navlink {segment} mobile text="works" class="opacity-60" />
         <div class="h-6" />

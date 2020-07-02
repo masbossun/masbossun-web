@@ -11,7 +11,7 @@
   }
 </style>
 
-<a href="/" class="cursor-pointer {$$props.class}">
+<a href="/" class="cursor-pointer {$$props.class || ''}">
   {#if animated}
     <div id="logo-container" />
   {:else}

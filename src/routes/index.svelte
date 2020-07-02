@@ -30,8 +30,6 @@
       path: "/images/masbossun-lottie.json",
     });
   });
-
-  $: console.log(screenWidth);
 </script>
 
 <style>
@@ -58,6 +56,7 @@
 <svelte:head>
   <title>{data.meta.title}</title>
 </svelte:head>
+
 <section class="container mx-auto max-w-screen-lg p-6 lg:p-0">
   <Display class="whitespace-pre-line">{data.headline}</Display>
 </section>
@@ -68,29 +67,32 @@
 
 <section class="container mx-auto max-w-screen-lg px-6 lg:px-0">
   <Title>my works</Title>
+  <div class="h-6" />
 </section>
-<div class="h-6" />
-<div class="horizontal-scroll-wrapper">
-  <div class="px-4">
-    {#each data.projects as project, index}
-      <div>
-        <div
-          class="flex items-center justify-center"
-          style="background-color: {project.color}">
-          <img
-            class="object-contain p-5"
-            src={project.thumbnail}
-            alt={project.name + 'thumbnail'}
-            style="height: 290px" />
+
+{#if isMobile}
+  <div class="horizontal-scroll-wrapper">
+    <div class="px-4">
+      {#each data.projects as project, index}
+        <div>
+          <div
+            class="flex items-center justify-center"
+            style="background-color: {project.color}">
+            <img
+              class="object-contain p-5"
+              src={project.thumbnail}
+              alt={project.name + 'thumbnail'}
+              style="height: 290px" />
+          </div>
+          <div class="h-3" />
+          <Subtitle weight="medium">{project.name}</Subtitle>
+          <div class="h-2" />
+          <Body size={16}>{project.short_description}</Body>
         </div>
-        <div class="h-3" />
-        <Subtitle weight="medium">{project.name}</Subtitle>
-        <div class="h-2" />
-        <Body size={16}>{project.short_description}</Body>
-      </div>
-    {/each}
+      {/each}
+    </div>
   </div>
-</div>
+{/if}
 
 <div class="h-20" />
 

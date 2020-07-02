@@ -9,6 +9,6 @@
   }
 </style>
 
-<h1 {...$$props} class="text-5xl md:text-6xl">
+<h1 {...$$props} class="{$$restProps.class || ''} text-5xl md:text-6xl">
   <slot />
 </h1>

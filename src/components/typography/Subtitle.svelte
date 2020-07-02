@@ -25,19 +25,22 @@
 </style>
 
 {#if href}
-  <a {href}>
-    <h5 {...$$restProps} class="{$$restProps.class} {weight}">
+  <a {...$$restProps} {href}>
+    <h5 class={weight}>
       <slot />
     </h5>
   </a>
 {:else if onclick}
-  <div class="cursor-pointer" on:click={onclick}>
-    <h5 {...$$restProps} class="{$$restProps.class} {weight}">
+  <div
+    {...$$restProps}
+    class="{$$restProps.class || ''} cursor-pointer"
+    on:click={onclick}>
+    <h5 class={weight}>
       <slot />
     </h5>
   </div>
 {:else}
-  <h5 {...$$restProps} class="{$$restProps.class} {weight}">
+  <h5 {...$$restProps} class="{$$restProps.class || ''} {weight}">
     <slot />
   </h5>
 {/if}

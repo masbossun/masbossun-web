@@ -13,6 +13,6 @@
   }
 </style>
 
-<p style="--size:{size}" class={$$restProps.class} {...$$restProps}>
+<p style="--size:{size}" class={$$restProps.class || ''} {...$$restProps}>
   <slot />
 </p>

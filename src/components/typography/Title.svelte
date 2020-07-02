@@ -28,15 +28,15 @@
 </style>
 
 {#if size === 36}
-  <h2 {...$$props} class="{$$props.class} title">
+  <h2 {...$$props} class="{$$props.class || ''} title">
     <slot />
   </h2>
 {:else if size === 24}
-  <h3 {...$$props} class="{$$props.class} title">
+  <h3 {...$$props} class="{$$props.class || ''} title">
     <slot />
   </h3>
 {:else}
-  <h4 {...$$props} class="{$$props.class} title">
+  <h4 {...$$props} class="{$$props.class || ''} title">
     <slot />
   </h4>
 {/if}
