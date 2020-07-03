@@ -14,8 +14,8 @@
 <script>
   export let post;
   import { printDate } from "../../utils/helper.js";
-  import { Hero } from "../../components/hero";
-  import { Title, Subtitle } from "../../components/typography";
+  import { Title, Subtitle, Display, Body } from "../../components/typography";
+  import { BlogPostCard } from "../../components/card/index.js";
 </script>
 
 <style>
@@ -26,8 +26,9 @@
   .content :global(h5),
   .content :global(h6) {
     @apply col-span-8;
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
     margin-bottom: 1rem;
+    font-weight: 700;
   }
 
   .content :global(pre) {
@@ -46,18 +47,7 @@
   .content :global(code) {
     font-family: "DM Mono", monospace;
     color: var(--color-blood);
-    font-size: 1rem;
     padding: 0.125rem 0.25rem;
-  }
-
-  .content :global(h2) {
-    font-size: 1.25rem;
-    font-weight: 700;
-  }
-
-  .content :global(h3) {
-    font-size: 1rem;
-    font-weight: 700;
   }
 
   .content :global(img) {
@@ -68,9 +58,9 @@
     @apply col-span-8;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
-    line-height: 40px;
-    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 32px;
+    margin-bottom: 16px;
   }
 
   .content :global(ul) {
@@ -101,6 +91,13 @@
     .content :global(p) {
       @apply col-start-2;
       @apply col-end-8;
+      font-size: 20px;
+      line-height: 40px;
+      margin-bottom: 24px;
+    }
+
+    .content :global(code) {
+      font-size: 1rem;
     }
 
     .content :global(pre) {
@@ -135,30 +132,42 @@
     content={(post.html.match(/<p>[^<]*<\/p>/) || [''])[0].replace(/(<.?p>)/g, '') || ''} />
 </svelte:head>
 
-<Hero
-  title={post.title}
-  subtitle={`${post.created_by} - ${printDate(post.created)}`} />
+<section class="container mx-auto max-w-screen-lg p-6 lg:p-0">
+  <Display style="white-space: break-spaces;">{post.title}</Display>
+</section>
+
+<Subtitle class="p-6">
+  {`${post.created_by} - ${printDate(post.created)}`}
+</Subtitle>
+
 <section class="container mx-auto max-w-screen-lg">
-  <div class="h-32" />
   <article
-    class="grid grid-cols-8 gap-5 content font-sans text-base lg:text-xl
-    text-relaxed">
+    class="grid grid-cols-8 gap-0 lg:gap-5 content font-sans text-base
+    lg:text-xl text-relaxed px-6 lg:px-0">
     {@html post.html}
   </article>
-  <div class="negative-dark bg-accent grid grid-cols-8 gap-10 py-32 my-32">
-    <a href="blog/slug/" class="col-span-8 md:col-start-2 md:col-span-2">
-      <div class="flex flex-row items-center">
-        <Subtitle weight="bold" class="text-primary">prev</Subtitle>
-        <div class="h-half w-12 bg-primary mx-3" />
-      </div>
-      <Title size={24} class="text-primary">previous blog</Title>
-    </a>
-    <a href="blog/slug/" class="col-span-8 md:col-end-8 md:col-span-2">
-      <div class="flex flex-row items-center justify-end">
-        <div class="h-half w-12 bg-primary mx-3" />
-        <Subtitle weight="bold" class="text-primary text-right">next</Subtitle>
-      </div>
-      <Title size={24} class="text-primary text-right">next next blog</Title>
-    </a>
+
+  <Title size={36} class="text-center p-6">***</Title>
+  <div class="bg-accent mx-6 p-6">
+    <Body size={16} class="text-primary" style="margin-bottom: 0;">
+      If you find any misleading information, or grammar issue, feel free to
+      make corrections here
+    </Body>
   </div>
+
+  <div class="h-16" />
+
+  <Subtitle weight="regular" class="px-6">you may want to read.</Subtitle>
+  <div class="h-4" />
+  <div class="flex flex-no-wrap overflow-x-auto">
+    <ul class="flex flex-no-wrap px-6">
+      <BlogPostCard class="mr-2" style="width: calc(100vw - 48px)" />
+      <BlogPostCard class="mr-2" style="width: calc(100vw - 48px)" />
+      <BlogPostCard class="mr-2" style="width: calc(100vw - 48px)" />
+      <BlogPostCard style="width: calc(100vw - 48px)" />
+    </ul>
+  </div>
+
+  <div class="h-20" />
+
 </section>
