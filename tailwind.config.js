@@ -1,12 +1,13 @@
 module.exports = {
   theme: {
     colors: {
-      primary: "var(--color-primary)",
-      secondary: "var(--color-secondary)",
-      accent: "var(--color-accent)",
-      accentSecondary: "var(--color-accent-secondary)",
-      gray: "var(--color-gray)",
-      hijrah: "var(--color-hijrah)",
+      primary: "rgba(var(--color-primary), 1)",
+      "primary-0": "rgba(var(--color-primary), 0)",
+      "primary-10": "rgba(var(--color-primary), 0.1)",
+      secondary: "rgba(var(--color-secondary), 1)",
+      accent: "rgba(var(--color-accent), 1)",
+      accentSecondary: "rgba(var(--color-accent-secondary), 1)",
+      gray: "rgba(var(--color-gray), 1)",
     },
     letterSpacing: {
       tighter: "-.04em",

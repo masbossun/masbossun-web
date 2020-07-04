@@ -57,16 +57,22 @@
   <title>{data.meta.title}</title>
 </svelte:head>
 
-<section class="container mx-auto max-w-screen-lg p-6 lg:p-0">
-  <Display class="whitespace-pre-line">{data.headline}</Display>
+<section class="container mx-auto max-w-screen-lg h-screen px-6 lg:px-0">
+  <div>
+    <div class="h-40" />
+    <Display class="whitespace-pre-line">{data.headline}</Display>
+  </div>
+  <div class="flex items-center absolute" style="bottom: 48px">
+    <Display class="whitespace-pre-line">-</Display>
+    <div class="w-4" />
+    <Subtitle weight="regular">keep scrolling</Subtitle>
+  </div>
 </section>
 
-<div class="h-6" />
-<div class="bg-accent h-1 w-10 mx-6" />
-<div class="h-20" />
-
-<section class="container mx-auto max-w-screen-lg px-6 lg:px-0">
-  <Title>my works</Title>
+<section id="works" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
+  <a href="#works">
+    <Title>my works</Title>
+  </a>
   <div class="h-6" />
 </section>
 
@@ -96,8 +102,10 @@
 
 <div class="h-20" />
 
-<section class="container mx-auto max-w-screen-lg px-6 lg:px-0">
-  <Title>about me</Title>
+<section id="about" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
+  <a href="#works">
+    <Title>about me</Title>
+  </a>
   <div class="h-6" />
   {#each data.about as item}
     <Body size={isMobile ? 16 : 24}>{item}</Body>

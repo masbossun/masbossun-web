@@ -1,8 +1,15 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import { Subtitle } from "../typography";
 
   export let animated = false;
   export let dark = false;
+
+  const dispatch = createEventDispatcher();
+
+  function onClick() {
+    dispatch("click");
+  }
 </script>
 
 <style>
@@ -11,7 +18,7 @@
   }
 </style>
 
-<a href="/" class="cursor-pointer {$$props.class || ''}">
+<a href="/" class="cursor-pointer {$$props.class || ''}" on:click={onClick}>
   {#if animated}
     <div id="logo-container" />
   {:else}

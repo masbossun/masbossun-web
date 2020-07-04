@@ -1,10 +1,9 @@
 :root {
-  --color-white-smoke:#f4f4f4;
-  --color-coal: #1a1a1a;
-  --color-dim-gray: #262626;
-  --color-smoke: #555555;
-  --color-blood: #EA6161;
-  --color-hijrah: #79D3A8;
+  --color-white-smoke: 244, 244, 244;
+  --color-coal: 26, 26, 26;
+  --color-dim-gray: 38, 38, 38;
+  --color-smoke: 85, 85, 85;
+  --color-blood: 234, 97, 97;
 }
 
 .theme-light{
@@ -33,19 +32,26 @@ body{
   font-family: DM Sans, sans-serif;
   font-size: 14px;
   line-height: 1.5;
-  background-color: var(--color-primary);
-  color: var(--color-accent);
+  background-color: rgba(var(--color-primary), 1);
+  color: rgba(var(--color-accent), 1);
 }
 
 body::-webkit-scrollbar-thumb:hover{
-  background: var(--color-accent);
+  background: rgba(var(--color-accent), 1);
 }
 
 body::-webkit-scrollbar-thumb{
-  background: var(--color-gray);
+  background: rgba( var(--color-gray), 1);
 }
 
 body::-webkit-scrollbar{
-  background: var(--color-coal);
+  background: rgba( var(--color-coal), 1);
   width: 8px;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -104px;
+    visibility: hidden;
 }

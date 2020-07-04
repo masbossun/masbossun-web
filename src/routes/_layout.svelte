@@ -25,7 +25,7 @@
 
 <tailwindcss />
 
-<header>
+<header id="header">
   <Navbar {segment} />
 </header>
 

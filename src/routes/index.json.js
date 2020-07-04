@@ -3,7 +3,7 @@ const data = {
     title: "masbossun",
   },
   headline:
-    "i am Ryan, a frontend web and mobile developer who crafts codes\nwith passion.",
+    "i am Ryan,\na frontend web and\n mobile develo-per who crafts codes\nwith passion.",
   about: [
     "Hello, My name is Ryan Setiagi, self-motivated Frontend Developers who love to learn new things. My background is telecommunication. I used to code on vim and i am bad at typing. Most recently, i was a student at telkom university (2016-2019). I want to love reading and writing as well. You can find @masbossun on every daily social media.",
     "I’ve been falling in love with coding since i was at college, and coding is how i express my fellings. I have a great interests to learning and building something new. If you intersted, you can collaborate more with me.",

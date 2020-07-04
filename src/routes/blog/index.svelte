@@ -23,7 +23,7 @@
   import { BlogPostCard } from "../../components/card";
 
   export let data;
-  export let query;
+  // export let query;
   let screenWidth;
   let posts = data.posts;
 
@@ -35,7 +35,7 @@
 </script>
 
 <style>
-  .horizontal-scroll-wrapper {
+  /* .horizontal-scroll-wrapper {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -43,7 +43,7 @@
 
   .horizontal-scroll-wrapper > :global(*) {
     flex: 0 0 auto;
-  }
+  } */
 </style>
 
 <svelte:head>
@@ -58,7 +58,7 @@
 
 <div class="h-6" />
 
-<div class="horizontal-scroll-wrapper mx-6">
+<!-- <div class="horizontal-scroll-wrapper mx-6">
   {#each ['all', 'programming', 'refactoring', 'coding-tools', 'something', 'something'] as category, index}
     {#if index === 0}
       <Subtitle
@@ -78,7 +78,7 @@
       </Subtitle>
     {/if}
   {/each}
-</div>
+</div> -->
 
 <section class="container mx-auto max-w-screen-lg p-6 lg:p-0">
   <ul class="grid grid-cols-8 gap-6 lg:gap-10">
