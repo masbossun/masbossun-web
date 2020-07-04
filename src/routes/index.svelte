@@ -62,7 +62,7 @@
     <div class="h-40" />
     <Display class="whitespace-pre-line">{data.headline}</Display>
   </div>
-  <div class="flex items-center absolute" style="bottom: 48px">
+  <div class="flex items-center absolute -z-1" style="bottom: 48px">
     <Display class="whitespace-pre-line">-</Display>
     <div class="w-4" />
     <Subtitle weight="regular">keep scrolling</Subtitle>
@@ -103,7 +103,7 @@
 <div class="h-20" />
 
 <section id="about" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
-  <a href="#works">
+  <a href="#about">
     <Title>about me</Title>
   </a>
   <div class="h-6" />
