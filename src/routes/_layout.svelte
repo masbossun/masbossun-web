@@ -31,7 +31,7 @@
   $: scrollY, shouldNabvarShow();
 
   function shouldNabvarShow() {
-    if (scrollY >= current) {
+    if (scrollY > current) {
       isNavbarShow = false;
     }
 
@@ -51,7 +51,7 @@
   {#if isNavbarShow}
     <div
       class="fixed inset-x-0 top-0 bg-primary"
-      transition:fly={{ duration: 600, y: -80, opacity: 1 }}>
+      transition:fly={{ duration: 400, y: -80, opacity: 1 }}>
       <Navbar {segment} />
     </div>
   {/if}
