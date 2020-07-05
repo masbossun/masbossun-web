@@ -1,9 +1,8 @@
 <script>
   import { goto, stores } from "@sapper/app";
-  import { writable } from "svelte/store";
   import { onMount } from "svelte";
-  import { backOut } from "svelte/easing";
-  import { fade } from "svelte/transition";
+  import { writable } from "svelte/store";
+  import { tweened } from "svelte/motion";
   import Icon from "@iconify/svelte";
   import barsIcon from "@iconify/icons-uil/bars";
   import timesIcon from "@iconify/icons-uil/times";
@@ -23,9 +22,11 @@
   export let dark = false;
 
   const ANCHOR_OFFSET = -(80 + 24);
-  const BLUR_SIZE = 12;
-  const BLUR_DURATION = 800;
+  const BLUR_SIZE = 50;
+  const BLUR_DURATION = 600;
   const { preloading, page, session } = stores();
+  const blur = tweened(0, { duration: BLUR_DURATION });
+  const contentOpacity = tweened(0, { duration: BLUR_DURATION - 100 });
   let isMenuOpen = false;
   let isDark = false;
   let isMounted = false;
@@ -38,9 +39,17 @@
     isMounted = true;
   });
 
-  function toggleMenu() {
+  async function toggleMenu() {
     if (isMounted) {
-      isMenuOpen = !isMenuOpen;
+      if (isMenuOpen) {
+        contentOpacity.set(0);
+        await blur.set(0);
+        isMenuOpen = false;
+      } else {
+        isMenuOpen = true;
+        blur.set(BLUR_SIZE);
+        contentOpacity.set(1);
+      }
     }
   }
 
@@ -83,16 +92,6 @@
       paths.pop();
     }
     return goto(paths.slice(0, paths.length - 1).join("/") + "/");
-  }
-
-  function blur(node, { duration = BLUR_DURATION }) {
-    return {
-      duration,
-      css: (t) => {
-        const eased = backOut(t);
-        return `backdrop-filter: blur(${BLUR_SIZE * eased}px);`;
-      },
-    };
   }
 </script>
 
@@ -160,9 +159,7 @@
 {#if isMenuOpen}
   <div
     class="fixed inset-0 z-10 overflow-hidden bg-primary-10"
-    in:blur
-    out:fade
-    style="backdrop-filter: blur({isMenuOpen ? BLUR_SIZE : 0}px)">
+    style="backdrop-filter: blur({$blur}px); opacity: {$contentOpacity}">
     <div class="h-20" />
 
     <div class="p-6">
