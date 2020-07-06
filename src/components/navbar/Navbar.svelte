@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
   import { tweened } from "svelte/motion";
+  import { quartOut, quadOut, linear } from "svelte/easing";
   import Icon from "@iconify/svelte";
   import barsIcon from "@iconify/icons-uil/bars";
   import timesIcon from "@iconify/icons-uil/times";
@@ -22,11 +23,15 @@
   export let dark = false;
 
   const ANCHOR_OFFSET = -(80 + 24);
-  const BLUR_SIZE = 50;
+  const BLUR_SIZE = 24;
   const BLUR_DURATION = 600;
+  const EASING = linear;
   const { preloading, page, session } = stores();
-  const blur = tweened(0, { duration: BLUR_DURATION });
-  const contentOpacity = tweened(0, { duration: BLUR_DURATION - 100 });
+  const blur = tweened(0, { duration: BLUR_DURATION, easing: EASING });
+  const contentOpacity = tweened(0, {
+    duration: BLUR_DURATION - 100,
+    easing: EASING
+  });
   let isMenuOpen = false;
   let isDark = false;
   let isMounted = false;
@@ -72,17 +77,17 @@
     if (isDark) {
       isDark = false;
       window.document.body.classList.replace("theme-dark", "theme-light");
-      return session.update((prev) => ({
+      return session.update(prev => ({
         ...prev,
-        settings: { theme: "theme-dark" },
+        settings: { theme: "theme-dark" }
       }));
     }
 
     isDark = true;
     window.document.body.classList.replace("theme-light", "theme-dark");
-    return session.update((prev) => ({
+    return session.update(prev => ({
       ...prev,
-      settings: { theme: "theme-light" },
+      settings: { theme: "theme-light" }
     }));
   }
 
@@ -99,8 +104,7 @@
 
 <div
   class="container mx-auto max-w-screen-lg flex justify-between items-center
-  h-20 px-6 fixed inset-x-0 top-0 z-20 {isMenuOpen ? 'bg-primary-0' : 'bg-primary'}
-  {dark && 'bg-accent negative-dark'}">
+  h-20 px-6 fixed inset-x-0 top-0 z-20 bg-primary-0 {dark && 'bg-accent negative-dark'}">
 
   <Logo on:click={() => (isMenuOpen = false)} {dark} animated={false} />
 
@@ -159,10 +163,11 @@
 {#if isMenuOpen}
   <div
     class="fixed inset-0 z-10 overflow-hidden bg-primary-10"
-    style="backdrop-filter: blur({$blur}px); opacity: {$contentOpacity}">
-    <div class="h-20" />
+    style="backdrop-filter: blur({$blur}px); ">
 
-    <div class="p-6">
+    <div class="h-40" />
+
+    <div class="px-6" style="opacity: {$contentOpacity}">
       <Navlink
         {segment}
         mobile
@@ -196,7 +201,9 @@
         link="#contacts" />
     </div>
 
-    <div class="absolute bottom-0 left-0 px-6">
+    <div
+      class="absolute bottom-0 left-0 px-6"
+      style="opacity: {$contentOpacity}">
       <div class="bg-accent h-1 w-10 opacity-60" />
       <div class="h-4" />
       <div class="flex flex-row">
