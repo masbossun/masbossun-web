@@ -9,27 +9,24 @@
 </script>
 
 <script>
-  export let data;
-
-  import { onMount } from "svelte";
+  import { tweened } from "svelte/motion";
   import * as animateScroll from "svelte-scrollto";
-
   import Content from "../components/common/Content.svelte";
   import ProjectOverview from "../components/common/ProjectOverview.svelte";
   import Footer from "../components/footer/Footer.svelte";
   import { Display, Title, Body } from "../components/typography";
   import Subtitle from "../components/typography/Subtitle.svelte";
 
-  let screenWidth;
-  $: isMobile = screenWidth <= 640;
+  export let data;
 
-  onMount(() => {
-    const animItem = bodymovin.loadAnimation({
-      wrapper: document.getElementById("logo-container"),
-      animType: "svg",
-      path: "/images/masbossun-lottie.json",
-    });
-  });
+  const emptyStateOpacity = tweened(1, { delay: 500, duration: 500 });
+  let screenWidth;
+  let isPageReady = false;
+
+  $: isMobile = screenWidth <= 640;
+  $: if (screenWidth) {
+    emptyStateOpacity.set(0).then(() => (isPageReady = true));
+  }
 </script>
 
 <style>
@@ -56,6 +53,10 @@
 <svelte:head>
   <title>{data.meta.title}</title>
 </svelte:head>
+
+{#if !isPageReady}
+  <div class="fixed inset-0 bg-primary" style="opacity: {$emptyStateOpacity}" />
+{/if}
 
 <section class="container mx-auto max-w-screen-lg h-screen px-6 lg:px-0">
   <div>
