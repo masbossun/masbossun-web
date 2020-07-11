@@ -16,7 +16,7 @@
   }
 
   h5 {
-    font-family: DM Sans;
+    @apply font-sans;
     font-style: normal;
     font-size: 16px;
     line-height: 21px;

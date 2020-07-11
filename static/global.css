@@ -1,4 +1,5 @@
 :root {
+  --color-pure-white: 255, 255, 255;
   --color-white-smoke: 244, 244, 244;
   --color-coal: 26, 26, 26;
   --color-dim-gray: 38, 38, 38;
@@ -12,6 +13,7 @@
     --color-accent: var(--color-coal);
     --color-accent-secondary: var(--color-dim-gray);
     --color-gray: var(--color-smoke);
+    --color-light: var(--color-pure-white);
 }
 
 .theme-dark{
@@ -54,4 +56,13 @@ a.anchor {
     position: relative;
     top: -104px;
     visibility: hidden;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

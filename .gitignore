@@ -1,9 +1,6 @@
-.DS_Store
 /node_modules/
-/src/node_modules/@sapper/
-yarn-error.log
-/cypress/screenshots/
-/__sapper__/
-/.firebase
-/static/index.css
-.vscode/
+/dist/
+.DS_Store
+**/.history
+/src/tmp/
+.routify

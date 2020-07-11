@@ -1,11 +1,11 @@
 <style>
   h1 {
-    font-family: DM Sans;
+    @apply font-display;
     font-style: normal;
-    font-weight: bold;
-    line-height: 118.2%;
-    letter-spacing: -0.07em;
+    font-weight: 700;
     margin: 0;
+    line-height: 57px;
+    letter-spacing: -0.04em;
   }
 </style>
 

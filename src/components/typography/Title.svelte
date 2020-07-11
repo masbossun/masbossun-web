@@ -4,10 +4,8 @@
 
 <style>
   .title {
-    font-family: DM Sans;
+    @apply font-display;
     font-style: normal;
-    font-weight: bold;
-    letter-spacing: -0.07em;
     margin: 0;
   }
 

@@ -1,5 +1,5 @@
 <script>
-  export let data;
+  import { StripText } from "../common";
 
   import FooterSection from "./FooterSection.svelte";
   import ContactButton from "./ContactButton.svelte";
@@ -9,6 +9,8 @@
   import linkedinIcon from "@iconify/icons-uil/linkedin";
   import instagramIcon from "@iconify/icons-uil/instagram-alt";
   import { Display, Title, Subtitle, Caption, Body } from "../typography";
+  import data from "../../fixture";
+  import Spacer from "../common/Spacer.svelte";
 
   let currentYear = new Date().getFullYear();
   let screenWidth;
@@ -27,7 +29,7 @@
 
 <svelte:window bind:innerWidth={screenWidth} />
 
-<footer id="footer" class="bg-accent py-16 text-primary negative-dark">
+<footer id="footer" class="bg-accent py-10 px-6 text-primary negative-dark">
   <section
     id="contacts"
     class="container mx-auto max-w-screen-lg grid grid-cols-8 gap-10">
@@ -38,11 +40,10 @@
     {/if}
     <div class="col-span-8 md:col-span-4">
       {#if isMobile}
-        <Title size={16} class="opacity-60 text-center">let's talk</Title>
+        <StripText stripColor="light">let's talk</StripText>
+        <Spacer height={8} />
         <a href={`mailto:${contactsCopy['email'].url}?subject=let's talk`}>
-          <Body size={24} class="text-primary text-center">
-            {contactsCopy['email'].url}
-          </Body>
+          <Subtitle weight="regular">{contactsCopy['email'].url}</Subtitle>
         </a>
       {:else}
         <Display class="text-right opacity-60">Let's talk</Display>
@@ -54,8 +55,27 @@
       {/if}
     </div>
   </section>
-  <div class="h-20 lg:h-48" />
-  <section class="containers mx-auto max-w-screen-lg grid grid-cols-8 gap-10">
+
+  <Spacer height={40} />
+
+  <div class="flex flex-row opacity-60">
+    <ContactButton href={contactsCopy['linkedin'].url} icon={linkedinIcon} />
+    <div class="w-4" />
+    <ContactButton href={contactsCopy['github'].url} icon={githubIcon} />
+    <div class="w-4" />
+    <ContactButton href={contactsCopy['twitter'].url} icon={twitterIcon} />
+    <div class="w-4" />
+    <ContactButton href={contactsCopy['instagram'].url} icon={instagramIcon} />
+  </div>
+
+  <Spacer height={40} />
+
+  <div class="flex flex-col opacity-60">
+    <Caption>&copy; {currentYear} masbossun</Caption>
+    <Caption>proudly made by myself in jakarta, ID</Caption>
+  </div>
+
+  <!-- <section class="containers mx-auto max-w-screen-lg grid grid-cols-8 gap-10">
     <div class="col-span-8 md:col-span-4 flex flex-col items-center">
       <div class="flex flex-row">
         <ContactButton
@@ -80,5 +100,5 @@
         proudly made by myself in jakarta, ID
       </Subtitle>
     </div>
-  </section>
+  </section> -->
 </footer>

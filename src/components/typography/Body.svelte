@@ -4,7 +4,7 @@
 
 <style>
   p {
-    font-family: DM Sans;
+    @apply font-sans;
     font-style: normal;
     font-weight: normal;
     font-size: calc(var(--size) / 16 * 1rem);

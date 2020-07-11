@@ -1,5 +1,4 @@
 <script>
-  export let segment;
   export let link = "#";
   export let text;
   export let dark = false;
@@ -16,7 +15,6 @@
 </script>
 
 <a
-  rel={segment === 'blog' ? 'prefetch' : undefined}
   aria-current="page"
   on:click={onClick}
   href={link}

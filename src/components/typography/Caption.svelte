@@ -1,6 +1,6 @@
 <style>
   span {
-    font-family: DM Sans;
+    @apply font-sans;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
