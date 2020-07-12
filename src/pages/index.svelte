@@ -40,7 +40,7 @@
     flex-wrap: nowrap;
   }
 
-  :global([ref="horizontal-scroll-items"]) {
+  .horizontal-scroll-wrapper > div > :global([ref="horizontal-scroll-items"]) {
     flex: 0 0 auto;
     width: calc(100vw - 48px);
   }
