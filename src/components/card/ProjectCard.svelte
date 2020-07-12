@@ -12,7 +12,7 @@
     class="flex items-center justify-center"
     style="background-color: {cardBgColor}">
     <img
-      class="object-contain p-10"
+      class="object-contain p-6"
       src={imageSource}
       alt={imageAlt}
       style="height: 290px" />

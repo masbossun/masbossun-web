@@ -1,15 +1,13 @@
 <script>
-  import { Caption } from "../components/typography";
-
-  import Logo from "../components/common/Logo.svelte";
-
   import { fly } from "svelte/transition";
   import { tweened } from "svelte/motion";
-  import { quadInOut } from "svelte/easing";
+  import { expoIn } from "svelte/easing";
+  import { Caption } from "../components/typography";
+  import Logo from "../components/common/Logo.svelte";
   import Navbar from "../components/navbar/Navbar.svelte";
   import Footer from "../components/footer/Footer.svelte";
 
-  const emptyStateOpacity = tweened(1, { delay: 500, duration: 500 });
+  const emptyStatePosition = tweened(0, { duration: 500, easing: expoIn });
   let scrollY;
   let screenWidth;
   let screenHeight;
@@ -20,7 +18,7 @@
   $: scrollY, shouldNabvarShow();
   $: if (screenWidth && screenHeight) {
     setTimeout(() => {
-      emptyStateOpacity.set(0).then(() => (isPageReady = true));
+      emptyStatePosition.set(-screenHeight).then(() => (isPageReady = true));
     }, 3000);
   }
 
@@ -45,10 +43,10 @@
 {#if !isPageReady}
   <div
     class="fixed inset-0 bg-primary z-40"
-    style="opacity: {$emptyStateOpacity}">
+    style="transform: translateY({$emptyStatePosition}px)">
     <div class="flex items-center justify-center h-full">
       <Logo animated={true} />
-      <div class="absolute z-50 bottom-0 left-0 p-6">
+      <div class="absolute z-50 bottom-0 left-0 p-6 opacity-60">
         <Caption>
           animation by
           <a href="https://instagram.com/mardikoh">@mardikoh</a>

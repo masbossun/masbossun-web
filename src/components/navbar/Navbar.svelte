@@ -3,7 +3,7 @@
   import { writable } from "svelte/store";
   import { tweened } from "svelte/motion";
   import { slide } from "svelte/transition";
-  import { quartOut, quadOut, linear } from "svelte/easing";
+  import { sineInOut } from "svelte/easing";
   import Icon from "@iconify/svelte";
   import barsIcon from "@iconify/icons-uil/bars";
   import timesIcon from "@iconify/icons-uil/times";
@@ -26,7 +26,7 @@
   const ANCHOR_OFFSET = -(80 + 24);
   const BLUR_SIZE = 24;
   const BLUR_DURATION = 600;
-  const EASING = linear;
+  const EASING = sineInOut;
   const blur = tweened(0, { duration: BLUR_DURATION, easing: EASING });
   const contentOpacity = tweened(0, {
     duration: BLUR_DURATION - 100,
@@ -130,7 +130,9 @@
         on:click={() => onDesktopClick('#contacts')}
         link="#contacts" />
       <div class="w-4" />
-      <div on:click={toggleDarkMode} class="cursor-pointer mx-2 my-1 w-6 h-6">
+      <button
+        on:click={toggleDarkMode}
+        class="cursor-pointer mx-2 my-1 w-6 h-6">
         {#if isDark}
           <Icon
             icon={sunIcon}
@@ -144,10 +146,10 @@
             height={24}
             class={dark ? 'text-primary' : 'text-accent'} />
         {/if}
-      </div>
+      </button>
     </div>
   {:else}
-    <div on:click={toggleMenu}>
+    <button on:click={toggleMenu}>
       {#if isMenuOpen}
         <div transition:slide>
           <Icon
@@ -165,7 +167,7 @@
             class={dark ? 'text-primary' : 'text-accent'} />
         </div>
       {/if}
-    </div>
+    </button>
   {/if}
 </div>
 

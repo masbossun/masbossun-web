@@ -1,7 +1,8 @@
 <script>
+  import { onMount } from "svelte";
   import { metatags } from "@sveltech/routify";
   import { tweened } from "svelte/motion";
-  import * as animateScroll from "svelte-scrollto";
+  import { expoOut } from "svelte/easing";
   import data from "../fixture";
   import Content from "../components/common/Content.svelte";
   import ProjectOverview from "../components/common/ProjectOverview.svelte";
@@ -12,17 +13,34 @@
   import ProjectCard from "../components/card/ProjectCard.svelte";
 
   const heroOpacity = tweened(1);
+  const scrollerPosition = tweened(0, { easing: expoOut });
+  let isMounted = false;
   let scrollY;
   let screenWidth;
   let screenHeight;
+  let projectScroller;
   let currentProjectIndex = 0;
 
   $: isMobile = screenWidth <= 640;
 
   function onProjectScroll(e) {
-    const currentIndex = Math.round(e.target.scrollLeft / (screenWidth - 48));
+    const currentIndex = Math.round(e.target.scrollLeft / screenWidth);
     currentProjectIndex = currentIndex;
   }
+
+  function gotoNextProject() {
+    $scrollerPosition = projectScroller.scrollLeft + screenWidth;
+  }
+
+  function gotoPrevProject() {
+    $scrollerPosition = projectScroller.scrollLeft - screenWidth;
+  }
+
+  scrollerPosition.subscribe((v) => {
+    if (projectScroller) {
+      projectScroller.scrollTo({ left: v, behavior: "smooth" });
+    }
+  });
 
   // metatags.title = "My Routify app";
   // metatags.description = "Description coming soon...";
@@ -33,16 +51,13 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    scroll-snap-type: x mandatory;
   }
 
-  .horizontal-scroll-wrapper > div {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-
-  .horizontal-scroll-wrapper > div > :global([ref="horizontal-scroll-items"]) {
+  .horizontal-scroll-wrapper > :global([ref="horizontal-scroll-items"]) {
     flex: 0 0 auto;
-    width: calc(100vw - 48px);
+    width: calc(100vw);
+    scroll-snap-align: center;
   }
 </style>
 
@@ -64,7 +79,7 @@
 
   <Spacer height={40} />
 
-  <StripText>keep scrolling!</StripText>
+  <StripText>more down below</StripText>
 </section>
 
 <section id="works" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
@@ -74,28 +89,55 @@
   <div class="h-8" />
   {#if isMobile}
     <div
+      bind:this={projectScroller}
       class="horizontal-scroll-wrapper hide-scrollbar -mx-6"
       on:scroll={onProjectScroll}>
-      <div class="px-6">
-        {#each data.projects as project}
-          <ProjectCard
-            ref="horizontal-scroll-items"
-            imageSource={project.thumbnail}
-            imageAlt={project.name + 'thumbnail'}
-            cardBgColor={project.color} />
-        {/each}
-      </div>
+      {#each data.projects as project, index}
+        <ProjectCard
+          id={'project-card-' + { index }}
+          ref="horizontal-scroll-items"
+          imageSource={project.thumbnail}
+          imageAlt={project.name + 'thumbnail'}
+          cardBgColor={project.color} />
+      {/each}
     </div>
   {/if}
   <Spacer height={40} />
-  <StripText>{data.projects[currentProjectIndex].name}</StripText>
+  <div class="flex flex-row items-center justify-between">
+    <StripText>{data.projects[currentProjectIndex].name}</StripText>
+
+    <div class="flex flex-row">
+      <button
+        on:click={gotoPrevProject}
+        disabled={currentProjectIndex === 0}
+        class={currentProjectIndex === 0 ? 'opacity-60' : 'opacity-100'}>
+        <Title size={16}>prev</Title>
+      </button>
+      <Spacer width={24} />
+      <button
+        on:click={gotoNextProject}
+        disabled={currentProjectIndex === data.projects.length - 1}
+        class={currentProjectIndex === data.projects.length - 1 ? 'opacity-60' : 'opacity-100'}>
+        <Title size={16}>next</Title>
+      </button>
+    </div>
+  </div>
+
+  <Spacer height={16} />
+
+  <!-- <Body size={16}>{data.projects[currentProjectIndex].short_description}</Body> -->
+  <Body size={16}>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nihil nisi in
+    dolorum! Odit rerum consequuntur.
+  </Body>
+
 </section>
 
 <div class="h-20" />
 
 <section id="about" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
   <a href="#about">
-    <Display>about me</Display>
+    <Display>about</Display>
   </a>
   <div class="h-8" />
   {#each data.about as item}

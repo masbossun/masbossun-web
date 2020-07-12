@@ -5,7 +5,7 @@ const data = {
   headline:
     "frontend web \nand\n mobile develo-per who crafts codes\nwith passion.",
   about: [
-    "My name is Ryan Setiagi, I’ve been falling in love with coding since i was at college, and coding is how i express my fellings.",
+    "My name is Ryan Setiagi, I’ve been falling in love with programming since i was at college, and coding is how i express my feelings.",
     "I have a great interests to learning and building something new. If you intersted, you can collaborate more with me.",
   ],
   //   [
@@ -17,7 +17,7 @@ const data = {
       name: "winsen's site",
       url: "#",
       short_description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu adipiscing lib. Eu adipiscing lib. Lorem ipsum",
+        "Develop responsive website portofolio and working with him directly.",
       thumbnail: "images/project-winsen-thumbnail.webp",
       color: "#EA6161",
     },
