@@ -57,13 +57,7 @@
 {/if}
 
 <header id="header">
-  {#if isNavbarShow}
-    <div
-      class="fixed inset-x-0 top-0 bg-primary"
-      transition:fly={{ duration: 400, y: -80, opacity: 1 }}>
-      <Navbar onItemPress={() => (isNavbarShow = true)} />
-    </div>
-  {/if}
+  <Navbar />
 </header>
 
 <main>

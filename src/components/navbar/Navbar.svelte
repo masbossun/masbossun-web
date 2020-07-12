@@ -1,4 +1,6 @@
 <script>
+  import bossunTimes from "../icon/bossunTimes";
+
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
   import { tweened } from "svelte/motion";
@@ -19,6 +21,7 @@
   import Navlink from "./Navlink.svelte";
   import { Caption, Subtitle } from "../typography";
   import Spacer from "../common/Spacer.svelte";
+  import { bossunBars } from "../icon";
 
   export let dark = false;
   export let onItemPress = () => null;
@@ -104,7 +107,7 @@
 
 <div
   class="container mx-auto max-w-screen-lg flex justify-between items-center
-  h-20 px-6 fixed inset-x-0 top-0 z-20 bg-primary-0 {dark && 'bg-accent negative-dark'}">
+  h-20 px-6 lg:px-0 absolute inset-x-0 bg-primary-0 {dark && 'bg-accent negative-dark'}">
 
   <Logo on:click={() => (isMenuOpen = false)} {dark} animated={false} />
 
@@ -149,11 +152,11 @@
       </button>
     </div>
   {:else}
-    <button on:click={toggleMenu}>
+    <button class="fixed z-20 right-0 p-6" on:click={toggleMenu}>
       {#if isMenuOpen}
         <div transition:slide>
           <Icon
-            icon={timesIcon}
+            icon={bossunTimes}
             width={24}
             height={24}
             class={dark ? 'text-primary' : 'text-accent'} />
@@ -161,7 +164,7 @@
       {:else}
         <div transition:slide>
           <Icon
-            icon={barsIcon}
+            icon={bossunBars}
             width={24}
             height={24}
             class={dark ? 'text-primary' : 'text-accent'} />
@@ -179,31 +182,25 @@
     <div class="h-40" />
 
     <div class="px-6" style="opacity: {$contentOpacity}">
-      <Navlink
-        mobile
-        text="blog"
-        class="opacity-60"
-        on:click={toggleMenu}
-        link="blog/" />
-      <div class="h-6" />
+      <Navlink mobile text="index" on:click={toggleMenu} link="/" />
+      <div class="h-4" />
+      <Navlink mobile text="blog" on:click={toggleMenu} link="blog/" />
+      <div class="h-4" />
       <Navlink
         mobile
         text="works"
-        class="opacity-60"
         on:click={() => onMobilePress('#works')}
         link="#works" />
-      <div class="h-6" />
+      <div class="h-4" />
       <Navlink
         mobile
         text="about"
-        class="opacity-60"
         on:click={() => onMobilePress('#about')}
         link="#about" />
-      <div class="h-6" />
+      <div class="h-4" />
       <Navlink
         mobile
         text="contacts"
-        class="opacity-60"
         on:click={() => onMobilePress('#contacts')}
         link="#contacts" />
     </div>

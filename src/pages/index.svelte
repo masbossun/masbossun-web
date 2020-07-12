@@ -3,6 +3,10 @@
   import { metatags } from "@sveltech/routify";
   import { tweened } from "svelte/motion";
   import { expoOut } from "svelte/easing";
+  import showdown from "showdown";
+  import Icon from "@iconify/svelte";
+  import arrowRightIcon from "@iconify/icons-uil/arrow-right";
+  import arrowLeftIcon from "@iconify/icons-uil/arrow-left";
   import data from "../fixture";
   import Content from "../components/common/Content.svelte";
   import ProjectOverview from "../components/common/ProjectOverview.svelte";
@@ -12,6 +16,7 @@
   import { Spacer, StripText } from "../components/common/index.js";
   import ProjectCard from "../components/card/ProjectCard.svelte";
 
+  const converter = new showdown.Converter();
   const heroOpacity = tweened(1);
   const scrollerPosition = tweened(0, { easing: expoOut });
   let isMounted = false;
@@ -59,6 +64,10 @@
     width: calc(100vw);
     scroll-snap-align: center;
   }
+
+  :global(p) > :global(a) {
+    @apply underline;
+  }
 </style>
 
 <svelte:window
@@ -96,6 +105,7 @@
         <ProjectCard
           id={'project-card-' + { index }}
           ref="horizontal-scroll-items"
+          href={project.url}
           imageSource={project.thumbnail}
           imageAlt={project.name + 'thumbnail'}
           cardBgColor={project.color} />
@@ -111,25 +121,29 @@
         on:click={gotoPrevProject}
         disabled={currentProjectIndex === 0}
         class={currentProjectIndex === 0 ? 'opacity-60' : 'opacity-100'}>
-        <Title size={16}>prev</Title>
+        <Icon
+          icon={arrowLeftIcon}
+          width={24}
+          height={24}
+          class={'text-accent'} />
       </button>
       <Spacer width={24} />
       <button
         on:click={gotoNextProject}
         disabled={currentProjectIndex === data.projects.length - 1}
         class={currentProjectIndex === data.projects.length - 1 ? 'opacity-60' : 'opacity-100'}>
-        <Title size={16}>next</Title>
+        <Icon
+          icon={arrowRightIcon}
+          width={24}
+          height={24}
+          class={'text-accent'} />
       </button>
     </div>
   </div>
 
   <Spacer height={16} />
 
-  <!-- <Body size={16}>{data.projects[currentProjectIndex].short_description}</Body> -->
-  <Body size={16}>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nihil nisi in
-    dolorum! Odit rerum consequuntur.
-  </Body>
+  <Body size={16}>{data.projects[currentProjectIndex].short_description}</Body>
 
 </section>
 
@@ -139,9 +153,11 @@
   <a href="#about">
     <Display>about</Display>
   </a>
-  <div class="h-8" />
+  <div class="h-8 about-item" />
   {#each data.about as item}
-    <Body size={isMobile ? 16 : 24}>{item}</Body>
+    <Body size={isMobile ? 16 : 24}>
+      {@html converter.makeHtml(item)}
+    </Body>
   {/each}
 </section>
 
