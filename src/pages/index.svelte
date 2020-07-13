@@ -3,6 +3,7 @@
   import { metatags } from "@sveltech/routify";
   import { tweened } from "svelte/motion";
   import { expoOut } from "svelte/easing";
+  import { fade } from "svelte/transition";
   import showdown from "showdown";
   import Icon from "@iconify/svelte";
   import arrowRightIcon from "@iconify/icons-uil/arrow-right";
@@ -25,8 +26,20 @@
   let screenHeight;
   let projectScroller;
   let currentProjectIndex = 0;
+  let isProjectSectionOpen = false;
+  let isAboutSectionOpen = false;
+
+  onMount(() => {
+    isMounted = true;
+  });
 
   $: isMobile = screenWidth <= 640;
+  $: if (scrollY > screenHeight / 2 && isMounted && !isProjectSectionOpen) {
+    isProjectSectionOpen = true;
+  }
+  $: if (scrollY > screenHeight && isMounted && !isAboutSectionOpen) {
+    isAboutSectionOpen = true;
+  }
 
   function onProjectScroll(e) {
     const currentIndex = Math.round(e.target.scrollLeft / screenWidth);
@@ -91,7 +104,11 @@
   <StripText>more down below</StripText>
 </section>
 
-<section id="works" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
+<section
+  id="works"
+  class="container mx-auto max-w-screen-lg px-6 lg:px-0 transition-opacity
+  duration-1000 ease-in {isProjectSectionOpen ? 'opacity-100' : 'opacity-0'}"
+  in:fade>
   <a href="#works">
     <Display>my works</Display>
   </a>
@@ -140,16 +157,16 @@
       </button>
     </div>
   </div>
-
   <Spacer height={16} />
-
   <Body size={16}>{data.projects[currentProjectIndex].short_description}</Body>
-
 </section>
 
 <div class="h-20" />
 
-<section id="about" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
+<section
+  id="about"
+  class="container mx-auto max-w-screen-lg px-6 lg:px-0 transition-opacity
+  ease-in duration-1000 {isAboutSectionOpen ? 'opacity-100' : 'opacity-0'}">
   <a href="#about">
     <Display>about</Display>
   </a>

@@ -17,8 +17,12 @@
 
   $: scrollY, shouldNabvarShow();
   $: if (screenWidth && screenHeight) {
+    document.body.classList.add("disable-scroll");
     setTimeout(() => {
-      emptyStatePosition.set(-screenHeight).then(() => (isPageReady = true));
+      emptyStatePosition.set(-screenHeight).then(() => {
+        document.body.classList.remove("disable-scroll");
+        isPageReady = true;
+      });
     }, 3000);
   }
 

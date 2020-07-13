@@ -66,3 +66,8 @@ a.anchor {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.disable-scroll {
+  height: 100%;
+  overflow: hidden;
+}
