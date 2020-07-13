@@ -34,7 +34,7 @@ const data = {
       name: "hijrah",
       url: "#",
       short_description:
-        "Design app UI of Muslim Qur'an apps, focus on simple and minimalist interfaces.",
+        "Build user intrface design of Muslim Qur'an apps, focusing on simple and minimalist interfaces.",
       thumbnail: "images/project-hijrah-thumbnail.webp",
       color: "#79D3A8",
     },
@@ -50,7 +50,7 @@ const data = {
       name: "you?",
       url: "#",
       short_description:
-        "yes, can't wait to work together with you, maybe we can build another web like this or another awesome stuff, or might be a startup?",
+        "can't wait to work together with you, we can build web like this or another awesome stuff, or maybe a startup?",
       thumbnail: "",
       color: "#FFFFFF",
     },

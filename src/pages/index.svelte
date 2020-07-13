@@ -34,7 +34,7 @@
   });
 
   $: isMobile = screenWidth <= 640;
-  $: if (scrollY > screenHeight / 2 && isMounted && !isProjectSectionOpen) {
+  $: if (scrollY > screenHeight / 3 && isMounted && !isProjectSectionOpen) {
     isProjectSectionOpen = true;
   }
   $: if (scrollY > screenHeight && isMounted && !isAboutSectionOpen) {
@@ -107,7 +107,7 @@
 <section
   id="works"
   class="container mx-auto max-w-screen-lg px-6 lg:px-0 transition-opacity
-  duration-1000 ease-in {isProjectSectionOpen ? 'opacity-100' : 'opacity-0'}"
+  duration-700 ease-in {isProjectSectionOpen ? 'opacity-100' : 'opacity-0'}"
   in:fade>
   <a href="#works">
     <Display>my works</Display>
