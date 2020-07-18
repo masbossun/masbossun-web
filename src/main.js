@@ -1,6 +1,8 @@
 import HMR from "@sveltech/routify/hmr";
 import App from "./App.svelte";
 import "./utils.css";
+import "lazysizes";
+import "lazysizes/plugins/parent-fit/ls.parent-fit";
 
 const app = HMR(App, { target: document.body }, "routify-app");
 

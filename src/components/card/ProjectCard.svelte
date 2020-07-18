@@ -33,11 +33,11 @@
   on:mouseout={stopChangeSource}>
   <a target="_blank" rel="noopener noreferrer" href={project.url}>
     <img
-      src={`${project.thumbnail}-${currentSeries}.webp`}
-      srcset={`${project.thumbnail}-${currentSeries}.webp,
+      data-src={`${project.thumbnail}-${currentSeries}.webp`}
+      data-srcset={`${project.thumbnail}-${currentSeries}.webp,
              ${project.thumbnail}-${currentSeries}@2x.webp 2x,`}
       alt={project.thumbnail}
-      class="w-full" />
+      class="lazyload w-full" />
   </a>
   <Spacer height={16} />
   <Title size={20}>
