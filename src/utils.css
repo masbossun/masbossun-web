@@ -6,12 +6,6 @@
 
 @import 'tailwindcss/utilities';
 
-@font-face {
-  font-family: 'Wavehaus-128Bold';
-  src: url(../fonts/Wavehaus-128Bold.otf);
-  font-display: swap;
-}
-
 /* latin-ext */
 @font-face {
   font-family: 'DM Mono';
