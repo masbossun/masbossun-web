@@ -85,7 +85,7 @@
 </section>
 <section id="works" class="container mx-auto max-w-screen-lg">
   <Spacer height={80} />
-  <div class="grid grid-cols-8 gap-12 px-6">
+  <div class="grid grid-cols-8 gap-12 px-6 lg:px-0">
     {#each data.projects as project, index}
       <ProjectCard class="col-span-8 lg:col-span-4" {project} />
     {/each}
