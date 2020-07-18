@@ -31,7 +31,7 @@
   class={$$props.class || ''}
   on:mouseover={changeSource}
   on:mouseout={stopChangeSource}>
-  <a target="_blank" rel="noopener noreferrer" href={() => $goto(project.href)}>
+  <a target="_blank" rel="noopener noreferrer" href={project.url}>
     <img
       src={`${project.thumbnail}-${currentSeries}.webp`}
       srcset={`${project.thumbnail}-${currentSeries}.webp,
