@@ -33,9 +33,9 @@
   on:mouseout={stopChangeSource}>
   <a target="_blank" rel="noopener noreferrer" href={() => $goto(project.href)}>
     <img
-      src={`${project.thumbnail}-${currentSeries}.png`}
-      srcset={`${project.thumbnail}-${currentSeries}.png,
-             ${project.thumbnail}-${currentSeries}@2x.png 2x,`}
+      src={`${project.thumbnail}-${currentSeries}.webp`}
+      srcset={`${project.thumbnail}-${currentSeries}.webp,
+             ${project.thumbnail}-${currentSeries}@2x.webp 2x,`}
       alt={project.thumbnail}
       class="w-full" />
   </a>
