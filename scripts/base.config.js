@@ -107,6 +107,11 @@ function baseConfig(config, ctx) {
       clearScreen: false,
       buildDelay: 100,
     },
+    onwarn(warning, warn) {
+      // suppress eval warnings
+      if (warning.code === "EVAL") return;
+      warn(warning);
+    },
   };
 
   return rollupWrapper(rollupConfig, ctx);
