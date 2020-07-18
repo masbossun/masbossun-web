@@ -2,13 +2,14 @@
   h1 {
     @apply font-display;
     font-style: normal;
-    font-weight: 700;
+    font-weight: bold;
     margin: 0;
-    line-height: 52px;
-    letter-spacing: -0.05em;
+    line-height: 115.7%;
+    letter-spacing: -0.07em;
+    font-size: 46px;
   }
 </style>
 
-<h1 {...$$props} class="{$$restProps.class || ''} text-5xl md:text-6xl">
+<h1 {...$$props} class={$$restProps.class || ''}>
   <slot />
 </h1>

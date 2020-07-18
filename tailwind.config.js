@@ -16,7 +16,7 @@ module.exports = {
     fontFamily: {
       sans: ["DM Sans", "sans-serif"],
       mono: ["DM Mono", "monospace"],
-      display: ["Wavehaus-128Bold", "sans-serif"],
+      display: ["DM Sans", "sans-serif"],
     },
     opacity: {
       0: "0",

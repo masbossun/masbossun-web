@@ -1,6 +1,4 @@
 <script>
-  import { BossunLine } from "../common";
-
   import FooterSection from "./FooterSection.svelte";
   import ContactButton from "./ContactButton.svelte";
   import Logo from "../common/Logo.svelte";
@@ -16,6 +14,8 @@
   let screenWidth;
   let contactsCopy;
 
+  $: isMobile = screenWidth <= 640;
+
   contactsCopy = {
     email: data.contacts.find((S) => S.label === "email"),
     linkedin: data.contacts.find((S) => S.label === "linkedin"),
@@ -23,8 +23,6 @@
     twitter: data.contacts.find((S) => S.label === "twitter"),
     instagram: data.contacts.find((S) => S.label === "instagram"),
   };
-
-  $: isMobile = screenWidth <= 640;
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
@@ -40,8 +38,8 @@
     {/if}
     <div class="col-span-8 md:col-span-4">
       {#if isMobile}
-        <BossunLine stripColor="light">let's talk</BossunLine>
-        <Spacer height={8} />
+        <Subtitle weight="bold">let's talk</Subtitle>
+        <Spacer height={4} />
         <a href={`mailto:${contactsCopy['email'].url}?subject=let's talk`}>
           <Subtitle weight="regular">{contactsCopy['email'].url}</Subtitle>
         </a>
@@ -71,7 +69,7 @@
   <Spacer height={40} />
 
   <div class="flex flex-col opacity-60">
-    <Caption>&copy; {currentYear} masbossun</Caption>
+    <Caption>v3.0.0-rc &copy; {currentYear} masbossun</Caption>
     <Caption>proudly made by myself in Jakarta, ID</Caption>
   </div>
 

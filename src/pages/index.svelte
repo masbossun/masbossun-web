@@ -61,30 +61,12 @@
   <title>{data.meta.title}</title>
 </svelte:head>
 
-<section
-  id="intro"
-  class="container mx-auto max-w-screen-lg h-screen px-6 lg:px-0">
-  <Spacer height={124} />
+<section id="intro" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
+  <Spacer height={160} />
   <Display class="whitespace-pre-line">{data.headline}</Display>
-  <Spacer height={40} />
-  <BossunLine>view work</BossunLine>
-  <div class="absolute inset-x-0" style="bottom: -8px">
-    <Display
-      style="font-size: 8rem; line-height: 72px"
-      class="text-accent opacity-10 text-right">
-      scroll down
-    </Display>
-  </div>
-  <div class="absolute left-0 bottom-0">
-    <Icon
-      icon={arrowDownIcon}
-      width={80}
-      height={80}
-      class={'text-accent opacity-10'} />
-  </div>
 </section>
 <section id="works" class="container mx-auto max-w-screen-lg">
-  <Spacer height={80} />
+  <Spacer height={144} />
   <div class="grid grid-cols-8 gap-12 px-6 lg:px-0">
     {#each data.projects as project, index}
       <ProjectCard class="col-span-8 lg:col-span-4" {project} />
@@ -92,9 +74,9 @@
   </div>
 </section>
 <section id="about" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
-  <Spacer height={80} />
+  <Spacer height={144} />
   <a href="#about">
-    <Display>about</Display>
+    <Display>about ryan</Display>
   </a>
   <Spacer height={32} />
   {#each data.about as item}
@@ -102,5 +84,5 @@
       {@html converter.makeHtml(item)}
     </Body>
   {/each}
-  <Spacer height={80} />
+  <Spacer height={144} />
 </section>

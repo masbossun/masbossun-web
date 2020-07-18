@@ -2,39 +2,19 @@
   import bossunTimes from "../icon/bossunTimes";
 
   import { onMount } from "svelte";
-  import { writable } from "svelte/store";
-  import { tweened } from "svelte/motion";
-  import { slide } from "svelte/transition";
-  import { sineInOut } from "svelte/easing";
   import Icon from "@iconify/svelte";
-  import barsIcon from "@iconify/icons-uil/bars";
-  import timesIcon from "@iconify/icons-uil/times";
   import sunIcon from "@iconify/icons-uil/sun";
   import moonIcon from "@iconify/icons-uil/moon";
-  import githubIcon from "@iconify/icons-uil/github";
-  import twitterIcon from "@iconify/icons-uil/twitter";
-  import linkedinIcon from "@iconify/icons-uil/linkedin";
-  import instagramIcon from "@iconify/icons-uil/instagram-alt";
   import * as animateScroll from "svelte-scrollto";
-  import ContactButton from "../footer/ContactButton.svelte";
   import Logo from "../common/Logo.svelte";
   import Navlink from "./Navlink.svelte";
-  import { Caption, Subtitle } from "../typography";
-  import Spacer from "../common/Spacer.svelte";
   import { bossunBars } from "../icon";
+  import { Spacer } from "../common";
+  import { Caption } from "../typography";
 
   export let dark = false;
   export let onItemPress = () => null;
 
-  const ANCHOR_OFFSET = -(80 + 24);
-  const BLUR_SIZE = 24;
-  const BLUR_DURATION = 600;
-  const EASING = sineInOut;
-  const blur = tweened(0, { duration: BLUR_DURATION, easing: EASING });
-  const contentOpacity = tweened(0, {
-    duration: BLUR_DURATION - 100,
-    easing: EASING,
-  });
   let isMenuOpen = false;
   let isDark = false;
   let isMounted = false;
@@ -47,26 +27,20 @@
   });
 
   async function toggleMenu() {
-    if (isMounted) {
-      if (isMenuOpen) {
-        contentOpacity.set(0);
-        await blur.set(0);
-        isMenuOpen = false;
-      } else {
-        isMenuOpen = true;
-        blur.set(BLUR_SIZE);
-        contentOpacity.set(1);
-      }
+    if (!isMounted) {
+      return null;
     }
+
+    isMenuOpen = !isMenuOpen;
   }
 
   function onDesktopClick(element) {
-    return animateScroll.scrollTo({ element, offset: ANCHOR_OFFSET });
+    return animateScroll.scrollTo({ element });
   }
 
   function onMobilePress(element) {
     if (element) {
-      animateScroll.scrollTo({ element, offset: ANCHOR_OFFSET });
+      animateScroll.scrollTo({ element });
     }
     onItemPress();
     return toggleMenu();
@@ -93,21 +67,13 @@
       settings: { theme: "theme-light" },
     }));
   }
-
-  async function navigateBackAsync() {
-    const paths = path.split("/");
-    if (paths[paths.length - 1] === "") {
-      paths.pop();
-    }
-    return goto(paths.slice(0, paths.length - 1).join("/") + "/");
-  }
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
 
 <div
   class="container mx-auto max-w-screen-lg flex justify-between items-center
-  h-20 absolute inset-x-0 z-20 bg-primary-0 {dark && 'bg-accent negative-dark'}">
+  h-20 fixed inset-x-0 z-20 bg-primary {dark && 'bg-accent negative-dark'}">
 
   <Logo
     class="px-6 lg:px-0"
@@ -166,29 +132,25 @@
 </div>
 
 {#if isMenuOpen}
-  <div
-    class="fixed inset-0 z-10 overflow-hidden bg-primary-10"
-    style="backdrop-filter: blur({$blur}px);">
-
-    <div class="h-40" />
-
-    <div class="px-6" style="opacity: {$contentOpacity}">
+  <div class="fixed inset-0 z-10 overflow-hidden bg-primary">
+    <Spacer height={160} />
+    <div class="px-6">
       <Navlink mobile text="index" on:click={toggleMenu} link="/" />
-      <div class="h-4" />
+      <Spacer height={16} />
       <Navlink mobile text="blog" on:click={toggleMenu} link="blog/" />
-      <div class="h-4" />
+      <Spacer height={16} />
       <Navlink
         mobile
         text="works"
         on:click={() => onMobilePress('#works')}
         link="#works" />
-      <div class="h-4" />
+      <Spacer height={16} />
       <Navlink
         mobile
         text="about"
         on:click={() => onMobilePress('#about')}
         link="#about" />
-      <div class="h-4" />
+      <Spacer height={16} />
       <Navlink
         mobile
         text="contacts"
@@ -197,25 +159,9 @@
     </div>
 
     <div
-      class="absolute bottom-0 left-0 px-6"
-      style="opacity: {$contentOpacity}">
-      <div class="flex flex-row items-center">
-        <div class="bg-accent w-12 h-2" />
-        <Spacer width={8} />
-        <Subtitle weight="bold">keep in touch!</Subtitle>
-      </div>
-      <Spacer height={16} />
-      <div class="flex flex-row">
-        <ContactButton textClass="text-accent" icon={linkedinIcon} />
-        <div class="w-3" />
-        <ContactButton textClass="text-accent" icon={githubIcon} />
-        <div class="w-3" />
-        <ContactButton textClass="text-accent" icon={twitterIcon} />
-        <div class="w-3" />
-        <ContactButton textClass="text-accent" icon={instagramIcon} />
-      </div>
-      <div class="h-20" />
+      class="absolute inset-x-0 bottom-0 px-6 py-10 flex flex-col opacity-60">
+      <Caption>v3.0.0-rc &copy; {new Date().getFullYear()} masbossun</Caption>
+      <Caption>proudly made by ryan in Jakarta, ID</Caption>
     </div>
-
   </div>
 {/if}

@@ -2,59 +2,44 @@ const data = {
   meta: {
     title: "masbossun — any developer",
   },
-  headline: "i am Ryan,\nsoftware developer.\ni crafts codes\nwith passion.",
+  headline: "as a software\ndeveloper, ryan\ndoes his job\nwith passion",
   about: [
-    "My name is Ryan Setiagi, currently working as a full-time mobile developer at [rukita](https://rukita.co), I’ve been falling in love with programming since i was at college, and coding is how i express my feelings.",
-    "In the mean time, i wrote some stuff on my [blog](/blog/). Just to keep all my toughts saved, in case i need it in the future.",
-    "I have a great interests to learning and building awesome stuff. If you are intersted, don't afraid to [contact me](#contacts).",
+    "his name is Ryan Setiagi, he currently working as a fulltime mobile developer at [rukita](https://rukita.co).",
+    "basically he does frontend development for web and also for mobile app. he quite familiar with react environment such as [reactjs](https://reactjs.org/) and [react native](https://reactnative.dev). not tied to exact same development or environment, he can explore another frameworks and works with it if needed.",
+    "he have been falling in love with programming since he was at college, and coding is how he express his feelings.",
+    "In the mean time, he wrote some stuff on his [blog](/blog/). Just to keep his memory sharp, in case he need it in the future.",
+    "he have a great interests to learning and building something new. If you intersted, feel free to [contact him](#contacts).",
   ],
-  //   [
-  //   "Hello, My name is Ryan Setiagi, self-motivated Frontend Developers who love to learn new things. My background is telecommunication. I used to code on vim and i am bad at typing. Most recently, i was a student at telkom university (2016-2019). I want to love reading and writing as well. You can find @masbossun on every daily social media.",
-  //   "I’ve been falling in love with coding since i was at college, and coding is how i express my fellings. I have a great interests to learning and building something new. If you intersted, you can collaborate more with me.",
-  // ],
   projects: [
     {
       name: "winsen",
       url: "https://winsen.xyz",
-      category: "website portfolio",
+      category: "web development",
       started_at: 2020,
-      short_description: "Winsen Tandra personal portofolio",
-      description:
-        "Build fully working responsive website portofolio. UI Design originally by client, i just build the web from scratch.",
       thumbnail: "images/works-winsen",
       color: "#EA6161",
     },
     {
       name: "rekber",
       url: "#",
-      category: "mobile app",
+      category: "app design",
       started_at: 2020,
-      short_description: "payment gateway application",
-      description:
-        "Design user interface of a finance app called Rekber. This app accomodate better and safer transaction between users.",
       thumbnail: "images/works-rekber",
       color: "#E5E5E5",
     },
     {
       name: "hijrah",
       url: "#",
-      category: "mobile app",
+      category: "app design & development",
       started_at: 2020,
-      short_description: "simple app for muslim's qur'an",
-      description:
-        "Build user intrface design of Muslim Qur'an apps, focusing on simple and minimalist interfaces.",
       thumbnail: "images/works-hijrah",
       color: "#79D3A8",
     },
     {
       name: "bukom digital",
       url: "#",
-      category: "mobile app",
+      category: "app design & development",
       started_at: 2019,
-      short_description:
-        "communication app for kindergarten teachers and parents",
-      description:
-        "Build hybrid app using React Native called Bukom or Buku Komunikasi (Communication Book in english)",
       thumbnail: "images/works-bukom-digital",
       color: "#55AEF6",
     },
