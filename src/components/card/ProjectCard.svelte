@@ -31,13 +31,13 @@
   class={$$props.class || ''}
   on:mouseover={changeSource}
   on:mouseout={stopChangeSource}>
-  <a target="_blank" rel="noopener noreferrer" href={project.url}>
+  <a target="_blank" rel="noopener noreferrer" href={() => $goto(project.href)}>
     <img
-      data-src={`${project.thumbnail}-${currentSeries}.webp`}
-      data-srcset={`${project.thumbnail}-${currentSeries}.webp,
+      src={`${project.thumbnail}-${currentSeries}.webp`}
+      srcset={`${project.thumbnail}-${currentSeries}.webp,
              ${project.thumbnail}-${currentSeries}@2x.webp 2x,`}
       alt={project.thumbnail}
-      class="lazyload w-full" />
+      class="w-full" />
   </a>
   <Spacer height={16} />
   <Title size={20}>
