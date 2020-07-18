@@ -6,7 +6,6 @@
   import { fade } from "svelte/transition";
   import showdown from "showdown";
   import * as animateScroll from "svelte-scrollto";
-  import Scroller from "@sveltejs/svelte-scroller";
   import Icon from "@iconify/svelte";
   import arrowRightIcon from "@iconify/icons-uil/arrow-right";
   import arrowLeftIcon from "@iconify/icons-uil/arrow-left";
