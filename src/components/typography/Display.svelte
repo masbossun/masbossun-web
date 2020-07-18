@@ -4,8 +4,8 @@
     font-style: normal;
     font-weight: 700;
     margin: 0;
-    line-height: 57px;
-    letter-spacing: -0.04em;
+    line-height: 52px;
+    letter-spacing: -0.05em;
   }
 </style>
 

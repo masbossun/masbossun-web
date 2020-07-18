@@ -1,13 +1,14 @@
 <script>
   import { fly } from "svelte/transition";
   import { tweened } from "svelte/motion";
-  import { expoIn } from "svelte/easing";
+  import { expoIn, cubicIn } from "svelte/easing";
   import { Caption } from "../components/typography";
   import Logo from "../components/common/Logo.svelte";
   import Navbar from "../components/navbar/Navbar.svelte";
   import Footer from "../components/footer/Footer.svelte";
 
   const emptyStatePosition = tweened(0, { duration: 500, easing: expoIn });
+  const contentOpacity = tweened(0, { duration: 500, easing: cubicIn });
   let scrollY;
   let screenWidth;
   let screenHeight;
@@ -17,12 +18,10 @@
 
   $: scrollY, shouldNabvarShow();
   $: if (screenWidth && screenHeight) {
-    document.body.classList.add("disable-scroll");
-    setTimeout(() => {
-      emptyStatePosition.set(-screenHeight).then(() => {
-        document.body.classList.remove("disable-scroll");
-        isPageReady = true;
-      });
+    setTimeout(async () => {
+      await emptyStatePosition.set(-screenHeight);
+      contentOpacity.set(1);
+      isPageReady = true;
     }, 3000);
   }
 
@@ -44,6 +43,8 @@
   bind:outerWidth={screenWidth}
   bind:outerHeight={screenHeight} />
 
+<svelte:body class="overflow-hidden" />
+
 {#if !isPageReady}
   <div
     class="fixed inset-0 bg-primary z-40"
@@ -64,7 +65,7 @@
   <Navbar />
 </header>
 
-<main>
+<main style="opacity: {$contentOpacity}">
   <slot />
 </main>
 

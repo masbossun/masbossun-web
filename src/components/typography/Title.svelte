@@ -4,24 +4,23 @@
 
 <style>
   .title {
-    @apply font-display;
+    @apply font-sans;
     font-style: normal;
     margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.07em;
   }
 
   h2 {
     font-size: 36px;
-    line-height: 36px;
   }
 
   h3 {
     font-size: 24px;
-    line-height: 24px;
   }
 
   h4 {
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 20px;
   }
 </style>
 

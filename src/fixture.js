@@ -3,7 +3,7 @@ const data = {
     title: "masbossun — any developer",
   },
   headline:
-    "frontend web \nand\n mobile develo-per who crafts codes\nwith passion.",
+    "i am Ryan,\nsoftware de-\nveloper\nwho crafts\ncodes\nwith passion.",
   about: [
     "My name is Ryan Setiagi, full-time mobile developer at [rukita](https://rukita.co), I’ve been falling in love with programming since i was at college, and coding is how i express my feelings.",
     "sometime i write something about programming, refactoring, coding tools, and what not on my blog [here](/blog/).",
@@ -15,44 +15,49 @@ const data = {
   // ],
   projects: [
     {
-      name: "winsen's site",
+      name: "winsen",
       url: "https://winsen.xyz",
-      short_description:
+      category: "website portfolio",
+      started_at: 2020,
+      short_description: "Winsen Tandra personal portofolio",
+      description:
         "Build fully working responsive website portofolio. UI Design originally by client, i just build the web from scratch.",
-      thumbnail: "images/project-winsen-thumbnail.webp",
+      thumbnail: "images/works-winsen",
       color: "#EA6161",
     },
     {
       name: "rekber",
       url: "#",
-      short_description:
+      category: "mobile app",
+      started_at: 2020,
+      short_description: "payment gateway application",
+      description:
         "Design user interface of a finance app called Rekber. This app accomodate better and safer transaction between users.",
-      thumbnail: "images/project-rekber-thumbnail.webp",
+      thumbnail: "images/works-rekber",
       color: "#E5E5E5",
     },
     {
       name: "hijrah",
       url: "#",
-      short_description:
+      category: "mobile app",
+      started_at: 2020,
+      short_description: "simple app for muslim's qur'an",
+      description:
         "Build user intrface design of Muslim Qur'an apps, focusing on simple and minimalist interfaces.",
-      thumbnail: "images/project-hijrah-thumbnail.webp",
+      thumbnail: "images/works-hijrah",
       color: "#79D3A8",
     },
     {
-      name: "bukom",
+      name: "bukom digital",
       url: "#",
+      category: "mobile app",
+      started_at: 2019,
       short_description:
+        "communication app for kindergarten teachers and parents",
+      description:
         "Build hybrid app using React Native called Bukom or Buku Komunikasi (Communication Book in english)",
-      thumbnail: "images/project-bukom-digital-thumbnail.webp",
+      thumbnail: "images/works-bukom-digital",
       color: "#55AEF6",
-    },
-    {
-      name: "you?",
-      url: "#",
-      short_description:
-        "can't wait to work together with you, we can build web like this or another awesome stuff, or maybe a startup?",
-      thumbnail: "",
-      color: "#FFFFFF",
     },
   ],
   contacts: [

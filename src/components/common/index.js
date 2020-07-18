@@ -1,4 +1,4 @@
 import Spacer from "./Spacer.svelte";
-import StripText from "./StripText.svelte";
+import BossunLine from "./BossunLine.svelte";
 
-export { Spacer, StripText };
+export { Spacer, BossunLine };

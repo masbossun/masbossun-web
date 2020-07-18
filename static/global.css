@@ -18,9 +18,11 @@
 
 .theme-dark{
     --color-primary: var(--color-coal);
+    --color-secondary: var(--color-dim-gray);
     --color-accent: var(--color-white-smoke);
+    --color-accent-secondary: var(--color-blood);
     --color-gray: var(--color-smoke);
-
+    --color-light: var(--color-pure-white);
 }
 
 .theme-dark .negative-dark {
@@ -32,9 +34,9 @@
 body{
   margin: 0;
   font-family: DM Sans, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
-  background-color: rgba(var(--color-primary), 1);
+  background-color: rgba(var(--color-primary),1);
   color: rgba(var(--color-accent), 1);
 }
 
@@ -47,7 +49,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 body::-webkit-scrollbar{
-  background: rgba( var(--color-coal), 1);
+  background: none;
   width: 8px;
 }
 
@@ -56,6 +58,10 @@ a.anchor {
     position: relative;
     top: -104px;
     visibility: hidden;
+}
+
+p > a{
+  text-decoration: underline;
 }
 
 .hide-scrollbar::-webkit-scrollbar {

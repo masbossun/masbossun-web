@@ -107,9 +107,12 @@
 
 <div
   class="container mx-auto max-w-screen-lg flex justify-between items-center
-  h-20 px-6 lg:px-0 absolute inset-x-0 bg-primary-0 {dark && 'bg-accent negative-dark'}">
+  h-20 absolute inset-x-0 z-20 bg-primary-0 {dark && 'bg-accent negative-dark'}">
 
-  <Logo on:click={() => (isMenuOpen = false)} {dark} animated={false} />
+  <Logo
+    class="px-6 lg:px-0"
+    on:click={() => (isMenuOpen = false)}
+    animated={false} />
 
   {#if !isMobile}
     <div class="flex items-center">
@@ -152,25 +155,13 @@
       </button>
     </div>
   {:else}
-    <button class="fixed z-20 right-0 p-6" on:click={toggleMenu}>
+    <div class="p-6" on:click={toggleMenu}>
       {#if isMenuOpen}
-        <div transition:slide>
-          <Icon
-            icon={bossunTimes}
-            width={24}
-            height={24}
-            class={dark ? 'text-primary' : 'text-accent'} />
-        </div>
+        <Icon icon={bossunTimes} width={24} height={24} class="text-accent" />
       {:else}
-        <div transition:slide>
-          <Icon
-            icon={bossunBars}
-            width={24}
-            height={24}
-            class={dark ? 'text-primary' : 'text-accent'} />
-        </div>
+        <Icon icon={bossunBars} width={24} height={24} class="text-accent" />
       {/if}
-    </button>
+    </div>
   {/if}
 </div>
 

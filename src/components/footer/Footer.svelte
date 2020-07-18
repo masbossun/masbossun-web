@@ -1,5 +1,5 @@
 <script>
-  import { StripText } from "../common";
+  import { BossunLine } from "../common";
 
   import FooterSection from "./FooterSection.svelte";
   import ContactButton from "./ContactButton.svelte";
@@ -40,7 +40,7 @@
     {/if}
     <div class="col-span-8 md:col-span-4">
       {#if isMobile}
-        <StripText stripColor="light">let's talk</StripText>
+        <BossunLine stripColor="light">let's talk</BossunLine>
         <Spacer height={8} />
         <a href={`mailto:${contactsCopy['email'].url}?subject=let's talk`}>
           <Subtitle weight="regular">{contactsCopy['email'].url}</Subtitle>
@@ -72,7 +72,7 @@
 
   <div class="flex flex-col opacity-60">
     <Caption>&copy; {currentYear} masbossun</Caption>
-    <Caption>proudly made by myself in jakarta, ID</Caption>
+    <Caption>proudly made by myself in Jakarta, ID</Caption>
   </div>
 
   <!-- <section class="containers mx-auto max-w-screen-lg grid grid-cols-8 gap-10">

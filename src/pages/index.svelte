@@ -5,41 +5,36 @@
   import { expoOut } from "svelte/easing";
   import { fade } from "svelte/transition";
   import showdown from "showdown";
+  import * as animateScroll from "svelte-scrollto";
+  import Scroller from "@sveltejs/svelte-scroller";
   import Icon from "@iconify/svelte";
   import arrowRightIcon from "@iconify/icons-uil/arrow-right";
   import arrowLeftIcon from "@iconify/icons-uil/arrow-left";
+  import arrowDownIcon from "@iconify/icons-uil/arrow-down";
+  import arrowUpIcon from "@iconify/icons-uil/arrow-up";
   import data from "../fixture";
   import Content from "../components/common/Content.svelte";
   import ProjectOverview from "../components/common/ProjectOverview.svelte";
   import Footer from "../components/footer/Footer.svelte";
   import { Display, Title, Body, Caption } from "../components/typography";
   import Subtitle from "../components/typography/Subtitle.svelte";
-  import { Spacer, StripText } from "../components/common/index.js";
+  import { Spacer, BossunLine } from "../components/common/index.js";
   import ProjectCard from "../components/card/ProjectCard.svelte";
 
   const converter = new showdown.Converter();
-  const heroOpacity = tweened(1);
   const scrollerPosition = tweened(0, { easing: expoOut });
   let isMounted = false;
-  let scrollY;
+  let currentProjectIndex = 0;
+  let index, offset, progress, count;
   let screenWidth;
   let screenHeight;
   let projectScroller;
-  let currentProjectIndex = 0;
-  let isProjectSectionOpen = false;
-  let isAboutSectionOpen = false;
 
   onMount(() => {
     isMounted = true;
   });
 
   $: isMobile = screenWidth <= 640;
-  $: if (scrollY > screenHeight / 3 && isMounted && !isProjectSectionOpen) {
-    isProjectSectionOpen = true;
-  }
-  $: if (scrollY > screenHeight && isMounted && !isAboutSectionOpen) {
-    isAboutSectionOpen = true;
-  }
 
   function onProjectScroll(e) {
     const currentIndex = Math.round(e.target.scrollLeft / screenWidth);
@@ -59,123 +54,54 @@
       projectScroller.scrollTo({ left: v, behavior: "smooth" });
     }
   });
-
-  // metatags.title = "My Routify app";
-  // metatags.description = "Description coming soon...";
 </script>
 
-<style>
-  .horizontal-scroll-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-  }
-
-  .horizontal-scroll-wrapper > :global([ref="horizontal-scroll-items"]) {
-    flex: 0 0 auto;
-    width: calc(100vw);
-    scroll-snap-align: center;
-  }
-
-  :global(p) > :global(a) {
-    @apply underline;
-  }
-</style>
-
-<svelte:window
-  bind:scrollY
-  bind:outerWidth={screenWidth}
-  bind:outerHeight={screenHeight} />
+<svelte:window bind:outerWidth={screenWidth} bind:outerHeight={screenHeight} />
 
 <svelte:head>
   <title>{data.meta.title}</title>
 </svelte:head>
 
 <section
-  class="container mx-auto max-w-screen-lg h-screen px-6 lg:px-0"
-  style="opacity: {$heroOpacity};">
+  id="intro"
+  class="container mx-auto max-w-screen-lg h-screen px-6 lg:px-0">
   <Spacer height={160} />
-
   <Display class="whitespace-pre-line">{data.headline}</Display>
-
   <Spacer height={40} />
-
-  <StripText>more down below</StripText>
-</section>
-
-<section
-  id="works"
-  class="container mx-auto max-w-screen-lg px-6 lg:px-0 transition-opacity
-  duration-700 ease-in {isProjectSectionOpen ? 'opacity-100' : 'opacity-0'}"
-  in:fade>
-  <a href="#works">
-    <Display>my works</Display>
-  </a>
-  <div class="h-8" />
-  {#if isMobile}
-    <div
-      bind:this={projectScroller}
-      class="horizontal-scroll-wrapper hide-scrollbar -mx-6"
-      on:scroll={onProjectScroll}>
-      {#each data.projects as project, index}
-        <ProjectCard
-          id={'project-card-' + { index }}
-          ref="horizontal-scroll-items"
-          href={project.url}
-          imageSource={project.thumbnail}
-          imageAlt={project.name + 'thumbnail'}
-          cardBgColor={project.color} />
-      {/each}
-    </div>
-  {/if}
-  <Spacer height={40} />
-  <div class="flex flex-row items-center justify-between">
-    <StripText>{data.projects[currentProjectIndex].name}</StripText>
-
-    <div class="flex flex-row">
-      <button
-        on:click={gotoPrevProject}
-        disabled={currentProjectIndex === 0}
-        class={currentProjectIndex === 0 ? 'opacity-60' : 'opacity-100'}>
-        <Icon
-          icon={arrowLeftIcon}
-          width={24}
-          height={24}
-          class={'text-accent'} />
-      </button>
-      <Spacer width={24} />
-      <button
-        on:click={gotoNextProject}
-        disabled={currentProjectIndex === data.projects.length - 1}
-        class={currentProjectIndex === data.projects.length - 1 ? 'opacity-60' : 'opacity-100'}>
-        <Icon
-          icon={arrowRightIcon}
-          width={24}
-          height={24}
-          class={'text-accent'} />
-      </button>
-    </div>
+  <BossunLine>view work</BossunLine>
+  <div class="absolute inset-x-0" style="bottom: -8px">
+    <Display
+      style="font-size: 8rem; line-height: 72px"
+      class="text-accent opacity-10 text-right">
+      scroll down
+    </Display>
   </div>
-  <Spacer height={16} />
-  <Body size={16}>{data.projects[currentProjectIndex].short_description}</Body>
+  <div class="absolute left-0 bottom-0">
+    <Icon
+      icon={arrowDownIcon}
+      width={80}
+      height={80}
+      class={'text-accent opacity-10'} />
+  </div>
 </section>
-
-<div class="h-20" />
-
-<section
-  id="about"
-  class="container mx-auto max-w-screen-lg px-6 lg:px-0 transition-opacity
-  ease-in duration-1000 {isAboutSectionOpen ? 'opacity-100' : 'opacity-0'}">
+<section id="works" class="container mx-auto max-w-screen-lg">
+  <Spacer height={80} />
+  <div class="grid grid-cols-8 gap-12 px-6">
+    {#each data.projects as project, index}
+      <ProjectCard class="col-span-8 lg:col-span-4" {project} />
+    {/each}
+  </div>
+</section>
+<section id="about" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
+  <Spacer height={80} />
   <a href="#about">
     <Display>about</Display>
   </a>
-  <div class="h-8 about-item" />
+  <Spacer height={32} />
   {#each data.about as item}
     <Body size={isMobile ? 16 : 24}>
       {@html converter.makeHtml(item)}
     </Body>
   {/each}
+  <Spacer height={80} />
 </section>
-
-<div class="h-40" />

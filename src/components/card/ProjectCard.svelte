@@ -1,27 +1,23 @@
 <script>
   import { goto } from "@sveltech/routify";
-  import { Title, Body, Subtitle } from "../typography";
+  import { Title } from "../typography";
   import { Spacer } from "../common";
 
-  export let href;
-  export let imageSource;
-  export let imageAlt;
-  export let cardBgColor;
+  export let project;
 </script>
 
-<a
-  target="_blank"
-  rel="noopener noreferrer"
-  href={() => $goto(href)}
-  {...$$props}
-  class={$$props.class || ''}>
-  <div
-    class="flex items-center justify-center"
-    style="background-color: {cardBgColor}">
+<div class={$$props.class || ''}>
+  <a target="_blank" rel="noopener noreferrer" href={() => $goto(project.href)}>
     <img
-      class="object-contain p-6"
-      src={imageSource}
-      alt={imageAlt}
-      style="height: 290px" />
-  </div>
-</a>
+      src={`${project.thumbnail}.png`}
+      srcset={`${project.thumbnail}.png,
+             ${project.thumbnail}@2x.png 2x,`}
+      alt={project.thumbnail}
+      class="w-full" />
+  </a>
+  <Spacer height={16} />
+  <Title size={20}>
+    {project.name}
+    <span class="font-normal">— {project.category}, {project.started_at}</span>
+  </Title>
+</div>

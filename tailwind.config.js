@@ -6,7 +6,7 @@ module.exports = {
       "primary-10": "rgba(var(--color-primary), 0.1)",
       secondary: "rgba(var(--color-secondary), 1)",
       accent: "rgba(var(--color-accent), 1)",
-      accentSecondary: "rgba(var(--color-accent-secondary), 1)",
+      "accent-secondary": "rgba(var(--color-accent-secondary), 1)",
       gray: "rgba(var(--color-gray), 1)",
       white: "rgba(var(--color-light), 1)",
     },

@@ -4,7 +4,6 @@
   import { LottiePlayer } from "@lottiefiles/svelte-lottie-player";
 
   export let animated = false;
-  export let dark = false;
 
   const dispatch = createEventDispatcher();
 
@@ -26,10 +25,8 @@
       controls={false}
       controlsLayout={[]} />
   {:else}
-    <div class="{dark ? 'bg-primary' : 'bg-accent'} py-3 px-4">
-      <Subtitle weight="bold" class={dark ? 'text-accent' : 'text-primary'}>
-        masbossun
-      </Subtitle>
+    <div class="bg-accent py-3 px-4">
+      <Subtitle weight="bold" class="text-primary">masbossun</Subtitle>
     </div>
   {/if}
 </a>
