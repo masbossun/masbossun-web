@@ -1,6 +1,11 @@
 {
-  "name": "svelte-app",
+  "name": "masbossun-web",
   "version": "3.0.0-rc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:masbossun/masbossun-web.git"
+  },
   "scripts": {
     "dev": "run-p routify rollup",
     "dev:nollup": "run-p routify nollup",
