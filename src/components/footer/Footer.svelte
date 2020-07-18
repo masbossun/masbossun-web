@@ -27,10 +27,8 @@
 
 <svelte:window bind:innerWidth={screenWidth} />
 
-<footer id="footer" class="bg-accent py-10 px-6 text-primary negative-dark">
-  <section
-    id="contacts"
-    class="container mx-auto max-w-screen-lg grid grid-cols-8 gap-10">
+<footer id="footer" class="px-10 bg-accent py-10 text-primary negative-dark">
+  <section id="contacts" class="grid grid-cols-8 gap-10">
     {#if !isMobile}
       <div class="col-span-8 md:col-span-4 flex flex-col items-start my-4">
         <Logo dark={true} />

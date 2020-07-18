@@ -61,19 +61,19 @@
   <title>{data.meta.title}</title>
 </svelte:head>
 
-<section id="intro" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
+<section id="intro" class="ml-10 lg:ml-0 max-w-300 md:max-w-screen-lg">
   <Spacer height={160} />
   <Display class="whitespace-pre-line">{data.headline}</Display>
 </section>
-<section id="works" class="container mx-auto max-w-screen-lg">
+<section id="works" class="ml-10 lg:ml-0 max-w-300 md:max-w-screen-lg">
   <Spacer height={144} />
-  <div class="grid grid-cols-8 gap-12 px-6 lg:px-0">
+  <div class="grid grid-cols-8 gap-12">
     {#each data.projects as project, index}
       <ProjectCard class="col-span-8 lg:col-span-4" {project} />
     {/each}
   </div>
 </section>
-<section id="about" class="container mx-auto max-w-screen-lg px-6 lg:px-0">
+<section id="about" class="ml-10 lg:ml-0 max-w-300 md:max-w-screen-lg">
   <Spacer height={144} />
   <a href="#about">
     <Display>about ryan</Display>

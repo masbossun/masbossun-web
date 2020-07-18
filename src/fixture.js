@@ -2,7 +2,7 @@ const data = {
   meta: {
     title: "masbossun — any developer",
   },
-  headline: "as a software\ndeveloper, ryan\ndoes his job\nwith passion",
+  headline: "as a software\ndeveloper, ryan\ndoes his works\nwith passion",
   about: [
     "his name is Ryan Setiagi, he currently working as a fulltime mobile developer at [rukita](https://rukita.co).",
     "basically he does frontend development for web and also for mobile app. he quite familiar with react environment such as [reactjs](https://reactjs.org/) and [react native](https://reactnative.dev). not tied to exact same development or environment, he can explore another frameworks and works with it if needed.",

@@ -37,7 +37,7 @@
       srcset={`${project.thumbnail}-${currentSeries}.webp,
              ${project.thumbnail}-${currentSeries}@2x.webp 2x,`}
       alt={project.thumbnail}
-      class="w-full" />
+      class="w-300" />
   </a>
   <Spacer height={16} />
   <Title size={20}>

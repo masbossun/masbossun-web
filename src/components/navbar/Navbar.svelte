@@ -10,7 +10,7 @@
   import Navlink from "./Navlink.svelte";
   import { bossunBars } from "../icon";
   import { Spacer } from "../common";
-  import { Caption } from "../typography";
+  import { Caption, Subtitle } from "../typography";
 
   export let dark = false;
   export let onItemPress = () => null;
@@ -72,13 +72,10 @@
 <svelte:window bind:innerWidth={screenWidth} />
 
 <div
-  class="container mx-auto max-w-screen-lg flex justify-between items-center
-  h-20 fixed inset-x-0 z-20 bg-primary {dark && 'bg-accent negative-dark'}">
+  class="ml-10 lg:ml-0 max-w-300 md:max-w-screen-lg flex justify-between
+  items-center h-20 absolute inset-x-0 z-20 bg-primary {dark && 'bg-accent negative-dark'}">
 
-  <Logo
-    class="px-6 lg:px-0"
-    on:click={() => (isMenuOpen = false)}
-    animated={false} />
+  <Logo on:click={() => (isMenuOpen = false)} animated={false} />
 
   {#if !isMobile}
     <div class="flex items-center">
@@ -121,13 +118,13 @@
       </button>
     </div>
   {:else}
-    <div class="p-6" on:click={toggleMenu}>
+    <!-- <div class="p-6" on:click={toggleMenu}>
       {#if isMenuOpen}
         <Icon icon={bossunTimes} width={24} height={24} class="text-accent" />
       {:else}
         <Icon icon={bossunBars} width={24} height={24} class="text-accent" />
       {/if}
-    </div>
+    </div> -->
   {/if}
 </div>
 
