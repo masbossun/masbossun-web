@@ -1,6 +1,6 @@
 {
   "name": "svelte-app",
-  "version": "1.0.0",
+  "version": "3.0.0-rc",
   "scripts": {
     "dev": "run-p routify rollup",
     "dev:nollup": "run-p routify nollup",
