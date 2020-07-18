@@ -64,7 +64,7 @@
 <section
   id="intro"
   class="container mx-auto max-w-screen-lg h-screen px-6 lg:px-0">
-  <Spacer height={160} />
+  <Spacer height={124} />
   <Display class="whitespace-pre-line">{data.headline}</Display>
   <Spacer height={40} />
   <BossunLine>view work</BossunLine>
