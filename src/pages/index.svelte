@@ -61,28 +61,32 @@
   <title>{data.meta.title}</title>
 </svelte:head>
 
-<section id="intro" class="ml-10 lg:ml-0 max-w-300 md:max-w-screen-lg">
-  <Spacer height={160} />
-  <Display class="whitespace-pre-line">{data.headline}</Display>
+<section id="intro" class="max-w-320 md:max-w-screen-lg grid grid-cols-8">
+  <Spacer class="col-span-8" height={160} />
+  <Display class="col-start-2 col-span-6 whitespace-pre-line">
+    {data.headline}
+  </Display>
 </section>
-<section id="works" class="ml-10 lg:ml-0 max-w-300 md:max-w-screen-lg">
+<section id="works" class="max-w-320 md:max-w-screen-lg">
   <Spacer height={144} />
-  <div class="grid grid-cols-8 gap-12">
+  <div class="grid grid-cols-8 row-gap-10">
     {#each data.projects as project, index}
-      <ProjectCard class="col-span-8 lg:col-span-4" {project} />
+      <ProjectCard class="col-start-2 col-span-6 lg:col-span-4" {project} />
     {/each}
   </div>
 </section>
-<section id="about" class="ml-10 lg:ml-0 max-w-300 md:max-w-screen-lg">
-  <Spacer height={144} />
-  <a href="#about">
-    <Display>about ryan</Display>
-  </a>
-  <Spacer height={32} />
+<section id="about" class="max-w-320 md:max-w-screen-lg grid grid-cols-8">
+  <Spacer class="col-span-8" height={144} />
+  <div class="col-start-2 col-span-6">
+    <a href="#about">
+      <Display>about ryan</Display>
+    </a>
+  </div>
+  <Spacer class="col-span-8" height={32} />
   {#each data.about as item}
-    <Body size={isMobile ? 16 : 24}>
+    <Body class="col-start-2 col-span-6" size={isMobile ? 16 : 24}>
       {@html converter.makeHtml(item)}
     </Body>
   {/each}
-  <Spacer height={144} />
+  <Spacer class="col-span-8" height={144} />
 </section>

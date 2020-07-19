@@ -72,60 +72,64 @@
 <svelte:window bind:innerWidth={screenWidth} />
 
 <div
-  class="ml-10 lg:ml-0 max-w-300 md:max-w-screen-lg flex justify-between
-  items-center h-20 absolute inset-x-0 z-20 bg-primary {dark && 'bg-accent negative-dark'}">
+  class="max-w-320 md:max-w-screen-lg h-20 absolute inset-x-0 z-20 bg-primary {dark && 'bg-accent negative-dark'}
+  grid grid-cols-8">
 
-  <Logo on:click={() => (isMenuOpen = false)} animated={false} />
+  <div class="col-start-2 col-span-6 flex justify-between items-center">
 
-  {#if !isMobile}
-    <div class="flex items-center">
-      <Navlink {dark} text={'blog'} link="blog/" />
-      <div class="w-4" />
-      <Navlink
-        {dark}
-        text={'works'}
-        on:click={() => onDesktopClick('#works')}
-        link="#works" />
-      <div class="w-4" />
-      <Navlink
-        {dark}
-        text={'about'}
-        on:click={() => onDesktopClick('#about')}
-        link="#about" />
-      <div class="w-4" />
-      <Navlink
-        {dark}
-        text={'contacts'}
-        on:click={() => onDesktopClick('#contacts')}
-        link="#contacts" />
-      <div class="w-4" />
-      <button
-        on:click={toggleDarkMode}
-        class="cursor-pointer mx-2 my-1 w-6 h-6">
-        {#if isDark}
-          <Icon
-            icon={sunIcon}
-            width={24}
-            height={24}
-            class={dark ? 'text-primary' : 'text-accent'} />
-        {:else}
-          <Icon
-            icon={moonIcon}
-            width={24}
-            height={24}
-            class={dark ? 'text-primary' : 'text-accent'} />
-        {/if}
-      </button>
-    </div>
-  {:else}
-    <!-- <div class="p-6" on:click={toggleMenu}>
+    <Logo on:click={() => (isMenuOpen = false)} animated={false} />
+
+    {#if !isMobile}
+      <div class="flex items-center">
+        <Navlink {dark} text={'blog'} link="blog/" />
+        <div class="w-4" />
+        <Navlink
+          {dark}
+          text={'works'}
+          on:click={() => onDesktopClick('#works')}
+          link="#works" />
+        <div class="w-4" />
+        <Navlink
+          {dark}
+          text={'about'}
+          on:click={() => onDesktopClick('#about')}
+          link="#about" />
+        <div class="w-4" />
+        <Navlink
+          {dark}
+          text={'contacts'}
+          on:click={() => onDesktopClick('#contacts')}
+          link="#contacts" />
+        <div class="w-4" />
+        <button
+          on:click={toggleDarkMode}
+          class="cursor-pointer mx-2 my-1 w-6 h-6">
+          {#if isDark}
+            <Icon
+              icon={sunIcon}
+              width={24}
+              height={24}
+              class={dark ? 'text-primary' : 'text-accent'} />
+          {:else}
+            <Icon
+              icon={moonIcon}
+              width={24}
+              height={24}
+              class={dark ? 'text-primary' : 'text-accent'} />
+          {/if}
+        </button>
+      </div>
+    {:else}
+      <!-- <div class="p-6" on:click={toggleMenu}>
       {#if isMenuOpen}
         <Icon icon={bossunTimes} width={24} height={24} class="text-accent" />
       {:else}
         <Icon icon={bossunBars} width={24} height={24} class="text-accent" />
       {/if}
     </div> -->
-  {/if}
+    {/if}
+  </div>
+
 </div>
 
 {#if isMenuOpen}

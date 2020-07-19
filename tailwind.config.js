@@ -34,11 +34,8 @@ module.exports = {
       screens: {
         "dark": { "raw": "(prefers-color-scheme: dark)" },
       },
-      width: {
-        300: "300px",
-      },
       maxWidth: {
-        300: "300px",
+        320: "400px",
       },
     },
   },

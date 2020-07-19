@@ -36,11 +36,10 @@
       src={`${project.thumbnail}-${currentSeries}.webp`}
       srcset={`${project.thumbnail}-${currentSeries}.webp,
              ${project.thumbnail}-${currentSeries}@2x.webp 2x,`}
-      alt={project.thumbnail}
-      class="w-300" />
+      alt={project.thumbnail} />
   </a>
   <Spacer height={16} />
-  <Title size={20}>
+  <Title size={16}>
     {project.name}
     <span class="font-normal">— {project.category}, {project.started_at}</span>
   </Title>

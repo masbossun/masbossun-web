@@ -6,4 +6,4 @@
   $: w = width ? width + "px" : "auto";
 </script>
 
-<span style="height: {h}; width: {w}" class="block" />
+<span style="height: {h}; width: {w}" class="block {$$props.class || ''}" />
