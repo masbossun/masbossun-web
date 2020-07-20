@@ -61,21 +61,28 @@
   <title>{data.meta.title}</title>
 </svelte:head>
 
-<section id="intro" class="max-w-320 md:max-w-screen-lg grid grid-cols-8">
+<section
+  id="intro"
+  class="mx-0 sm:mx-auto max-w-320 sm:max-w-screen-lg grid grid-cols-8">
   <Spacer class="col-span-8" height={160} />
   <Display class="col-start-2 col-span-6 whitespace-pre-line">
     {data.headline}
   </Display>
 </section>
-<section id="works" class="max-w-320 md:max-w-screen-lg">
-  <Spacer height={144} />
-  <div class="grid grid-cols-8 row-gap-10">
+<section
+  id="works"
+  class="mx-0 sm:mx-auto max-w-320 sm:max-w-screen-lg grid grid-cols-8">
+  <Spacer class="col-span-8" height={144} />
+  <div
+    class="col-start-2 col-span-6 grid grid-cols-8 row-gap-6 sm:gap-6 md:gap-10">
     {#each data.projects as project, index}
-      <ProjectCard class="col-start-2 col-span-6 lg:col-span-4" {project} />
+      <ProjectCard class="col-span-8 sm:col-span-4" {project} />
     {/each}
   </div>
 </section>
-<section id="about" class="max-w-320 md:max-w-screen-lg grid grid-cols-8">
+<section
+  id="about"
+  class="mx-0 sm:mx-auto max-w-320 sm:max-w-screen-lg grid grid-cols-8">
   <Spacer class="col-span-8" height={144} />
   <div class="col-start-2 col-span-6">
     <a href="#about">
@@ -84,7 +91,7 @@
   </div>
   <Spacer class="col-span-8" height={32} />
   {#each data.about as item}
-    <Body class="col-start-2 col-span-6" size={isMobile ? 16 : 24}>
+    <Body class="col-start-2 col-span-6" size={16}>
       {@html converter.makeHtml(item)}
     </Body>
   {/each}

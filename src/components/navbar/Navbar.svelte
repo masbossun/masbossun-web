@@ -35,12 +35,12 @@
   }
 
   function onDesktopClick(element) {
-    return animateScroll.scrollTo({ element });
+    return animateScroll.scrollTo({ element, offset: 80 });
   }
 
   function onMobilePress(element) {
     if (element) {
-      animateScroll.scrollTo({ element });
+      animateScroll.scrollTo({ element, offset: 80 });
     }
     onItemPress();
     return toggleMenu();
@@ -72,8 +72,8 @@
 <svelte:window bind:innerWidth={screenWidth} />
 
 <div
-  class="max-w-320 md:max-w-screen-lg h-20 absolute inset-x-0 z-20 bg-primary {dark && 'bg-accent negative-dark'}
-  grid grid-cols-8">
+  class="mx-0 sm:mx-auto max-w-320 sm:max-w-screen-lg h-20 absolute inset-x-0
+  z-20 bg-primary {dark && 'bg-accent negative-dark'} grid grid-cols-8">
 
   <div class="col-start-2 col-span-6 flex justify-between items-center">
 
@@ -82,39 +82,35 @@
     {#if !isMobile}
       <div class="flex items-center">
         <Navlink {dark} text={'blog'} link="blog/" />
-        <div class="w-4" />
         <Navlink
           {dark}
           text={'works'}
           on:click={() => onDesktopClick('#works')}
           link="#works" />
-        <div class="w-4" />
         <Navlink
           {dark}
           text={'about'}
           on:click={() => onDesktopClick('#about')}
           link="#about" />
-        <div class="w-4" />
         <Navlink
           {dark}
           text={'contacts'}
           on:click={() => onDesktopClick('#contacts')}
           link="#contacts" />
-        <div class="w-4" />
         <button
           on:click={toggleDarkMode}
           class="cursor-pointer mx-2 my-1 w-6 h-6">
           {#if isDark}
             <Icon
               icon={sunIcon}
-              width={24}
-              height={24}
+              width={16}
+              height={16}
               class={dark ? 'text-primary' : 'text-accent'} />
           {:else}
             <Icon
               icon={moonIcon}
-              width={24}
-              height={24}
+              width={16}
+              height={16}
               class={dark ? 'text-primary' : 'text-accent'} />
           {/if}
         </button>

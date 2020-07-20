@@ -27,83 +27,37 @@
 
 <svelte:window bind:innerWidth={screenWidth} />
 
-<footer
-  id="footer"
-  class="bg-accent py-10 text-primary negative-dark grid grid-cols-8">
-
-  <div class="col-start-2 col-span-8">
-
-    <section id="contacts" class="grid grid-cols-8 gap-10">
-      {#if !isMobile}
-        <div class="col-span-8 md:col-span-4 flex flex-col items-start my-4">
-          <Logo dark={true} />
-        </div>
-      {/if}
-      <div class="col-span-8 md:col-span-4">
-        {#if isMobile}
+<footer id="footer" class="bg-accent py-10 text-primary negative-dark">
+  <div class="mx-0 sm:mx-auto max-w-320 sm:max-w-screen-lg grid grid-cols-8">
+    <div class="col-start-2 col-span-8">
+      <section id="contacts" class="grid grid-cols-8 gap-10">
+        <div class="col-span-8 sm:col-span-4">
           <Subtitle weight="bold">let's talk</Subtitle>
           <Spacer height={4} />
           <a href={`mailto:${contactsCopy['email'].url}?subject=let's talk`}>
             <Subtitle weight="regular">{contactsCopy['email'].url}</Subtitle>
           </a>
-        {:else}
-          <Display class="text-right opacity-60">Let's talk</Display>
-          <a href={`mailto:${contactsCopy['email'].url}?subject=let's talk`}>
-            <Title class="text-primary text-right">
-              {contactsCopy['email'].url}
-            </Title>
-          </a>
-        {/if}
-      </div>
-    </section>
-
-    <Spacer height={40} />
-
-    <div class="flex flex-row opacity-60">
-      <ContactButton href={contactsCopy['linkedin'].url} icon={linkedinIcon} />
-      <div class="w-4" />
-      <ContactButton href={contactsCopy['github'].url} icon={githubIcon} />
-      <div class="w-4" />
-      <ContactButton href={contactsCopy['twitter'].url} icon={twitterIcon} />
-      <div class="w-4" />
-      <ContactButton
-        href={contactsCopy['instagram'].url}
-        icon={instagramIcon} />
-    </div>
-
-    <Spacer height={40} />
-
-    <div class="flex flex-col opacity-60">
-      <Caption>v3.0.0-rc &copy; {currentYear} masbossun</Caption>
-      <Caption>proudly made by myself in Jakarta, ID</Caption>
-    </div>
-
-    <!-- <section class="containers mx-auto max-w-screen-lg grid grid-cols-8 gap-10">
-    <div class="col-span-8 md:col-span-4 flex flex-col items-center">
-      <div class="flex flex-row">
+        </div>
+      </section>
+      <Spacer height={40} />
+      <div class="flex flex-row opacity-60">
         <ContactButton
           href={contactsCopy['linkedin'].url}
           icon={linkedinIcon} />
-        <div class="w-6" />
+        <div class="w-4" />
         <ContactButton href={contactsCopy['github'].url} icon={githubIcon} />
-        <div class="w-6" />
+        <div class="w-4" />
         <ContactButton href={contactsCopy['twitter'].url} icon={twitterIcon} />
-        <div class="w-6" />
+        <div class="w-4" />
         <ContactButton
           href={contactsCopy['instagram'].url}
           icon={instagramIcon} />
       </div>
+      <Spacer height={40} />
+      <div class="flex flex-col opacity-60">
+        <Caption>v3.0.0-rc &copy; {currentYear} masbossun</Caption>
+        <Caption>proudly made by myself in Jakarta, ID</Caption>
+      </div>
     </div>
-    <div class="col-span-8 md:col-span-4">
-      <Subtitle weight="bold" class="text-center">
-        &copy; {currentYear} masbossun
-      </Subtitle>
-      <div class="h-1" />
-      <Subtitle weight="regular" class="text-center">
-        proudly made by myself in jakarta, ID
-      </Subtitle>
-    </div>
-  </section> -->
   </div>
-
 </footer>
