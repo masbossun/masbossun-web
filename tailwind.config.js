@@ -10,9 +10,6 @@ module.exports = {
       gray: "rgba(var(--color-gray), 1)",
       white: "rgba(var(--color-light), 1)",
     },
-    letterSpacing: {
-      tighter: "-.04em",
-    },
     fontFamily: {
       sans: ["DM Sans", "sans-serif"],
       mono: ["DM Mono", "monospace"],
@@ -36,6 +33,9 @@ module.exports = {
       },
       maxWidth: {
         320: "400px",
+      },
+      letterSpacing: {
+        tighter: "-.04em",
       },
     },
   },

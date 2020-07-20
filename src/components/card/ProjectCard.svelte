@@ -2,7 +2,7 @@
   import { onDestroy } from "svelte";
 
   import { goto } from "@sveltech/routify";
-  import { Title } from "../typography";
+  import { Title, Subtitle } from "../typography";
   import { Spacer } from "../common";
   import { random } from "../../helper.js";
 
@@ -38,9 +38,11 @@
              ${project.thumbnail}-${currentSeries}@2x.webp 2x,`}
       alt={project.thumbnail} />
   </a>
-  <Spacer height={16} />
+  <Spacer height={8} />
   <Title size={16}>
     {project.name}
-    <span class="font-normal">— {project.category}, {project.started_at}</span>
+    <span class="tracking-normal font-normal opacity-60">
+      — {project.category}, {project.started_at}
+    </span>
   </Title>
 </div>

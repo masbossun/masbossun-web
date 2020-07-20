@@ -18,7 +18,7 @@
   h5 {
     @apply font-sans;
     font-style: normal;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 17px;
     margin: 0;
   }

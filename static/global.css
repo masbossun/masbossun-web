@@ -1,6 +1,7 @@
 :root {
   --color-pure-white: 255, 255, 255;
   --color-white-smoke: 244, 244, 244;
+  --color-mist: 200, 200, 200;
   --color-coal: 26, 26, 26;
   --color-dim-gray: 38, 38, 38;
   --color-smoke: 85, 85, 85;
@@ -19,7 +20,7 @@
 .theme-dark{
     --color-primary: var(--color-coal);
     --color-secondary: var(--color-dim-gray);
-    --color-accent: var(--color-white-smoke);
+    --color-accent: var(--color-mist);
     --color-accent-secondary: var(--color-blood);
     --color-gray: var(--color-smoke);
     --color-light: var(--color-pure-white);

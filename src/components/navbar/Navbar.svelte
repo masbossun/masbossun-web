@@ -74,11 +74,8 @@
 <div
   class="mx-0 sm:mx-auto max-w-320 sm:max-w-screen-lg h-20 absolute inset-x-0
   z-20 bg-primary {dark && 'bg-accent negative-dark'} grid grid-cols-8">
-
   <div class="col-start-2 col-span-6 flex justify-between items-center">
-
     <Logo on:click={() => (isMenuOpen = false)} animated={false} />
-
     {#if !isMobile}
       <div class="flex items-center">
         <Navlink {dark} text={'blog'} link="blog/" />
@@ -99,7 +96,7 @@
           link="#contacts" />
         <button
           on:click={toggleDarkMode}
-          class="cursor-pointer mx-2 my-1 w-6 h-6">
+          class="cursor-pointer mx-2 my-1 w-4 h-4">
           {#if isDark}
             <Icon
               icon={sunIcon}
@@ -116,49 +113,80 @@
         </button>
       </div>
     {:else}
-      <!-- <div class="p-6" on:click={toggleMenu}>
-      {#if isMenuOpen}
-        <Icon icon={bossunTimes} width={24} height={24} class="text-accent" />
-      {:else}
-        <Icon icon={bossunBars} width={24} height={24} class="text-accent" />
-      {/if}
-    </div> -->
+      <div class="flex items-center">
+        {#if isMenuOpen}
+          <button
+            on:click={toggleDarkMode}
+            class="cursor-pointer mx-2 my-1 w-4 h-4">
+            {#if isDark}
+              <Icon
+                icon={sunIcon}
+                width={16}
+                height={16}
+                class={dark ? 'text-primary' : 'text-accent'} />
+            {:else}
+              <Icon
+                icon={moonIcon}
+                width={16}
+                height={16}
+                class={dark ? 'text-primary' : 'text-accent'} />
+            {/if}
+          </button>
+          <Spacer width={16} />
+        {/if}
+        <div on:click={toggleMenu}>
+          {#if isMenuOpen}
+            <Icon
+              icon={bossunTimes}
+              width={16}
+              height={16}
+              class="text-accent" />
+          {:else}
+            <Icon
+              icon={bossunBars}
+              width={16}
+              height={16}
+              class="text-accent" />
+          {/if}
+        </div>
+      </div>
     {/if}
   </div>
-
 </div>
 
 {#if isMenuOpen}
   <div class="fixed inset-0 z-10 overflow-hidden bg-primary">
-    <Spacer height={160} />
-    <div class="px-6">
-      <Navlink mobile text="index" on:click={toggleMenu} link="/" />
-      <Spacer height={16} />
-      <Navlink mobile text="blog" on:click={toggleMenu} link="blog/" />
-      <Spacer height={16} />
-      <Navlink
-        mobile
-        text="works"
-        on:click={() => onMobilePress('#works')}
-        link="#works" />
-      <Spacer height={16} />
-      <Navlink
-        mobile
-        text="about"
-        on:click={() => onMobilePress('#about')}
-        link="#about" />
-      <Spacer height={16} />
-      <Navlink
-        mobile
-        text="contacts"
-        on:click={() => onMobilePress('#contacts')}
-        link="#contacts" />
-    </div>
-
-    <div
-      class="absolute inset-x-0 bottom-0 px-6 py-10 flex flex-col opacity-60">
-      <Caption>v3.0.0-rc &copy; {new Date().getFullYear()} masbossun</Caption>
-      <Caption>proudly made by ryan in Jakarta, ID</Caption>
+    <div class="mx-0 md:mx-auto max-w-320 md:max-w-screen-lg grid grid-cols-8">
+      <Spacer class="col-span-8" height={160} />
+      <div class="col-start-2 col-span-6">
+        <Navlink mobile text="index" on:click={toggleMenu} link="/" />
+        <Spacer height={16} />
+        <Navlink mobile text="blog" on:click={toggleMenu} link="blog/" />
+        <Spacer height={16} />
+        <Navlink
+          mobile
+          text="works"
+          on:click={() => onMobilePress('#works')}
+          link="#works" />
+        <Spacer height={16} />
+        <Navlink
+          mobile
+          text="about"
+          on:click={() => onMobilePress('#about')}
+          link="#about" />
+        <Spacer height={16} />
+        <Navlink
+          mobile
+          text="contacts"
+          on:click={() => onMobilePress('#contacts')}
+          link="#contacts" />
+        <div class="absolute opacity-60 flex flex-col" style="bottom: 40px">
+          <Caption>
+            v3.0.0-rc &copy; {new Date().getFullYear()} masbossun
+          </Caption>
+          <Caption>proudly made by ryan in Jakarta, ID</Caption>
+        </div>
+      </div>
     </div>
   </div>
 {/if}

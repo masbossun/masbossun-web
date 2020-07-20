@@ -25,7 +25,7 @@
       controls={false}
       controlsLayout={[]} />
   {:else}
-    <div class="bg-accent py-2 px-3">
+    <div class="bg-accent py-3 px-4">
       <Subtitle weight="bold" class="text-primary">masbossun</Subtitle>
     </div>
   {/if}

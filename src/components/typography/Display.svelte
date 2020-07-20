@@ -6,7 +6,7 @@
     margin: 0;
     line-height: 115.7%;
     letter-spacing: -0.07em;
-    font-size: 46px;
+    font-size: 44px;
   }
 </style>
 
