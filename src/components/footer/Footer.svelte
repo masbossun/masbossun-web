@@ -55,7 +55,7 @@
       </div>
       <Spacer height={40} />
       <div class="flex flex-col opacity-60">
-        <Caption>v3.0.0-rc &copy; {currentYear} masbossun</Caption>
+        <Caption>v3.0.0 &copy; {currentYear} masbossun</Caption>
         <Caption>proudly made by ryan in Jakarta, ID</Caption>
       </div>
     </div>

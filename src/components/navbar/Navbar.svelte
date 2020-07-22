@@ -185,9 +185,7 @@
           on:click={() => onMobilePress('#contacts')}
           link="#contacts" />
         <div class="absolute opacity-60 flex flex-col" style="bottom: 40px">
-          <Caption>
-            v3.0.0-rc &copy; {new Date().getFullYear()} masbossun
-          </Caption>
+          <Caption>v3.0.0 &copy; {new Date().getFullYear()} masbossun</Caption>
           <Caption>proudly made by ryan in Jakarta, ID</Caption>
         </div>
       </div>
