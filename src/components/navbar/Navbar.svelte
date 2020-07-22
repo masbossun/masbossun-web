@@ -1,7 +1,6 @@
 <script>
-  import bossunTimes from "../icon/bossunTimes";
-
   import { onMount } from "svelte";
+  import { url } from "@sveltech/routify";
   import Icon from "@iconify/svelte";
   import sunIcon from "@iconify/icons-uil/sun";
   import moonIcon from "@iconify/icons-uil/moon";
@@ -9,6 +8,7 @@
   import Logo from "../common/Logo.svelte";
   import Navlink from "./Navlink.svelte";
   import { bossunBars } from "../icon";
+  import bossunTimes from "../icon/bossunTimes";
   import { Spacer } from "../common";
   import { Caption, Subtitle } from "../typography";
 
@@ -78,7 +78,7 @@
     <Logo on:click={() => (isMenuOpen = false)} animated={false} />
     {#if !isMobile}
       <div class="flex items-center">
-        <Navlink {dark} text={'blog'} link="blog/" />
+        <Navlink {dark} text={'blog'} link={$url('/blog/')} />
         <Navlink
           {dark}
           text={'works'}
@@ -161,7 +161,11 @@
       <div class="col-start-2 col-span-6">
         <Navlink mobile text="index" on:click={toggleMenu} link="/" />
         <Spacer height={16} />
-        <Navlink mobile text="blog" on:click={toggleMenu} link="blog/" />
+        <Navlink
+          mobile
+          text="blog"
+          on:click={toggleMenu}
+          link={$url('/blog/')} />
         <Spacer height={16} />
         <Navlink
           mobile
