@@ -1,59 +1,62 @@
 <script>
-  import Content from "../common/Content.svelte";
+  import FooterSection from "./FooterSection.svelte";
+  import ContactButton from "./ContactButton.svelte";
   import Logo from "../common/Logo.svelte";
-  import {
-    LinkedinIcon,
-    TwitterIcon,
-    InstagramIcon,
-    GithubIcon
-  } from "svelte-feather-icons";
+  import githubIcon from "@iconify/icons-uil/github";
+  import twitterIcon from "@iconify/icons-uil/twitter";
+  import linkedinIcon from "@iconify/icons-uil/linkedin";
+  import instagramIcon from "@iconify/icons-uil/instagram-alt";
+  import { Display, Title, Subtitle, Caption, Body } from "../typography";
+  import data from "../../fixture";
+  import Spacer from "../common/Spacer.svelte";
+
   let currentYear = new Date().getFullYear();
+  let screenWidth;
+  let contactsCopy;
+
+  $: isMobile = screenWidth <= 640;
+
+  contactsCopy = {
+    email: data.contacts.find((S) => S.label === "email"),
+    linkedin: data.contacts.find((S) => S.label === "linkedin"),
+    github: data.contacts.find((S) => S.label === "github"),
+    twitter: data.contacts.find((S) => S.label === "twitter"),
+    instagram: data.contacts.find((S) => S.label === "instagram"),
+  };
 </script>
 
-<footer id="footer" class="container mx-auto">
-  <hr class="opacity-10" />
+<svelte:window bind:innerWidth={screenWidth} />
 
-  <div class="h-12" />
-
-  <div>
-    <div class="flex flex-col lg:flex-row items-center justify-between mb-24">
-      <span class="font-sans font-bold text-2xl mb-8 lg:mb-0">
-        get in touch
-      </span>
-      <div class="flex">
-        <a href="https://linkedin.com/in/ryan-setiagi">
-          <div class="w-8 text-accent mx-4">
-            <LinkedinIcon />
-          </div>
-        </a>
-        <a href="https://github.com/masbossun">
-          <div class="w-8 text-accent mx-4">
-            <GithubIcon />
-          </div>
-        </a>
-        <a href="https://twitter.com/masbossun">
-          <div class="w-8 text-accent mx-4">
-            <TwitterIcon />
-          </div>
-        </a>
-        <a href="https://instagram.com/masbossun">
-          <div class="w-8 text-accent mx-4">
-            <InstagramIcon />
-          </div>
-        </a>
+<footer id="footer" class="bg-accent py-10 text-primary negative-dark">
+  <div class="mx-0 sm:mx-auto max-w-320 sm:max-w-screen-lg grid grid-cols-8">
+    <div class="col-start-2 col-span-8">
+      <section id="contacts" class="grid grid-cols-8 gap-10">
+        <div class="col-span-8 sm:col-span-4">
+          <Subtitle weight="bold">let's talk</Subtitle>
+          <Spacer height={4} />
+          <a href={`mailto:${contactsCopy['email'].url}?subject=let's talk`}>
+            <Subtitle weight="regular">{contactsCopy['email'].url}</Subtitle>
+          </a>
+        </div>
+      </section>
+      <Spacer height={40} />
+      <div class="flex flex-row opacity-60">
+        <ContactButton
+          href={contactsCopy['linkedin'].url}
+          icon={linkedinIcon} />
+        <div class="w-4" />
+        <ContactButton href={contactsCopy['github'].url} icon={githubIcon} />
+        <div class="w-4" />
+        <ContactButton href={contactsCopy['twitter'].url} icon={twitterIcon} />
+        <div class="w-4" />
+        <ContactButton
+          href={contactsCopy['instagram'].url}
+          icon={instagramIcon} />
       </div>
-    </div>
-
-    <div class="flex flex-col lg:flex-row justify-between items-center mb-8">
-      <Logo classes="mb-8 lg:mb-0" animated={false} />
-      <div class="flex items-center flex-col items-center lg:items-end">
-        <span
-          class="font-sans text-accent mb-4 lg:mb-0 text-center lg:text-right">
-          proudly made in jakarta, ID
-        </span>
-        <a href=".">
-          <span class="font-serif text-accent">@{currentYear} / masbossun</span>
-        </a>
+      <Spacer height={40} />
+      <div class="flex flex-col opacity-60">
+        <Caption>v3.0.0-rc &copy; {currentYear} masbossun</Caption>
+        <Caption>proudly made by ryan in Jakarta, ID</Caption>
       </div>
     </div>
   </div>

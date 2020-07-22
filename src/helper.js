@@ -1,22 +1,12 @@
-function printDate(text) {
-    const date = new Date(text);
-    const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-    ];
-    return `${
-        months[date.getMonth()]
-        } ${date.getDate()}, ${date.getFullYear()}`;
-}
+const random = (min, max, current) => {
+  let randomNum = Math.random() * (max - min) + min;
+  let roundedRandom = Math.round(randomNum);
 
-export { printDate }
+  if (current === roundedRandom) {
+    return roundedRandom + 1 > max ? roundedRandom - 1 : roundedRandom + 1;
+  }
+
+  return roundedRandom;
+};
+
+export { random };

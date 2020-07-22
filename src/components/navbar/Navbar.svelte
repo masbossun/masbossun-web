@@ -1,28 +1,48 @@
 <script>
-  export let classes = "";
-  export let segment;
-
-  import { ArrowLeftIcon, MenuIcon, XIcon } from "svelte-feather-icons";
+  import { onMount } from "svelte";
+  import { url } from "@sveltech/routify";
+  import Icon from "@iconify/svelte";
+  import sunIcon from "@iconify/icons-uil/sun";
+  import moonIcon from "@iconify/icons-uil/moon";
   import * as animateScroll from "svelte-scrollto";
   import Logo from "../common/Logo.svelte";
   import Navlink from "./Navlink.svelte";
-  import { goto, stores } from "@sapper/app";
+  import { bossunBars } from "../icon";
+  import bossunTimes from "../icon/bossunTimes";
+  import { Spacer } from "../common";
+  import { Caption, Subtitle } from "../typography";
+
+  export let dark = false;
+  export let onItemPress = () => null;
 
   let isMenuOpen = false;
   let isDark = false;
+  let isMounted = false;
+  let screenWidth;
 
-  function toggleMenu() {
+  $: isMobile = screenWidth <= 640;
+
+  onMount(() => {
+    isMounted = true;
+  });
+
+  async function toggleMenu() {
+    if (!isMounted) {
+      return null;
+    }
+
     isMenuOpen = !isMenuOpen;
   }
 
   function onDesktopClick(element) {
-    return animateScroll.scrollTo({ element });
+    return animateScroll.scrollTo({ element, offset: 80 });
   }
 
   function onMobilePress(element) {
     if (element) {
-      animateScroll.scrollTo({ element });
+      animateScroll.scrollTo({ element, offset: 80 });
     }
+    onItemPress();
     return toggleMenu();
   }
 
@@ -33,98 +53,144 @@
 
     if (isDark) {
       isDark = false;
-      return window.document.body.classList.replace(
-        "theme-dark",
-        "theme-light"
-      );
+      window.document.body.classList.replace("theme-dark", "theme-light");
+      return session.update((prev) => ({
+        ...prev,
+        settings: { theme: "theme-dark" },
+      }));
     }
 
     isDark = true;
-    return window.document.body.classList.replace("theme-light", "theme-dark");
-  }
-
-  const { page } = stores();
-  $: path = $page.path;
-
-  async function navigateBack() {
-    const paths = path.split("/");
-    if (paths[paths.length - 1] === "") {
-      paths.pop();
-    }
-    return goto(paths.slice(0, paths.length - 1).join("/") + "/");
+    window.document.body.classList.replace("theme-light", "theme-dark");
+    return session.update((prev) => ({
+      ...prev,
+      settings: { theme: "theme-light" },
+    }));
   }
 </script>
 
-{#if segment === 'blog'}
-  <div class="flex justify-between items-center py-8 px-6 lg:px-0 {classes}">
-    <button on:click={navigateBack} class="w-8">
-      <ArrowLeftIcon />
-    </button>
-  </div>
-{:else}
+<svelte:window bind:innerWidth={screenWidth} />
 
-  <div class="flex justify-between items-center {classes}">
-    <Logo animated={true} />
-    <div
-      on:click={onMobilePress}
-      class="flex md:hidden cursor-pointer w-8 h-8 mr-4">
-      <MenuIcon />
-    </div>
-    {#if isMenuOpen}
-      <div class="fixed inset-0 bg-primary z-40">
-        <div class="flex flex-col justify-around items-center h-full py-64">
-          <Navlink
-            {segment}
-            on:click={() => onMobilePress('#bio')}
-            text={'bio'}
-            link="." />
-          <Navlink
-            {segment}
-            on:click={() => onMobilePress('#projects')}
-            text={'projects'}
-            link="." />
-          <Navlink
-            {segment}
-            on:click={() => onMobilePress()}
-            text={'blog'}
-            link="blog/" />
-          <Navlink
-            {segment}
-            link="."
-            on:click={() => onMobilePress('#footer')}
-            text={'contact me'} />
-          <Navlink
-            {segment}
-            text="switch {isDark ? 'light' : 'dark'}"
-            on:click={() => toggleDarkMode({ mobile: true })} />
-        </div>
+<div
+  class="mx-0 sm:mx-auto max-w-320 sm:max-w-screen-lg h-20 absolute inset-x-0
+  z-20 bg-primary {dark && 'bg-accent negative-dark'} grid grid-cols-8">
+  <div class="col-start-2 col-span-6 flex justify-between items-center">
+    <Logo on:click={() => (isMenuOpen = false)} animated={false} />
+    {#if !isMobile}
+      <div class="flex items-center">
+        <Navlink {dark} text={'blog'} link={$url('/blog/')} />
+        <Navlink
+          {dark}
+          text={'works'}
+          on:click={() => onDesktopClick('#works')}
+          link="#works" />
+        <Navlink
+          {dark}
+          text={'about'}
+          on:click={() => onDesktopClick('#about')}
+          link="#about" />
+        <Navlink
+          {dark}
+          text={'contacts'}
+          on:click={() => onDesktopClick('#contacts')}
+          link="#contacts" />
         <button
-          on:click={onMobilePress}
-          class="fixed top-0 right-0 z-50 w-8 h-8 mr-4 my-4">
-          <XIcon />
+          on:click={toggleDarkMode}
+          class="cursor-pointer mx-2 my-1 w-4 h-4">
+          {#if isDark}
+            <Icon
+              icon={sunIcon}
+              width={16}
+              height={16}
+              class={dark ? 'text-primary' : 'text-accent'} />
+          {:else}
+            <Icon
+              icon={moonIcon}
+              width={16}
+              height={16}
+              class={dark ? 'text-primary' : 'text-accent'} />
+          {/if}
         </button>
       </div>
+    {:else}
+      <div class="flex items-center">
+        {#if isMenuOpen}
+          <button
+            on:click={toggleDarkMode}
+            class="cursor-pointer mx-2 my-1 w-4 h-4">
+            {#if isDark}
+              <Icon
+                icon={sunIcon}
+                width={16}
+                height={16}
+                class={dark ? 'text-primary' : 'text-accent'} />
+            {:else}
+              <Icon
+                icon={moonIcon}
+                width={16}
+                height={16}
+                class={dark ? 'text-primary' : 'text-accent'} />
+            {/if}
+          </button>
+          <Spacer width={16} />
+        {/if}
+        <div on:click={toggleMenu}>
+          {#if isMenuOpen}
+            <Icon
+              icon={bossunTimes}
+              width={16}
+              height={16}
+              class="text-accent" />
+          {:else}
+            <Icon
+              icon={bossunBars}
+              width={16}
+              height={16}
+              class="text-accent" />
+          {/if}
+        </div>
+      </div>
     {/if}
-    <div class="hidden md:flex">
-      <Navlink
-        {segment}
-        text={'bio'}
-        on:click={() => onDesktopClick('#bio')}
-        link="." />
-      <Navlink
-        {segment}
-        text={'projects'}
-        on:click={() => onDesktopClick('#projects')}
-        link="." />
-      <Navlink {segment} text={'blog'} link="blog/" />
-      <Navlink
-        {segment}
-        text={'contact me'}
-        on:click={() => onDesktopClick('#footer')} />
-      <Navlink
-        {segment}
-        text="switch {isDark ? 'light' : 'dark'}"
-        on:click={toggleDarkMode} />
+  </div>
+</div>
+
+{#if isMenuOpen}
+  <div class="fixed inset-0 z-10 overflow-hidden bg-primary">
+    <div class="mx-0 md:mx-auto max-w-320 md:max-w-screen-lg grid grid-cols-8">
+      <Spacer class="col-span-8" height={160} />
+      <div class="col-start-2 col-span-6">
+        <Navlink mobile text="index" on:click={toggleMenu} link="/" />
+        <Spacer height={16} />
+        <Navlink
+          mobile
+          text="blog"
+          on:click={toggleMenu}
+          link={$url('/blog/')} />
+        <Spacer height={16} />
+        <Navlink
+          mobile
+          text="works"
+          on:click={() => onMobilePress('#works')}
+          link="#works" />
+        <Spacer height={16} />
+        <Navlink
+          mobile
+          text="about"
+          on:click={() => onMobilePress('#about')}
+          link="#about" />
+        <Spacer height={16} />
+        <Navlink
+          mobile
+          text="contacts"
+          on:click={() => onMobilePress('#contacts')}
+          link="#contacts" />
+        <div class="absolute opacity-60 flex flex-col" style="bottom: 40px">
+          <Caption>
+            v3.0.0-rc &copy; {new Date().getFullYear()} masbossun
+          </Caption>
+          <Caption>proudly made by ryan in Jakarta, ID</Caption>
+        </div>
+      </div>
     </div>
   </div>
 {/if}

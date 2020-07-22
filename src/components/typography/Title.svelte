@@ -1,0 +1,39 @@
+<script>
+  export let size = 36;
+</script>
+
+<style>
+  .title {
+    @apply font-sans;
+    font-style: normal;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.07em;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+</style>
+
+{#if size === 36}
+  <h2 {...$$restProps} class="{$$props.class || ''} title">
+    <slot />
+  </h2>
+{:else if size === 24}
+  <h3 {...$$restProps} class="{$$props.class || ''} title">
+    <slot />
+  </h3>
+{:else}
+  <h4 {...$$restProps} class="{$$props.class || ''} title">
+    <slot />
+  </h4>
+{/if}

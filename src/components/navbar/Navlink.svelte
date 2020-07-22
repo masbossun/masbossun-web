@@ -1,9 +1,11 @@
 <script>
-  export let segment;
   export let link = "#";
   export let text;
+  export let dark = false;
+  export let mobile = false;
 
   import { createEventDispatcher } from "svelte";
+  import { Subtitle, Display } from "../typography";
 
   const dispatch = createEventDispatcher();
 
@@ -13,14 +15,16 @@
 </script>
 
 <a
-  rel={segment === 'blog' ? 'prefetch' : undefined}
   aria-current="page"
   on:click={onClick}
   href={link}
-  class="cursor-pointer px-4">
-  <div class="bg-primary py-2 px-4">
-    <span class="font-sans font-normal text-accent text-xl hover:text-gray">
+  class="{$$restProps.class || ''} cursor-pointer {mobile ? '' : 'px-4 py-3'}
+  ">
+  {#if mobile}
+    <Display>{text}</Display>
+  {:else}
+    <Subtitle weight="medium" class={dark ? 'text-primary' : 'text-accent'}>
       {text}
-    </span>
-  </div>
+    </Subtitle>
+  {/if}
 </a>

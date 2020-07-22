@@ -1,18 +1,32 @@
 <script>
-  export let classes = "";
+  import { createEventDispatcher } from "svelte";
+  import { Subtitle } from "../typography";
+  import { LottiePlayer } from "@lottiefiles/svelte-lottie-player";
+
   export let animated = false;
+
+  const dispatch = createEventDispatcher();
+
+  function onClick() {
+    dispatch("click");
+  }
 </script>
 
-<style>
-  #logo-container {
-    max-height: 52px;
-  }
-</style>
-
-<a href="https://masbossun.web.id" class="cursor-pointer {classes}">
+<a href="/" class="cursor-pointer {$$props.class || ''}" on:click={onClick}>
   {#if animated}
-    <div id="logo-container" />
+    <LottiePlayer
+      src="/images/masbossun-lottie.json"
+      width={200}
+      height="auto"
+      autoplay={true}
+      loop={false}
+      renderer="svg"
+      background="transparent"
+      controls={false}
+      controlsLayout={[]} />
   {:else}
-    <img src="images/masbossun-logo.svg" alt="masbossun's logo" />
+    <div class="bg-accent py-3 px-4">
+      <Subtitle weight="bold" class="text-primary">masbossun</Subtitle>
+    </div>
   {/if}
 </a>

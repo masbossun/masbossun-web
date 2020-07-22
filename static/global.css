@@ -1,0 +1,80 @@
+:root {
+  --color-pure-white: 255, 255, 255;
+  --color-white-smoke: 244, 244, 244;
+  --color-mist: 200, 200, 200;
+  --color-coal: 26, 26, 26;
+  --color-dim-gray: 38, 38, 38;
+  --color-smoke: 85, 85, 85;
+  --color-blood: 234, 97, 97;
+}
+
+.theme-light{
+    --color-primary: var(--color-white-smoke);
+    --color-secondary: var(--color-blood);
+    --color-accent: var(--color-coal);
+    --color-accent-secondary: var(--color-dim-gray);
+    --color-gray: var(--color-smoke);
+    --color-light: var(--color-pure-white);
+}
+
+.theme-dark{
+    --color-primary: var(--color-coal);
+    --color-secondary: var(--color-dim-gray);
+    --color-accent: var(--color-mist);
+    --color-accent-secondary: var(--color-blood);
+    --color-gray: var(--color-smoke);
+    --color-light: var(--color-pure-white);
+}
+
+.theme-dark .negative-dark {
+    --color-primary: var(--color-white-smoke);
+    --color-accent: var(--color-dim-gray);
+}
+
+
+body{
+  margin: 0;
+  font-family: DM Sans, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: rgba(var(--color-primary),1);
+  color: rgba(var(--color-accent), 1);
+}
+
+body::-webkit-scrollbar-thumb:hover{
+  background: rgba(var(--color-accent), 1);
+}
+
+body::-webkit-scrollbar-thumb{
+  background: rgba( var(--color-gray), 1);
+}
+
+body::-webkit-scrollbar{
+  background: none;
+  width: 8px;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -104px;
+    visibility: hidden;
+}
+
+p > a{
+  text-decoration: underline;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.disable-scroll {
+  height: 100%;
+  overflow: hidden;
+}
