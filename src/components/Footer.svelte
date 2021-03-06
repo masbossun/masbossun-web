@@ -13,7 +13,9 @@
       <i class="uil uil-instagram-alt" />
     </a>
   </div>
-  <span>proudly made by ryan</span>
+  <span>
+    <strike>proudly made by ryan</strike> under maintenance
+  </span>
 </footer>
 
 <style>
