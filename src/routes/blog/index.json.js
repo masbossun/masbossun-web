@@ -1,45 +1,42 @@
 import fs from "fs";
 import fm from "front-matter";
+import { formatDate } from "../../helper";
+import { compile } from "mdsvex";
 
-function formatDate(dates) {
-  const MONTH = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "June",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const d = new Date(dates);
-  const date = d.getDate();
-  const month = MONTH[d.getMonth()];
-  const year = d.getFullYear();
+const getPosts = async () => {
+  const LIMIT = 60;
+  let result = [];
+  const dir = fs.readdirSync("./src/routes/blog");
+  const svxs = dir.filter((S) => S.endsWith(".svx"));
 
-  return `${date} ${month} ${year}`;
-}
-
-const posts = fs
-  .readdirSync("./src/routes/blog")
-  .filter((S) => S.endsWith(".svx"))
-  .map((S) => {
-    const content = fs.readFileSync(`./src/routes/blog/${S}`, {
+  for (let index = 0; index < svxs.length; index++) {
+    const element = svxs[index];
+    const content = fs.readFileSync(`./src/routes/blog/${element}`, {
       encoding: "utf-8",
     });
     const { attributes, body } = fm(content);
-    return {
-      ...attributes,
-      formattedDate: formatDate(attributes.date),
-      short: body.substr(0, 200),
-    };
-  })
-  .sort((a, b) => new Date(b.date) - new Date(a.date));
+    const compiled = await compile(body.split(" ").slice(0, LIMIT).join(" "));
+    result = [
+      ...result,
+      {
+        ...attributes,
+        formattedDate: formatDate(attributes.date),
+        short: compiled.code.replace(/(<([^>]+)>)/gi, "") + "...",
+      },
+    ];
+  }
+
+  return new Promise((resolve) => {
+    if (result && result.length) {
+      resolve(result.sort((a, b) => new Date(b.date) - new Date(a.date)));
+    } else {
+      resolve([]);
+    }
+  });
+};
+
 export async function get(req, res, next) {
+  const posts = await getPosts();
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify({ posts }));
 }

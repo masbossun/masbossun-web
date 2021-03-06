@@ -28,7 +28,7 @@ const preprocess = [
     sourceMap: dev,
   }),
   mdsvex({
-    layout: join(__dirname, "./src/layouts/BlogLayout.svelte"),
+    layout: join(__dirname, "./src/layouts/_blog.svelte"),
   }),
 ];
 
