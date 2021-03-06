@@ -1,7 +1,7 @@
 <script context="module">
-  import { img, blockquote } from "../components/markdown";
+  import { p, img, blockquote } from "../components/markdown";
 
-  export { img, blockquote };
+  export { p, img, blockquote };
 </script>
 
 <script>
