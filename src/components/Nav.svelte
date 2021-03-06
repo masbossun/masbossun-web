@@ -5,7 +5,7 @@
 <nav>
   <a href=".">
     <div class="logo-container">
-      <span class="subtitle-bold logo-content">masbossun</span>
+      <span class="logo-content">masbossun</span>
     </div>
   </a>
   <ul>
@@ -13,22 +13,19 @@
       <a
         rel="prefetch"
         aria-current={segment === "blog" ? "page" : undefined}
-        href="blog"
-        class="subtitle-bold">blog</a
+        href="blog">blog</a
       >
     </li>
     <!-- <li>
       <a
         aria-current={segment === "works" ? "page" : undefined}
-        href="works"
-        class="subtitle-bold">works</a
+        href="works">works</a
       >
     </li> -->
     <li>
       <a
         aria-current={segment === "contacts" ? "page" : undefined}
-        href="contacts"
-        class="subtitle-bold">contacts</a
+        href="contacts">contacts</a
       >
     </li>
   </ul>
@@ -36,7 +33,7 @@
 
 <style>
   nav {
-    padding: 24px 16px;
+    padding: 16px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -67,5 +64,14 @@
   a {
     text-decoration: none;
     display: block;
+  }
+
+  @media (min-width: 576px) {
+    nav {
+      padding: 32px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 </style>

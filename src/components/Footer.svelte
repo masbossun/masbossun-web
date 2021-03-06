@@ -13,7 +13,7 @@
       <i class="uil uil-instagram-alt" />
     </a>
   </div>
-  <span class="label">proudly made by ryan</span>
+  <span>proudly made by ryan</span>
 </footer>
 
 <style>

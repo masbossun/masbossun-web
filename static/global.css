@@ -1,16 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans&family=Source+Serif+Pro:wght@900&family=Source+Serif+Pro:ital,wght@1,600&display=swap");
 
-h1,
-.h1 {
-  font-family: "Source Serif Pro", serif;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 48.83px;
-  line-height: 64px;
-  margin: 24px 0px 8px 0;
-}
-h2,
-.h2 {
+h1 {
   font-family: "Source Serif Pro", serif;
   font-style: normal;
   font-weight: 900;
@@ -18,8 +8,7 @@ h2,
   line-height: 48px;
   margin: 24px 0px 8px 0;
 }
-h3,
-.h3 {
+h2 {
   font-family: "Source Serif Pro", serif;
   font-style: normal;
   font-weight: 900;
@@ -27,8 +16,7 @@ h3,
   line-height: 40px;
   margin: 24px 0px 8px 0;
 }
-h4,
-.h4 {
+h3 {
   font-family: "Source Serif Pro", serif;
   font-style: normal;
   font-weight: 900;
@@ -36,14 +24,30 @@ h4,
   line-height: 32px;
   margin: 24px 0px 8px 0;
 }
-h5,
-.h5 {
+h4 {
   font-family: "Source Serif Pro", serif;
   font-style: normal;
   font-weight: 900;
   font-size: 20px;
   line-height: 24px;
   margin: 24px 0px 8px 0;
+}
+
+p {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 0 16px 0;
+}
+
+span {
+  font-family: "DM Mono", monospace;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12.8px;
+  line-height: 16px;
 }
 
 body {
@@ -71,96 +75,6 @@ code {
   font-size: 14px;
 }
 
-p {
-  margin: 0 0 16px 0;
-}
-
-.display-desktop {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 44px;
-  line-height: 115.7%;
-  letter-spacing: -0.04em;
-}
-
-.title-20 {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 20px;
-  letter-spacing: -0.02em;
-}
-
-.subtitle-regular {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 21px;
-  text-align: center;
-  text-transform: lowercase;
-  font-feature-settings: "ss03" on;
-}
-
-.subtitle-medium {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 16px;
-  text-transform: lowercase;
-}
-
-.subtitle-bold {
-  font-family: "DM Mono", monospace;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 16px;
-}
-
-.body-24 {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 48px;
-}
-
-.body-18 {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 32px;
-}
-
-.body-16 {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.label {
-  font-family: "DM Mono", monospace;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12.8px;
-  line-height: 16px;
-}
-
-.caption {
-  font-family: "DM Sans", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-}
-
 .logo-container {
   display: flex;
   flex-direction: row;
@@ -173,32 +87,117 @@ p {
   color: #f4f4f4;
 }
 
-.gap-8 {
+.space-v-1 {
+  height: 4px;
+}
+
+.space-v-1\.5 {
+  height: 6px;
+}
+
+.space-v-2 {
   height: 8px;
-  width: 8px;
 }
 
-.gap-12 {
+.space-v-3 {
   height: 12px;
-  width: 12px;
 }
 
-.gap-16 {
+.space-v-4 {
   height: 16px;
-  width: 16px;
 }
 
-.gap-24 {
-  height: 24px;
-  width: 24px;
-}
-
-.gap-32 {
+.space-v-8 {
   height: 32px;
-  width: 32px;
 }
 
-.gap-160 {
-  height: 160px;
-  width: 160px;
+.space-v-10 {
+  height: 40px;
+}
+
+.space-v-20 {
+  height: 80px;
+}
+
+@media (min-width: 576px) {
+  h1 {
+    font-family: "Source Serif Pro", serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 48.83px;
+    line-height: 64px;
+    margin: 24px 0px 8px 0;
+  }
+  h2 {
+    font-family: "Source Serif Pro", serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 39.06px;
+    line-height: 48px;
+    margin: 24px 0px 8px 0;
+  }
+  h3 {
+    font-family: "Source Serif Pro", serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 31.25px;
+    line-height: 40px;
+    margin: 24px 0px 8px 0;
+  }
+  h4 {
+    font-family: "Source Serif Pro", serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+    line-height: 32px;
+    margin: 24px 0px 8px 0;
+  }
+  h5 {
+    font-family: "Source Serif Pro", serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 24px 0px 8px 0;
+  }
+  p {
+    font-family: "DM Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    margin: 0 0 16px 0;
+  }
+
+  .space-v-1 {
+    height: 8px;
+  }
+
+  .space-v-1\.5 {
+    height: 12px;
+  }
+
+  .space-v-2 {
+    height: 16px;
+  }
+
+  .space-v-3 {
+    height: 24px;
+  }
+
+  .space-v-4 {
+    height: 32px;
+  }
+
+  .space-v-8 {
+    height: 64px;
+  }
+
+  .space-v-10 {
+    height: 80px;
+  }
+
+  .space-v-20 {
+    height: 160px;
+  }
 }

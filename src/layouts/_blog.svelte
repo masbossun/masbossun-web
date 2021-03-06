@@ -1,7 +1,7 @@
 <script context="module">
-  import { p, img, blockquote } from "../components/markdown";
+  import { img, blockquote } from "../components/markdown";
 
-  export { p, img, blockquote };
+  export { img, blockquote };
 </script>
 
 <script>
@@ -32,17 +32,17 @@
   <h1 class="header">
     {title}
   </h1>
-  <div class="gap-160" />
+  <div class="space-v-20" />
   <div class="post-date">
-    <span class="label">
+    <span>
       {formatDate(date)} - {author.toLowerCase()}
     </span>
   </div>
-  <div class="gap-32" />
+  <div class="space-v-4" />
   <img src={thumbnail} alt={thumbnailAlt} />
-  <div class="gap-16" />
+  <div class="space-v-2" />
   <div class="thumbnail-alt">
-    <span class="label">
+    <span>
       {@html thumbnailAltHTML}
     </span>
   </div>
@@ -53,7 +53,7 @@
     <h3>***</h3>
   </div>
   <div class="post-footer">
-    <p class="body-16">
+    <p>
       If you find any misleading information or grammar issue, feel free to make
       corrections <a href="/">here</a>.
     </p>
@@ -62,14 +62,13 @@
 
 <style>
   section {
-    padding: 160px 0;
+    padding: 80px 0;
   }
   img {
     width: 100%;
   }
   .header {
-    padding: 0 16px;
-    width: 320px;
+    padding: 0 24px;
   }
   .thumbnail-alt {
     display: flex;
@@ -78,26 +77,61 @@
     opacity: 0.7;
   }
   .post-date {
-    padding: 0 16px;
+    padding: 0 24px;
     opacity: 0.5;
   }
   .post-body {
-    padding: 32px 24px;
+    padding: 24px 24px;
   }
   .end-symbol {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 24px;
+    padding: 16px;
   }
   .post-footer {
     display: flex;
     flex-direction: column;
-    padding: 24px 32px;
-    background: #078080;
+    padding: 16px 24px;
+    background: #f8f5f2;
   }
   .post-footer > p {
     margin-bottom: 0px;
-    color: #fffffe;
+    color: #232323;
+  }
+
+  @media (min-width: 576px) {
+    section {
+      padding: 160px 0;
+    }
+    .header {
+      padding: 0 16px;
+      width: 320px;
+    }
+    .post-date {
+      padding: 0 16px;
+      opacity: 0.5;
+    }
+    .post-body {
+      padding: 32px 24px;
+    }
+    .end-symbol {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 24px;
+    }
+    .end-symbol {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 24px;
+    }
+    .post-footer {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 32px;
+      background: #f8f5f2;
+    }
   }
 </style>

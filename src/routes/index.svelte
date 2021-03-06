@@ -27,25 +27,22 @@
       as a software <br /> developer, ryan <br /> does his works <br /> with passion
     </h1>
   </div>
-  <div class="gap-160" />
+  <div class="space-v-20" />
   <div class="grid-container">
     <div class="grid-item">
       <img src="/images/index/works-winsen.png" alt="winsen site" />
     </div>
     <div class="grid-item">
-      <img src="/images/index/works-rekber.png" alt="winsen site" />
+      <img src="/images/index/works-rekber.png" alt="rekber" />
     </div>
     <div class="grid-item">
-      <img src="/images/index/works-bukom-digital.png" alt="winsen site" />
+      <img src="/images/index/works-bukom-digital.png" alt="bukom digital" />
     </div>
     <div class="grid-item">
-      <img src="/images/index/works-hijrah.png" alt="winsen site" />
+      <img src="/images/index/works-hijrah.png" alt="hijrah" />
     </div>
-    <!-- <div class="grid-item">item 2</div>
-    <div class="grid-item">item 3</div>
-    <div class="grid-item">item 4</div> -->
   </div>
-  <div class="gap-160" />
+  <div class="space-v-20" />
   <div>
     <p class="body-18">
       his name is Ryan Setiagi, he currently working as a fulltime mobile
@@ -67,25 +64,18 @@
 
 <style>
   section {
-    padding: 160px 16px;
+    padding: 80px 24px;
   }
+
   a {
     color: #f45d48;
     text-decoration: none;
   }
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 24px;
     grid-auto-rows: minmax(100px, auto);
-  }
-  @media (max-width: 660px) {
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 24px;
-      grid-auto-rows: minmax(100px, auto);
-    }
   }
   .grid-item {
     aspect-ratio: 1;
@@ -94,5 +84,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  @media (min-width: 576px) {
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      grid-auto-rows: minmax(100px, auto);
+    }
+    section {
+      padding: 160px 16px;
+    }
   }
 </style>

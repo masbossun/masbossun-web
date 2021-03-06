@@ -40,7 +40,7 @@
       <br /> you name it
     </h1>
   </div>
-  <div class="gap-160" />
+  <div class="space-v-20" />
   {#each post.posts as post}
     <div class="post-item">
       <a rel="prefetch" href="blog/{post.slug}">
@@ -48,35 +48,33 @@
           {post.title}
         </h2>
       </a>
-      <div class="gap-8" />
-      <span class="post-date label">{post.formattedDate} - {post.author}</span>
-      <div class="gap-24" />
+      <span class="post-date">{post.formattedDate} - {post.author}</span>
+      <div class="space-v-3" />
       <p class="body-18">{post.short}</p>
-      <div class="gap-24" />
+      <div class="space-v-3" />
       <a rel="prefetch" href="blog/{post.slug}">
         <div class="button-container">
-          <span class="subtitle-bold button-content">read more</span>
+          <span class="button-content">read more</span>
         </div>
       </a>
     </div>
     <div class="post-divider" />
   {/each}
-  <!-- <a href="." class="title-20">older posts</a> -->
 </section>
 
 <style>
   section {
-    padding: 160px 0;
+    padding: 80px 0;
   }
   .header {
-    padding: 0 20px;
+    padding: 0 24px;
   }
   .post-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 64px 16px;
+    padding: 40px 24px;
   }
   .post-date {
     opacity: 0.5;
@@ -85,11 +83,11 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 10px 15px;
-    background-color: #232323;
+    padding: 12px 16px;
+    background-color: #f8f5f2;
   }
   .button-content {
-    color: #f4f4f4;
+    color: #232323;
   }
   .post-divider {
     height: 2px;
@@ -97,5 +95,21 @@
   }
   a {
     text-decoration: none;
+  }
+
+  @media (min-width: 576px) {
+    section {
+      padding: 160px 0;
+    }
+    .header {
+      padding: 0 16px;
+    }
+    .post-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 64px 16px;
+    }
   }
 </style>
