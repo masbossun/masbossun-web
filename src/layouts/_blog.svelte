@@ -5,7 +5,9 @@
 </script>
 
 <script>
+  import { stores } from "@sapper/app";
   import { formatDate } from "../helper";
+  const { page } = stores();
 
   export let title;
   export let author;
@@ -13,10 +15,17 @@
   export let thumbnail;
   export let thumbnailAlt;
   export let thumbnailAltHTML;
+
+  const url = $page.host + $page.path;
 </script>
 
 <svelte:head>
   <title>{title} - masbossun</title>
+  <meta property="og:url" content={url} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content="Blog about {title}" />
+  <meta property="og:image" content={thumbnail} />
 </svelte:head>
 
 <section>

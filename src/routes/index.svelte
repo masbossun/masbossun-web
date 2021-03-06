@@ -1,8 +1,24 @@
+<script context="module">
+  export async function preload(page) {
+    const { host, path } = page;
+    const url = host + path;
+
+    const data = { url };
+
+    return data;
+  }
+</script>
+
 <script>
+  export let url;
 </script>
 
 <svelte:head>
   <title>masbossun</title>
+  <meta property="og:url" content={url} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="masbossun" />
+  <meta property="og:description" content="personal portofolio" />
 </svelte:head>
 
 <section>

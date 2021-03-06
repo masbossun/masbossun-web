@@ -1,25 +1,36 @@
 <script context="module" lang="ts">
-  export function preload() {
-    return this.fetch(`blog.json`)
-      .then((r) => r.json())
-      .then((posts) => {
-        return posts;
-      });
+  export async function preload(page) {
+    const { host, path } = page;
+    const result = await this.fetch("blog.json");
+    const posts = await result.json();
+    const url = host + path;
+
+    const data = { post: posts, url };
+
+    return data;
   }
 </script>
 
 <script lang="ts">
-  export let posts: {
-    slug: string;
-    title: string;
-    formattedDate: string;
-    author: string;
-    short: string;
-  }[];
+  export let post: {
+    posts: {
+      slug: string;
+      title: string;
+      formattedDate: string;
+      author: string;
+      short: string;
+    }[];
+  };
+  export let url: string = "";
 </script>
 
 <svelte:head>
   <title>Blog - masbossun</title>
+  <meta property="og:url" content={url} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="masbossun blog" />
+  <meta property="og:description" content="ryan write something here" />
+  <!-- <meta property="og:image" content={thumbnail} /> -->
 </svelte:head>
 
 <section>
@@ -30,7 +41,7 @@
     </h1>
   </div>
   <div class="gap-160" />
-  {#each posts as post}
+  {#each post.posts as post}
     <div class="post-item">
       <a rel="prefetch" href="blog/{post.slug}">
         <h2>
