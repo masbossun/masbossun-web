@@ -1,0 +1,58 @@
+---
+title: Vertical Rhythm
+date: "2021-03-06T06:11:42.804Z"
+slug: vertical-rhythm
+author: Ryan Setiagi
+thumbnail: https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80
+thumbnailAlt: Photo by Marius Masalar on Unsplash
+thumbnailAltHTML: <span>Photo by <a href="https://unsplash.com/@marius?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marius Masalar</a> on <a href="https://unsplash.com/s/photos/music-note?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+---
+
+# Header 1
+
+Lorem [ipsum](https://www.lipsum.com/feed/html) dolor sit amet, consectetur adipiscing elit. Suspendisse nec suscipit nibh, et posuere felis. Mauris nec nulla molestie, tincidunt neque at, dictum nisi. Cras at neque nec magna finibus malesuada a sed orci. Nulla porta velit quis dignissim lacinia. **Nulla iaculis odio** id arcu iaculis egestas. Pellentesque lorem mi, dignissim sed elementum vel, mattis vitae odio. Mauris sed consequat magna. Nulla ut rutrum ante. Nam porta arcu tortor, id dapibus ligula convallis pulvinar. Donec pretium, purus nec volutpat ornare, dui nibh elementum mi, _vehicula_ semper nisi ex id elit. Maecenas sed purus efficitur, euismod felis et, fringilla est. Etiam vel sapien sit amet neque elementum finibus at non est. Maecenas a iaculis
+odio.
+
+```html
+<html>
+  <body>
+    <h1>Hi there!</h1>
+  </body>
+</html>
+```
+
+Proin dignissim tincidunt feugiat. `Curabitur` sed dignissim diam. Suspendisse eleifend varius dapibus. Donec viverra gravida efficitur. Sed ut purus nulla. Fusce non felis hendrerit, tempus erat semper, pretium ante. Nulla facilisi.
+
+## Header 2
+
+Proin dignissim tincidunt feugiat. Curabitur sed dignissim diam. Suspendisse eleifend varius dapibus. Donec viverra gravida efficitur. Sed ut purus nulla. Fusce non felis hendrerit, tempus erat semper, pretium ante. Nulla facilisi.
+
+Proin dignissim tincidunt feugiat. Curabitur sed dignissim diam. Suspendisse eleifend varius dapibus. Donec viverra gravida efficitur. Sed ut purus nulla. Fusce non felis hendrerit, tempus erat semper, pretium ante. Nulla facilisi.
+
+![Helena Jankovičová Kováčová](https://images.unsplash.com/photo-1614951951198-d63497b40aaa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80)
+
+### Header 3
+
+Nam porta vestibulum eros, ut dapibus dui pretium non. Praesent tempor laoreet ligula, et lobortis erat ornare quis. Nunc sit amet tempus urna. Nullam ac est at libero elementum ornare. Cras ut diam id eros rhoncus aliquam nec ac est. Fusce fringilla risus ut turpis scelerisque, id dignissim lacus bibendum. Vivamus non posuere mauris, in feugiat nisi. Nam luctus molestie dui sit amet sollicitudin. Donec ultrices, sem sed mattis tincidunt, massa elit dignissim ligula, eu pharetra lacus diam id erat. Vivamus at dignissim tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec turpis a enim placerat pellentesque. Cras a velit elit.
+
+1. Number 1
+2. Number 2
+3. Not number 4
+
+- first item
+- second item
+- not forth item
+
+#### Header 4
+
+Suspendisse dui tortor, convallis a ultricies eu, pharetra ac urna. Nullam in interdum tortor, convallis venenatis elit. Curabitur ultricies risus ut cursus ultricies. Nunc nec posuere tellus. Aenean dignissim dui lobortis, elementum odio in, tincidunt sapien. Ut tellus magna, tempus sed enim a, convallis semper eros. Vestibulum bibendum non nisi sit amet malesuada. Nullam bibendum est ut ultrices pretium. Donec facilisis libero nec aliquam consequat.
+
+> Your time is limited, so don’t waste it living someone else’s life. Don’t be trapped by dogma – which is living with the results of other people’s thinking.
+>
+> Steve Jobs
+
+##### Header 5
+
+Mauris sagittis magna sit amet lorem convallis, a venenatis mi ullamcorper. Praesent viverra et augue nec placerat. Mauris in lacinia dolor. Etiam fringilla urna facilisis velit aliquam, eget accumsan augue mollis. Proin et massa tempus, luctus mi ut, rhoncus ipsum. Donec vel eleifend lorem. In in elementum ligula. Nulla sodales sit amet turpis sit amet ullamcorper.
+
+---

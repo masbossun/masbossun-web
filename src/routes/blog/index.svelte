@@ -19,29 +19,29 @@
 </script>
 
 <svelte:head>
-  <title>Blog</title>
+  <title>Blog - masbossun</title>
 </svelte:head>
 
 <section>
   <div class="header">
-    <span class="display-desktop">
-      ryan usually wrote <br /> something here, <br /> blog, article, etc,
+    <h1>
+      ryan usually wrote<br /> something here, <br /> blog, article, etc,
       <br /> you name it
-    </span>
+    </h1>
   </div>
   <div class="gap-160" />
   {#each posts as post}
     <div class="post-item">
-      <a href="blog/{post.slug}">
-        <span class="display-desktop">{post.title}</span>
+      <a rel="prefetch" href="blog/{post.slug}">
+        <h2>
+          {post.title}
+        </h2>
       </a>
-      <div class="gap-20" />
-      <span class="post-date subtitle-medium"
-        >{post.formattedDate} - {post.author}</span
-      >
-      <div class="gap-32" />
-      <span class="body-20">{post.short}...</span>
-      <div class="gap-32" />
+      <div class="gap-8" />
+      <span class="post-date label">{post.formattedDate} - {post.author}</span>
+      <div class="gap-24" />
+      <p class="body-18">{post.short}</p>
+      <div class="gap-24" />
       <a rel="prefetch" href="blog/{post.slug}">
         <div class="button-container">
           <span class="subtitle-bold button-content">read more</span>
@@ -65,7 +65,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 20px;
+    padding: 64px 16px;
   }
   .post-date {
     opacity: 0.5;
@@ -75,16 +75,14 @@
     flex-direction: row;
     align-items: flex-start;
     padding: 10px 15px;
-    background-color: #1a1a1a;
+    background-color: #232323;
   }
   .button-content {
     color: #f4f4f4;
   }
   .post-divider {
-    margin: 40px 0;
-    height: 1px;
-    background-color: #1a1a1a;
-    opacity: 0.2;
+    height: 2px;
+    background-color: #f8f5f2;
   }
   a {
     text-decoration: none;

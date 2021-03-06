@@ -1,11 +1,11 @@
 ---
 title: How I Setup My vscode
-date: '2019-01-31T14:33:10.059Z'
+date: "2019-01-31T14:33:10.059Z"
 slug: how-i-setup-my-vscode
 author: Ryan Setiagi
 ---
 
-Visual Studio Code is my favorite code editor right now. I always use it for writing code. I have been using vscode for almost 3 years. At my usage, i setup this code editor for developing JavaScript. For someone who do not know what vscode @break is, here is a paragraph from it's [website](https://code.visualstudio.com/docs).
+Visual Studio Code is my favorite code editor right now. I always use it for writing code. I have been using vscode for almost 3 years. At my usage, i setup this code editor for developing JavaScript. For someone who do not know what vscode is, here is a paragraph from it's [website](https://code.visualstudio.com/docs).
 
 > Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages (such as C++, C#, Java, Python, PHP, Go) and runtimes (such as .NET and Unity).
 

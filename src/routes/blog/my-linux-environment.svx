@@ -1,19 +1,17 @@
 ---
 title: My Linux Environment
-date: '2019-01-19T23:03:03.284Z'
+date: "2019-01-19T23:03:03.284Z"
 slug: my-linux-environment
 author: Ryan Setiagi
 ---
 
-On this post i would like to tell you about my environment and experience of using linux system operations. @break
+On this post i would like to tell you about my environment and experience of using linux system operations. I have been using linux as my daily basis operating system for about 6 months from 2018. Actually i used to use windows-based operating system for about 8 years, from **windows xp** to **seven** to **8** to **8.1** and lastly **windows 10**. But in the middle year of 2016 i learned another operating system with \*NIX based kernel called Linux. My first linux distro that i dual-booted to my disk is Ubuntu (_i forgot the version of it_). Since then i get used to using terminal and get rid all of the GUI-things and change to CLI and i feel more powerful at that time, and that is true because i am feeling just like hacker (_LOL, all geeky kid dreams_).
 
 ## <a name="experience-using-linux">Experience Using Linux</a>
 
 <p style="width: 100%; font-size:80%; text-align:center;">
-<img src="sai-kiran-anagani-555972-unsplash.jpg" alt="Unsplash Photo" width="100%" style="padding-bottom:0.5em;" />
+<img src="sai-kiran-anagani-555972-unsplash.jpg" alt="Coding" width="100%" style="padding-bottom:0.5em;" />
 Photo by Sai Kiran Anagani on Unsplash</p>
-
-I have been using linux as my daily basis operating system for about 6 months from 2018. Actually i used to use windows-based operating system for about 8 years, from **windows xp** to **seven** to **8** to **8.1** and lastly **windows 10**. But in the middle year of 2016 i learned another operating system with \*NIX based kernel called Linux. My first linux distro that i dual-booted to my disk is Ubuntu (_i forgot the version of it_). Since then i get used to using terminal and get rid all of the GUI-things and change to CLI and i feel more powerful at that time, and that is true because i am feeling just like hacker (_LOL, all geeky kid dreams_).
 
 But then the problems is come, first, a lot of features of Windows are not available or not so powerful on Linux such as **Microsoft Office**. Second my laptop disk is cannot accommodate any other data because i use separate disk partition for linux. third, at that time i feel like i not so needed the linux operation as my daily OS. So i deleted all my disk's partition with linux os inside.
 
@@ -39,7 +37,7 @@ Back to my GNOME, i am use [Gnome-Tweak-Tool](https://wiki.gnome.org/action/show
 
 1. Gnome-shell : [Mojave Dark](https://www.gnome-look.org/p/1215571/)
 2. GTK Theme : [Sierra Dark Solid]()
-3. Cursor : [Pop](#)
+3. Cursor : [Pop]()
 4. Icon Theme : [Numix Circle](https://github.com/numixproject/numix-icon-theme-circle)
 5. Gnome Extensions :
    - [AlternateTab](https://extensions.gnome.org/extension/15/alternatetab/)

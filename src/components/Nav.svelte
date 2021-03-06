@@ -14,21 +14,21 @@
         rel="prefetch"
         aria-current={segment === "blog" ? "page" : undefined}
         href="blog"
-        class="subtitle-regular">blog</a
+        class="subtitle-bold">blog</a
       >
     </li>
-    <li>
+    <!-- <li>
       <a
         aria-current={segment === "works" ? "page" : undefined}
         href="works"
-        class="subtitle-regular">works</a
+        class="subtitle-bold">works</a
       >
-    </li>
+    </li> -->
     <li>
       <a
         aria-current={segment === "contacts" ? "page" : undefined}
         href="contacts"
-        class="subtitle-regular">contacts</a
+        class="subtitle-bold">contacts</a
       >
     </li>
   </ul>
@@ -36,7 +36,7 @@
 
 <style>
   nav {
-    padding: 20px;
+    padding: 24px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,11 +61,7 @@
   }
 
   [aria-current] {
-    font-weight: 600;
-  }
-
-  [aria-current]::after {
-    font-weight: bold;
+    text-decoration: underline;
   }
 
   a {
