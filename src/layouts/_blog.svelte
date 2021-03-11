@@ -75,6 +75,7 @@
     justify-content: center;
     text-align: center;
     opacity: 0.7;
+    padding: 0 24px;
   }
   .post-date {
     padding: 0 24px;
@@ -111,6 +112,13 @@
     .post-date {
       padding: 0 16px;
       opacity: 0.5;
+    }
+    .thumbnail-alt {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      opacity: 0.7;
+      padding: 0 16px;
     }
     .post-body {
       padding: 32px 24px;

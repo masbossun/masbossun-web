@@ -37,9 +37,10 @@ p {
   font-family: "DM Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 17px;
+  line-height: 28px;
   margin: 0 0 16px 0;
+  color: #292929;
 }
 
 span {
